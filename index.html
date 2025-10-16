@@ -181,6 +181,14 @@
 					margin: 4rem 0 2rem;
 				}
 
+				/* Ensure hero title and tagline sit below the logo on mobile */
+				.hero-1-container { padding-top: 20px; }
+				.hero-main-logo img { width: 64vw; max-width: 320px; height: auto; display: block; margin: 0 auto 18px; }
+				.hero-text-logo-container { margin-top: 18px; }
+				.hero-main-content { text-align: center; margin-top: 12px; }
+				.hero-text { font-size: clamp(26px, 8.2vw, 34px); line-height: 1.2; margin-top: 6px; }
+				.hero-tagline { font-size: 13px; margin-top: 6px; letter-spacing: 0.04em; }
+
 				.cta-buttons {
 					flex-direction: column;
 					align-items: center;
@@ -189,14 +197,6 @@
 				.cta-button {
 					min-width: 250px;
 				}
-
-				/* Mobile tweaks to avoid hero text overlapping the logo */
-				.hero-1-container { padding-top: 16px; }
-				.hero-main-logo img { width: 68vw; max-width: 320px; height: auto; display: block; margin: 0 auto; }
-				.hero-text-logo-container { margin-top: 10px; }
-				.hero-main-content { text-align: center; margin-top: 6px; }
-				.hero-text { font-size: clamp(28px, 9vw, 36px); line-height: 1.1; }
-				.hero-tagline { font-size: 14px; margin-top: 6px; }
 			}
 		</style>
 	</head>
