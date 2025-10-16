@@ -189,6 +189,15 @@
 				.hero-text { font-size: clamp(26px, 8.2vw, 34px); line-height: 1.2; margin-top: 6px; }
 				.hero-tagline { font-size: 13px; margin-top: 6px; letter-spacing: 0.04em; }
 
+				/* Mobile nav hamburger styles */
+				.nav-toggle { display:inline-flex; flex-direction:column; gap:4px; width:40px; height:32px; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.25); border-radius:8px; background:rgba(0,0,0,0.3); color:#fff; cursor:pointer; margin-left:auto; }
+				.nav-toggle__bar { display:block; width:20px; height:2px; background:#fff; border-radius:2px; }
+				.nav-menu { position:relative; }
+				.nav-menu__links { display:none; position:absolute; right:0; top:48px; background:rgba(11,11,11,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px; min-width: 180px; z-index:1000; }
+				.nav-menu__links.is-open { display:block; }
+				.nav-menu__links .nav-link { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-radius:8px; }
+				.nav-menu__links .nav-link:hover { background: rgba(255,255,255,0.06); }
+
 				.cta-buttons {
 					flex-direction: column;
 					align-items: center;
@@ -217,8 +226,13 @@
 								class="nav-logo-img"
 							/>
 						</a>
+						<button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+							<span class="nav-toggle__bar"></span>
+							<span class="nav-toggle__bar"></span>
+							<span class="nav-toggle__bar"></span>
+						</button>
 						<div class="nav-menu">
-							<div class="nav-menu__links">
+							<div class="nav-menu__links" id="mobileMenu">
 								<a href="index.html" class="link nav-link">
 									<span class="nav-link-text">Home</span>
 									<svg
@@ -502,6 +516,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 	<script defer src="./src/script.js"></script>
 	<script>
+		// Mobile nav toggle
+		document.addEventListener('DOMContentLoaded', function(){
+			var toggle = document.querySelector('.nav-toggle');
+			var menu = document.getElementById('mobileMenu');
+			if (!toggle || !menu) return;
+			toggle.addEventListener('click', function(){
+				var isOpen = menu.classList.toggle('is-open');
+				toggle.setAttribute('aria-expanded', String(isOpen));
+			});
+			// Close when clicking outside
+			document.addEventListener('click', function(e){
+				var t = e.target;
+				if (!(t instanceof Element)) return;
+				if (!menu.contains(t) && !toggle.contains(t)) {
+					menu.classList.remove('is-open');
+					toggle.setAttribute('aria-expanded', 'false');
+				}
+			});
+		});
+
 		// Ensure background video auto-plays promptly on load and first interaction
 		(function(){
 			function tryPlayVideo(){
