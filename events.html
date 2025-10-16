@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Events - Magnovite'25</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="./public/magnovite.png"
+			sizes="32x32 64x64 128x128 192x192"
+		/>
+		<link
+			rel="apple-touch-icon"
+			href="./public/magnovite.png"
+			sizes="180x180"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./src/style.css" />
+		<link rel="stylesheet" href="./css/events.css" />
+	</head>
+	<body id="events">
+		<!-- Navigation -->
+		<header class="header">
+			<div class="nav-container">
+				<nav class="nav-row">
+					<div class="nav-inner">
+						<a
+							href="https://www.christuniversity.in/"
+							target="_blank"
+							class="nav-logo-row"
+						>
+							<img
+								src="./public/christwhite.png"
+								alt="Christ University"
+								class="nav-logo-img"
+							/>
+						</a>
+						<div class="nav-menu">
+							<div class="nav-menu__links">
+								<a href="index.html" class="link nav-link">
+									<span class="nav-link-text">Home</span>
+									<svg
+										class="nav-link-arrow"
+										width="12"
+										height="12"
+										viewBox="0 0 12 12"
+										fill="none"
+									>
+										<path
+											d="M0.230469 5.09969H8.95047L4.57047 0.679688H7.03047L11.7705 5.41969V6.57969L7.03047 11.3197H4.57047L8.95047 6.85969H0.230469V5.09969Z"
+											fill="currentColor"
+										></path>
+									</svg>
+								</a>
+								<a href="events.html" class="link nav-link">
+									<span class="nav-link-text">Events</span>
+									<svg
+										class="nav-link-arrow"
+										width="12"
+										height="12"
+										viewBox="0 0 12 12"
+										fill="none"
+									>
+										<path
+											d="M0.230469 5.09969H8.95047L4.57047 0.679688H7.03047L11.7705 5.41969V6.57969L7.03047 11.3197H4.57047L8.95047 6.85969H0.230469V5.09969Z"
+											fill="currentColor"
+										></path>
+									</svg>
+								</a>
+								<a href="about.html" class="link nav-link">
+									<span class="nav-link-text">About</span>
+									<svg
+										class="nav-link-arrow"
+										width="12"
+										height="12"
+										viewBox="0 0 12 12"
+										fill="none"
+									>
+										<path
+											d="M0.230469 5.09969H8.95047L4.57047 0.679688H7.03047L11.7705 5.41969V6.57969L7.03047 11.3197H4.57047L8.95047 6.85969H0.230469V5.09969Z"
+											fill="currentColor"
+										></path>
+									</svg>
+								</a>
+								<a href="gallery.html" class="link nav-link">
+									<span class="nav-link-text">Gallery</span>
+									<svg
+										class="nav-link-arrow"
+										width="12"
+										height="12"
+										viewBox="0 0 12 12"
+										fill="none"
+									>
+										<path
+											d="M0.230469 5.09969H8.95047L4.57047 0.679688H7.03047L11.7705 5.41969V6.57969L7.03047 11.3197H4.57047L8.95047 6.85969H0.230469V5.09969Z"
+											fill="currentColor"
+										></path>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="events-hero">
+				<h1 class="events-title">Events</h1>
+				<p class="events-subtitle">Explore management, technical, cultural and more. Click a card to view details; use Register for sign-ups.</p>
+			</div>
+			<!-- Search and Filter Section -->
+			<div class="search-container">
+				<input
+					type="text"
+					class="search-input"
+					placeholder="Search events..."
+					id="searchInput"
+				/>
+				<div class="filter-tags" id="filterTags">
+					<div class="filter-tag active" data-tag="all">All</div>
+				</div>
+			</div>
+
+			<!-- Events Grid -->
+			<div class="events-grid" id="eventsGrid">
+				<!-- Fallback content while JavaScript loads -->
+				<div class="event-card">
+					<div class="event-category">Loading</div>
+					<h3 class="event-title">Loading Events...</h3>
+					<p class="event-description">Please wait while we load the events.</p>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<footer class="site-footer">
+				<div class="footer-inner">
+					<div class="footer-brand">
+						<img
+							src="./public/magnovite.png"
+							alt="Magnovite"
+							class="footer-logo"
+						/>
+						<span class="footer-divider"></span>
+						<img
+							src="./public/christwhite.png"
+							alt="Christ University"
+							class="footer-logo footer-logo--christ"
+						/>
+					</div>
+					<div class="footer-columns">
+						<div class="footer-col footer-about">
+							<p>
+								Christ University, Kengeri Campus offers a blend of traditional
+								and world-class facilities, including department-specific
+								buildings, libraries, research facilities, and residences,
+								amidst the city's greenery.
+							</p>
+						</div>
+						<div class="footer-col footer-desc">
+							<p>
+								MAGNOVITE, the 15th edition of CHRIST University's flagship
+								fest, fosters creativity, collaboration, healthy competition,
+								and positive connections among participants.
+							</p>
+							<div class="footer-social">
+								<a
+									href="https://www.linkedin.com/company/christ-university-faculty-of-engineering/?originalSubdomain=in"
+									target="_blank"
+									class="social-link linkedin-link"
+									aria-label="LinkedIn"
+								>
+									<svg
+										class="social-icon"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+											fill="currentColor"
+										/>
+									</svg>
+								</a>
+								<a
+									href="https://www.instagram.com/magnovite.kengeri/"
+									target="_blank"
+									class="social-link instagram-link"
+									aria-label="Instagram"
+								>
+									<svg
+										class="social-icon"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+											fill="currentColor"
+										/>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+	<script>
+		function slugify(text) {
+			return text
+				.toString()
+				.toLowerCase()
+				.replace(/\s+/g, '-')
+				.replace(/[^a-z0-9-]/g, '')
+				.replace(/-+/g, '-')
+				.replace(/^-|-$/g, '');
+		}
+
+		// Events data (updated lineup)
+		const events = [
+			// Civil Engineering
+			{ title: 'Archicraft 1.0', desc: 'Civil design and build challenge.', tags: ['civil'], link: '#', img: './public/events/archicraft.jpg' },
+			{ title: 'Eco-Forge', desc: 'Sustainable engineering problem-solving.', tags: ['civil'], link: '#', img: './public/events/ecoforge.jpg' },
+
+			// Computer Science and Engineering
+			{ title: 'Enigma Redesigned', desc: 'Cryptography and code-breaking gauntlet.', tags: ['cse'], link: '#', img: 'https://source.unsplash.com/800x600/?cybersecurity,code,cryptography' },
+			{ title: 'SparkTank', desc: 'Pitch innovative tech ideas with business impact.', tags: ['cse'], link: '#', img: 'https://source.unsplash.com/800x600/?startup,pitch,innovation' },
+			{ title: 'Reverse Coding', desc: 'Decode outputs to reconstruct programs.', tags: ['cse'], link: '#', img: 'https://source.unsplash.com/800x600/?programming,algorithm,hacking' },
+
+			// Electronics & Communications Engineering
+			{ title: 'The Antenna Odyssey', desc: 'Antenna design and communication challenge.', tags: ['ece'], link: '#', img: 'https://source.unsplash.com/800x600/?antenna,radio,communication' },
+			{ title: 'Drone Event', desc: 'Hands-on UAV tasks and piloting challenges.', tags: ['ece'], link: '#', img: 'https://source.unsplash.com/800x600/?drone,quadcopter,uav' },
+
+			// Electrical and Electronics Engineering
+			{ title: 'Grid Restoration Challenge', desc: 'Restore power grid scenarios under constraints.', tags: ['eee'], link: '#', img: 'https://source.unsplash.com/800x600/?power,grid,electricity' },
+			{ title: 'Smart City Energy Command', desc: 'Optimize energy for smart-city infrastructures.', tags: ['eee'], link: '#', img: 'https://source.unsplash.com/800x600/?smart-city,energy,grid' },
+
+			// Mechanical Engineering
+			{ title: 'Robosoccer', desc: 'Build and compete with soccer-playing robots.', tags: ['mech'], link: '#', img: 'https://source.unsplash.com/800x600/?robot,soccer,robotics' },
+			{ title: 'CAD Hackathon', desc: 'Rapid CAD design sprint.', tags: ['mech'], link: '#', img: 'https://source.unsplash.com/800x600/?cad,design,mechanical' },
+			{ title: 'Maze Runner', desc: 'Autonomous robot maze navigation.', tags: ['mech'], link: '#', img: 'https://source.unsplash.com/800x600/?maze,robot,automation' },
+
+			// Psychology
+			{ title: 'Frames Unboxed', desc: 'Two-day short film competition.', tags: ['psychology'], link: '#', img: 'https://source.unsplash.com/800x600/?filmmaking,cinema,clapperboard' },
+			{ title: 'How I Met Your Killer ?', desc: 'Mystery-solving and profiling event.', tags: ['psychology'], link: '#', img: 'https://source.unsplash.com/800x600/?mystery,detective,crime' },
+			{ title: 'Switch and Scene', desc: 'High-energy improv theatre showdown.', tags: ['psychology'], link: '#', img: 'https://source.unsplash.com/800x600/?theatre,improv,stage' },
+			{ title: 'The Nexus', desc: 'Negotiation-based strategy event.', tags: ['psychology'], link: '#', img: 'https://source.unsplash.com/800x600/?strategy,negotiation,alliance' },
+
+			// Automobile Engineering
+			{ title: 'RC Car Challenge', desc: 'Remote-controlled car design and races.', tags: ['automobile'], link: '#', img: 'https://source.unsplash.com/800x600/?rc,car,racing' },
+
+			// AIML & DS
+			{ title: 'Chamber of Secrets', desc: 'Puzzle and logic marathon.', tags: ['aiml-ds'], link: '#', img: 'https://source.unsplash.com/800x600/?puzzle,logic,escape' },
+			{ title: 'Algo Royale', desc: 'Competitive algorithms tournament.', tags: ['aiml-ds'], link: '#', img: 'https://source.unsplash.com/800x600/?algorithm,code,contest' },
+			{ title: 'Code Relay', desc: 'Team-based chained coding challenge.', tags: ['aiml-ds'], link: '#', img: 'https://source.unsplash.com/800x600/?coding,teamwork,software' },
+			{ title: 'Escape Room', desc: 'Timed puzzle-solving experience.', tags: ['aiml-ds'], link: '#', img: 'https://source.unsplash.com/800x600/?escape-room,puzzle,team' },
+
+			// Management
+			{ title: 'Best Manager', desc: 'Leadership marathon across rounds.', tags: ['management'], link: '#', img: 'https://source.unsplash.com/800x600/?leader,management,business' },
+			{ title: 'Business Plan', desc: 'Craft and present venture plans.', tags: ['management'], link: '#', img: 'https://source.unsplash.com/800x600/?business,plan,startup' },
+			{ title: 'Marketing and Public Relations', desc: 'Brand, PR and crisis strategy.', tags: ['management'], link: '#', img: 'https://source.unsplash.com/800x600/?marketing,pr,brand' },
+			{ title: 'Finance', desc: 'Financial analysis and strategy.', tags: ['management'], link: '#', img: 'https://source.unsplash.com/800x600/?finance,stocks,analysis' },
+			{ title: 'Human Resources', desc: 'Recruitment and organizational behavior.', tags: ['management'], link: '#', img: 'https://source.unsplash.com/800x600/?hr,people,team' },
+
+			// Science and Humanities
+			{ title: 'Severance Cup', desc: 'Interdisciplinary competitive challenge.', tags: ['science-humanities'], link: '#', img: 'https://source.unsplash.com/800x600/?trophy,competition,cup' },
+			{ title: 'Byte ard Board', desc: 'Hybrid of tech and board strategy.', tags: ['science-humanities'], link: '#', img: 'https://source.unsplash.com/800x600/?boardgame,technology,strategy' },
+
+			// School of Architecture
+			{ title: 'Pixel Perspectives', desc: 'Architectural visualization showcase.', tags: ['architecture'], link: '#', img: 'https://source.unsplash.com/800x600/?architecture,render,visualization' },
+			{ title: 'Pattern Play', desc: 'Parametric and pattern explorations.', tags: ['architecture'], link: '#', img: 'https://source.unsplash.com/800x600/?pattern,parametric,design' },
+			{ title: 'Revival Outlook', desc: 'Adaptive reuse and revival designs.', tags: ['architecture'], link: '#', img: 'https://source.unsplash.com/800x600/?heritage,architecture,revival' },
+
+			// IIIC
+			{ title: 'Casecraft: The Industry Edition', desc: 'Real-world case challenge by IIIC.', tags: ['iiic'], link: '#', img: 'https://source.unsplash.com/800x600/?case,industry,business' },
+
+			// Culturals
+			{ title: "Battle o' Bands", desc: 'High-voltage band face-off.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?band,concert,music' },
+			{ title: 'Acapella and Group Singing', desc: 'Harmony and vocal performance.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?choir,singing,acapella' },
+			{ title: 'Theme Dance', desc: 'Choreography with a concept.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?dance,stage,performance' },
+			{ title: 'Non Theme Dance', desc: 'Open-style group dance.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?dance,hiphop,group' },
+			{ title: 'Street Dance Battle', desc: 'Freestyle street battle.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?street,dance,battle' },
+			{ title: 'Street Play', desc: 'Powerful theater on the street.', tags: ['culturals'], link: '#', img: 'https://source.unsplash.com/800x600/?street,theatre,drama' },
+		];
+
+		let currentFilter = 'all';
+		let filteredEvents = events;
+
+		// Main categories only (updated)
+		const mainCategories = [
+			'civil',
+			'cse',
+			'ece',
+			'eee',
+			'mech',
+			'psychology',
+			'automobile',
+			'aiml-ds',
+			'management',
+			'science-humanities',
+			'architecture',
+			'iiic',
+			'culturals',
+		];
+
+		// Initialize the page
+		function initializePage() {
+			console.log('Initializing events page...');
+			console.log('Events data:', events.length, 'events loaded');
+			createFilterTags();
+			renderEvents(events);
+			setupEventListeners();
+			console.log('Events page initialized successfully');
+		}
+
+		// Create filter tags
+		function createFilterTags() {
+			const filterContainer = document.getElementById('filterTags');
+
+			mainCategories.forEach((tag) => {
+				const tagElement = document.createElement('div');
+				tagElement.className = 'filter-tag';
+				tagElement.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+				tagElement.setAttribute('data-tag', tag);
+				tagElement.addEventListener('click', () => filterByTag(tag));
+				filterContainer.appendChild(tagElement);
+			});
+		}
+
+		// Render events
+		function renderEvents(eventsList) {
+			console.log('Rendering events:', eventsList.length);
+			const container = document.getElementById('eventsGrid');
+			if (!container) {
+				console.error('Events grid container not found!');
+				return;
+			}
+			container.innerHTML = '';
+
+			eventsList.forEach((evt) => {
+				const eventCard = document.createElement('div');
+				eventCard.className = 'event-card';
+				const primaryTag = evt.tags[0];
+				const tagLabel = primaryTag.charAt(0).toUpperCase() + primaryTag.slice(1);
+                const detailUrl = `events/${encodeURIComponent(slugify(evt.title))}.html`;
+
+				eventCard.innerHTML = `
+					<a href="${detailUrl}" class="event-link" aria-label="Open ${evt.title}"></a>
+					<div class="event-media">
+						<img src="${evt.img}" alt="${evt.title}" class="event-image" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='./public/Gallery/1_400x400.jpg';" />
+						<span class="event-badge">${tagLabel}</span>
+					</div>
+					<div class="event-content">
+						<h3 class="event-title">${evt.title}</h3>
+						<p class="event-description">${evt.desc}</p>
+						<div class="event-actions">
+							<a href="${detailUrl}" class="register-btn">Show More</a>
+						</div>
+          </div>
+        `;
+
+				container.appendChild(eventCard);
+			});
+		}
+
+		// Filter by tag
+		function filterByTag(tag) {
+			currentFilter = tag;
+
+			// Update active tag
+			document.querySelectorAll('.filter-tag').forEach((tagEl) => {
+				tagEl.classList.remove('active');
+				if (
+					tagEl.getAttribute('data-tag') === tag ||
+					(tag === 'all' && tagEl.textContent === 'All')
+				) {
+					tagEl.classList.add('active');
+				}
+			});
+
+			// Filter events
+			if (tag === 'all') {
+				filteredEvents = events;
+			} else {
+				filteredEvents = events.filter((event) => event.tags.includes(tag));
+			}
+
+			// Apply search filter if there's a search query
+			const searchQuery = document
+				.getElementById('searchInput')
+				.value.toLowerCase();
+			if (searchQuery) {
+				filteredEvents = filteredEvents.filter(
+					(event) =>
+						event.title.toLowerCase().includes(searchQuery) ||
+						event.desc.toLowerCase().includes(searchQuery) ||
+						event.tags.some((tag) => tag.toLowerCase().includes(searchQuery))
+				);
+			}
+
+			renderEvents(filteredEvents);
+		}
+
+		// Search functionality
+		function searchEvents(query) {
+			const lowerQuery = query.toLowerCase();
+
+			let searchResults;
+			if (currentFilter === 'all') {
+				searchResults = events;
+			} else {
+				searchResults = events.filter((event) =>
+					event.tags.includes(currentFilter)
+				);
+			}
+
+			if (query) {
+				searchResults = searchResults.filter(
+					(event) =>
+						event.title.toLowerCase().includes(lowerQuery) ||
+						event.desc.toLowerCase().includes(lowerQuery) ||
+						event.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
+				);
+			}
+
+			renderEvents(searchResults);
+		}
+
+		// Setup event listeners
+		function setupEventListeners() {
+			const searchInput = document.getElementById('searchInput');
+			searchInput.addEventListener('input', (e) => {
+				searchEvents(e.target.value);
+			});
+
+			// All filter
+			document
+				.querySelector('.filter-tag[data-tag="all"]')
+				.addEventListener('click', () => {
+					filterByTag('all');
+				});
+		}
+
+		// Initialize when DOM is loaded
+		document.addEventListener('DOMContentLoaded', initializePage);
+
+		// Also initialize immediately if DOM is already loaded
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initializePage);
+		} else {
+			initializePage();
+		}
+	</script>
+</html>
