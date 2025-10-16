@@ -267,7 +267,8 @@
                     }
                     const res = await fetch(SCRIPT_URL, { method: 'POST', body: data });
                     const text = await res.text();
-                    let isSuccess = res.ok;
+                    console.debug('[eco-forge] submit response:', res.status, text);
+                    let isSuccess = (res.status >= 200 && res.status < 400);
                     if (!isSuccess) {
                         try {
                             const j = JSON.parse(text);
