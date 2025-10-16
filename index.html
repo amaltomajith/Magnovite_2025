@@ -181,18 +181,37 @@
 					margin: 4rem 0 2rem;
 				}
 
-				/* Mobile nav: two-line hamburger */
-				.nav-toggle-2 { display:inline-flex; align-items:center; justify-content:center; gap:6px; width:40px; height:34px; margin-left:auto; border-radius:10px; border:1px solid rgba(255,255,255,0.18); background:rgba(0,0,0,0.35); cursor:pointer; }
-				.nav-toggle-2__bar { display:block; width:20px; height:2px; border-radius:2px; background: linear-gradient(90deg, #ff00ff, #8000ff); box-shadow: 0 0 8px rgba(255,0,255,0.25); }
+				/* Mobile nav: two-line hamburger morphs to X */
+				.nav-toggle-2 { display:inline-flex; align-items:center; justify-content:center; width:42px; height:36px; margin-left:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.18); background:rgba(0,0,0,0.35); cursor:pointer; position:relative; overflow:hidden; transform: translateX(14px); opacity: 0; animation: slideInBtn .35s ease .2s forwards; z-index: 1002; }
+				/* When menu is open, pin the button top-right above the drawer */
+				.nav-toggle-2.is-active { position: fixed; top: 12px; right: 12px; transform: none; }
+				@keyframes slideInBtn { to { transform: translateX(0); opacity:1; } }
+				.nav-toggle-2__bar { position:absolute; left:50%; width:26px; height:4px; border-radius:3px; background:#ffffff; box-shadow: 0 0 0 rgba(0,0,0,0); transform: translateX(-50%); transition: transform .25s ease, opacity .2s ease; }
+				.nav-toggle-2__bar:nth-child(1){ top:11px; }
+				.nav-toggle-2__bar:nth-child(2){ top:23px; }
+				.nav-toggle-2.is-active .nav-toggle-2__bar:nth-child(1){ top:50%; transform: translate(-50%, -50%) rotate(45deg); }
+				.nav-toggle-2.is-active .nav-toggle-2__bar:nth-child(2){ top:50%; transform: translate(-50%, -50%) rotate(-45deg); }
+
+				/* Drawer menu slides from right */
 				.nav-menu { position:relative; }
-				.nav-menu__links { display:none; position:absolute; right:0; top:48px; background:rgba(11,11,11,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px; min-width: 200px; z-index:1000; backdrop-filter: blur(6px); }
-				.nav-menu__links.is-open { display:block; }
-				.nav-menu__links .nav-link { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-radius:8px; }
+				.nav-drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); backdrop-filter: blur(0px); opacity:0; visibility:hidden; transition: opacity .28s ease, visibility .28s ease, backdrop-filter .28s ease; z-index: 1000; }
+				.nav-drawer-backdrop.is-open { opacity:1; visibility:visible; backdrop-filter: blur(8px); }
+				.nav-menu__links { position: fixed; top:0; right:0; height:100vh; width:min(84vw, 320px); padding:14px; background: rgba(11,11,11,0.98); border-left:1px solid rgba(255,255,255,0.1); box-shadow: -24px 0 60px rgba(0,0,0,0.5); transform: translateX(100%); transition: transform .3s ease; z-index: 1001; display:flex; flex-direction:column; gap:6px; }
+				.nav-menu__links.is-open { transform: translateX(0); padding-top: 64px; }
+				.nav-menu__links .nav-link { display:flex; align-items:center; justify-content:space-between; padding:12px 12px; border-radius:10px; }
+				/* Remove any decorative separators/pipes on mobile drawer links */
+				.nav-menu__links .nav-link::after,
+				.nav-menu__links .nav-link::before { content: none !important; display: none !important; }
+				.nav-menu__links .nav-link { border: none !important; }
 				.nav-menu__links .nav-link:hover { background: rgba(255,255,255,0.06); }
 
 				/* Hide desktop links row behind hamburger on mobile */
-				.nav-menu > .nav-menu__links { display:none; }
+				.nav-inner .nav-menu > .nav-menu__links:not(.is-open) { display:block; }
 			}
+
+			/* Smooth page blur when nav is open */
+			.blur-target { transition: filter .28s ease; }
+			.is-nav-open .blur-target { filter: blur(8px); }
 
 				.cta-buttons {
 					flex-direction: column;
@@ -223,6 +242,7 @@
 							/>
 						</a>
 						<div class="nav-menu">
+							<div class="nav-drawer-backdrop" id="navBackdrop"></div>
 							<button class="nav-toggle-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
 								<span class="nav-toggle-2__bar"></span>
 								<span class="nav-toggle-2__bar"></span>
@@ -295,7 +315,7 @@
 			</div>
 		</header>
 
-		<div class="container">
+			<div class="container blur-target">
 			<div class="overlay"></div>
 			<div class="hero-1-container">
 				<div class="hero-main-container">
@@ -511,23 +531,34 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 	<script defer src="./src/script.js"></script>
 	<script>
-		// Mobile two-line hamburger toggle
+		// Mobile drawer + two-line hamburger
 		document.addEventListener('DOMContentLoaded', function(){
 			var toggle = document.querySelector('.nav-toggle-2');
 			var menu = document.getElementById('mobileMenu');
-			if (!toggle || !menu) return;
-			toggle.addEventListener('click', function(){
-				var isOpen = menu.classList.toggle('is-open');
-				toggle.setAttribute('aria-expanded', String(isOpen));
-			});
-			// Close when clicking outside
-			document.addEventListener('click', function(e){
-				var t = e.target;
-				if (!(t instanceof Element)) return;
-				if (!menu.contains(t) && !toggle.contains(t)) {
-					menu.classList.remove('is-open');
-					toggle.setAttribute('aria-expanded', 'false');
+			var backdrop = document.getElementById('navBackdrop');
+			var pageRoot = document.querySelector('.container.blur-target');
+			if (!toggle || !menu || !backdrop) return;
+			function setOpen(open){
+				menu.classList.toggle('is-open', open);
+				backdrop.classList.toggle('is-open', open);
+				toggle.classList.toggle('is-active', open);
+				toggle.setAttribute('aria-expanded', String(open));
+				if (pageRoot) {
+					if (open) {
+						document.documentElement.classList.add('is-nav-open');
+					} else {
+						document.documentElement.classList.remove('is-nav-open');
+					}
 				}
+			}
+			toggle.addEventListener('click', function(){ setOpen(!menu.classList.contains('is-open')); });
+			backdrop.addEventListener('click', function(){ setOpen(false); });
+			// Close when pressing ESC
+			document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+			// Close when clicking a link in the drawer
+			menu.addEventListener('click', function(e){
+				var t = e.target;
+				if (t && t.closest && t.closest('a.nav-link')) setOpen(false);
 			});
 		});
 
