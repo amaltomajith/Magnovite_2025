@@ -213,6 +213,27 @@
 			.blur-target { transition: filter .28s ease; }
 			.is-nav-open .blur-target { filter: blur(8px); }
 
+			/* Extra mobile spacing to push MAGNOVITE 2025 lower */
+			@media (max-width: 768px) {
+				.hero-text-logo-container { margin-top: 40px !important; }
+				.hero-main-content { margin-top: 28px !important; }
+				.hero-main-logo img { margin-bottom: 26px !important; }
+			}
+
+			/* Avoid hero logo/text overlap - mobile spacing boost */
+			@media (max-width: 768px) {
+				.hero-text-logo-container { margin-top: 28px; }
+				.hero-main-content { margin-top: 18px; }
+				.hero-main-logo img { margin-bottom: 22px; }
+			}
+
+			/* Slight extra spacing on desktop */
+			@media (min-width: 1024px) {
+				.hero-text-logo-container { margin-top: 28px; }
+				.hero-main-content { margin-top: 28px; }
+				.hero-main-logo img { margin-bottom: 20px; }
+			}
+
 				.cta-buttons {
 					flex-direction: column;
 					align-items: center;
@@ -340,7 +361,6 @@
 								MAGNOVITE<br />
 								2025
 							</h3>
-							<p class="hero-tagline">Transform Beyond Horizon</p>
 						</div>
 					</div>
 				</div>

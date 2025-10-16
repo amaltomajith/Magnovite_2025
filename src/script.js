@@ -55,10 +55,10 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
     const tl = window.gsap.timeline({
       scrollTrigger: {
         trigger: ".container",
-        scrub: 2,
+        scrub: 2.2, // slightly slower scrub for longer presence
         pin: true,
         start: "top top",
-        end: "+=2000",
+        end: "+=2300", // extend distance so hero stays a bit longer
         ease: "none",
       },
     });
