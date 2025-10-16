@@ -285,7 +285,7 @@
 					<h1 class="hero-main-logo" aria-label="Are you excited?">
 						<img src="./public/excited.png" alt="Are you excited?" />
 					</h1>
-					<video class="hero-main-image" autoplay muted loop playsinline>
+					<video class="hero-main-image" autoplay muted loop playsinline preload="auto">
 						<source src="./public/initialbg.mp4" type="video/mp4" />
 					</video>
 				</div>
@@ -494,6 +494,39 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 	<script defer src="./src/script.js"></script>
 	<script>
+		// Ensure background video auto-plays promptly on load and first interaction
+		(function(){
+			function tryPlayVideo(){
+				var vid = document.querySelector('.hero-main-image');
+				if (!vid) return;
+				try {
+					vid.muted = true; // reinforce autoplay policy
+					if (vid.readyState < 2) { // HAVE_CURRENT_DATA
+						vid.load();
+					}
+					var p = vid.play();
+					if (p && typeof p.then === 'function') {
+						p.catch(function(){ /* ignore - will retry on interaction */ });
+					}
+				} catch(_) {}
+			}
+
+			if (document.readyState === 'complete' || document.readyState === 'interactive') {
+				tryPlayVideo();
+			} else {
+				document.addEventListener('DOMContentLoaded', tryPlayVideo);
+			}
+
+			// Retry on first user interaction or visibility change
+			var once = function(fn){
+				var done = false; return function(){ if (done) return; done = true; fn(); };
+			};
+			var oneShot = once(tryPlayVideo);
+			['click','touchstart','scroll','keydown','visibilitychange'].forEach(function(evt){
+				window.addEventListener(evt, oneShot, { passive: true, once: true });
+			});
+		})();
+
 		// CTA Section JavaScript
 		document.addEventListener('DOMContentLoaded', function () {
 			// Scroll reveal animation for CTA section
