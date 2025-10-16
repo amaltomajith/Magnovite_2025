@@ -267,7 +267,16 @@
                     }
                     const res = await fetch(SCRIPT_URL, { method: 'POST', body: data });
                     const text = await res.text();
-                    if (!res.ok) {
+                    let isSuccess = res.ok;
+                    if (!isSuccess) {
+                        try {
+                            const j = JSON.parse(text);
+                            isSuccess = j && j.ok === true;
+                        } catch (_) {
+                            // ignore JSON parse failure
+                        }
+                    }
+                    if (!isSuccess) {
                         console.error('GAS error', res.status, text);
                         alert('Submission failed. Please try again later.');
                         return;
