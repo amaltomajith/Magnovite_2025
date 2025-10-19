@@ -198,7 +198,7 @@
 				}
 
 				.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
-					transform: rotate(45deg) translate(5px, 5px);
+					transform: rotate(45deg) translate(0, 8px);
 				}
 
 				.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
@@ -207,7 +207,7 @@
 				}
 
 				.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
-					transform: rotate(-45deg) translate(7px, -6px);
+					transform: rotate(-45deg) translate(0, -8px);
 				}
 
 				/* Show mobile toggle on mobile */
@@ -804,11 +804,21 @@
 
 			// Event listeners
 			if (mobileMenuToggle) {
-				mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+				mobileMenuToggle.addEventListener('click', function(e) {
+					e.stopPropagation();
+					toggleMobileMenu();
+				});
 			}
 
 			if (mobileNavBackdrop) {
 				mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+			}
+
+			// Prevent menu from closing when clicking on the menu itself
+			if (navMenuLinks) {
+				navMenuLinks.addEventListener('click', function(e) {
+					e.stopPropagation();
+				});
 			}
 
 			// Close menu when clicking on nav links

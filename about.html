@@ -1402,6 +1402,27 @@
 			}
 		</style>
 		<style>
+			/* Desktop Navigation Styles */
+			.nav-menu__links {
+				display: flex;
+				gap: 30px;
+			}
+
+			.nav-link {
+				color: white;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-weight: 500;
+				transition: all 0.3s ease;
+			}
+
+			.nav-link:hover {
+				color: #ff00ff;
+				transform: translateY(-2px);
+			}
+
 			/* Mobile Navigation Styles */
 			@media (max-width: 768px) {
 				.nav-menu__links {
@@ -1419,10 +1440,14 @@
 					transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 					z-index: 1000;
 					box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+					opacity: 0;
+					visibility: hidden;
 				}
 
 				.nav-menu__links.is-open {
 					right: 0;
+					opacity: 1;
+					visibility: visible;
 				}
 
 				/* Page blur when menu is open - only blur specific content sections */
@@ -1505,8 +1530,11 @@
 					position: relative;
 				}
 
-				.mobile-menu-toggle.is-active {
-					display: flex;
+				/* Show hamburger button on mobile */
+				@media (max-width: 768px) {
+					.mobile-menu-toggle {
+						display: flex;
+					}
 				}
 
 				.hamburger-line {
@@ -1518,18 +1546,18 @@
 					border-radius: 2px;
 				}
 
-				.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
-					transform: rotate(45deg) translate(6px, 6px);
-				}
+			.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
+				transform: rotate(45deg) translate(0, 8px);
+			}
 
-				.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
-					opacity: 0;
-					transform: scaleX(0);
-				}
+			.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
+				opacity: 0;
+				transform: scaleX(0);
+			}
 
-				.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
-					transform: rotate(-45deg) translate(6px, -6px);
-				}
+			.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
+				transform: rotate(-45deg) translate(0, -8px);
+			}
 
 				/* Mobile Navigation Backdrop */
 				.mobile-nav-backdrop {
@@ -2448,14 +2476,24 @@
 					document.body.style.overflow = '';
 				}
 
-				// Event listeners
-				if (mobileMenuToggle) {
-					mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-				}
+			// Event listeners
+			if (mobileMenuToggle) {
+				mobileMenuToggle.addEventListener('click', function(e) {
+					e.stopPropagation();
+					toggleMobileMenu();
+				});
+			}
 
-				if (mobileNavBackdrop) {
-					mobileNavBackdrop.addEventListener('click', closeMobileMenu);
-				}
+			if (mobileNavBackdrop) {
+				mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+			}
+
+			// Prevent menu from closing when clicking on the menu itself
+			if (navMenuLinks) {
+				navMenuLinks.addEventListener('click', function(e) {
+					e.stopPropagation();
+				});
+			}
 
 				// Close menu when clicking on nav links
 				navLinks.forEach(link => {
