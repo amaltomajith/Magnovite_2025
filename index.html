@@ -23,6 +23,110 @@
 		/>
 		<link rel="stylesheet" href="./src/style.css" />
 		<style>
+			/* Professional Loading Screen */
+			.loading-screen {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000000;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				z-index: 9999;
+				transition: opacity 0.8s ease, visibility 0.8s ease;
+			}
+
+			.loading-screen.fade-out {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			.loading-logo {
+				width: 120px;
+				height: 120px;
+				margin-bottom: 2rem;
+				animation: logoPulse 2s ease-in-out infinite;
+			}
+
+			.loading-text {
+				font-size: 2rem;
+				font-weight: 800;
+				background: linear-gradient(45deg, #ff00ff, #9e3fff, #00ffff);
+				background-size: 200% 200%;
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				animation: gradientShift 3s ease infinite;
+				margin-bottom: 1rem;
+				letter-spacing: 0.1em;
+			}
+
+			.loading-subtitle {
+				font-size: 1rem;
+				color: rgba(255, 255, 255, 0.7);
+				margin-bottom: 3rem;
+				font-weight: 500;
+			}
+
+			.loading-spinner {
+				width: 50px;
+				height: 50px;
+				border: 3px solid rgba(255, 0, 255, 0.2);
+				border-top: 3px solid #ff00ff;
+				border-radius: 50%;
+				animation: spin 1s linear infinite;
+			}
+
+			.loading-progress {
+				width: 200px;
+				height: 4px;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 2px;
+				overflow: hidden;
+				margin-top: 2rem;
+			}
+
+			.loading-progress-bar {
+				height: 100%;
+				background: linear-gradient(90deg, #ff00ff, #9e3fff);
+				border-radius: 2px;
+				animation: progressFill 3s ease-in-out;
+			}
+
+			@keyframes logoPulse {
+				0%, 100% { transform: scale(1); opacity: 0.8; }
+				50% { transform: scale(1.05); opacity: 1; }
+			}
+
+			@keyframes gradientShift {
+				0%, 100% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+			}
+
+			@keyframes spin {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
+			}
+
+			@keyframes progressFill {
+				0% { width: 0%; }
+				100% { width: 100%; }
+			}
+
+			/* Hide main content initially */
+			body.loading .main-content {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			body.loaded .main-content {
+				opacity: 1;
+				visibility: visible;
+				transition: opacity 0.8s ease, visibility 0.8s ease;
+			}
 			/* CTA Section Styles */
 			.cta-section {
 				text-align: center;
@@ -192,7 +296,20 @@
 			}
 		</style>
 	</head>
-	<body id="home">
+	<body id="home" class="loading">
+		<!-- Professional Loading Screen -->
+		<div class="loading-screen" id="loadingScreen">
+			<img src="./public/magnovite.png" alt="Magnovite Logo" class="loading-logo" />
+			<div class="loading-text">MAGNOVITE'25</div>
+			<div class="loading-subtitle">Where Innovation Meets Excellence</div>
+			<div class="loading-spinner"></div>
+			<div class="loading-progress">
+				<div class="loading-progress-bar"></div>
+			</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="main-content">
 		<!-- Navigation -->
 		<header class="header">
 			<div class="nav-container">
@@ -480,11 +597,50 @@
 				</svg>
 			</div>
 		</div>
+		</div> <!-- End main-content -->
 	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 	<script defer src="./src/script.js"></script>
 	<script>
+		// Professional Loading Screen Management
+		document.addEventListener('DOMContentLoaded', function() {
+			const loadingScreen = document.getElementById('loadingScreen');
+			const body = document.body;
+			const video = document.querySelector('.hero-main-image');
+			
+			// Function to hide loading screen
+			function hideLoadingScreen() {
+				loadingScreen.classList.add('fade-out');
+				body.classList.remove('loading');
+				body.classList.add('loaded');
+				
+				// Remove loading screen from DOM after animation
+				setTimeout(() => {
+					loadingScreen.remove();
+				}, 800);
+			}
+			
+			// Check if video is loaded
+			function checkVideoLoaded() {
+				if (video && video.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+					hideLoadingScreen();
+				} else if (video) {
+					video.addEventListener('canplaythrough', hideLoadingScreen);
+					video.addEventListener('loadeddata', hideLoadingScreen);
+				} else {
+					// Fallback: hide loading screen after 3 seconds
+					setTimeout(hideLoadingScreen, 3000);
+				}
+			}
+			
+			// Start checking after a short delay
+			setTimeout(checkVideoLoaded, 500);
+			
+			// Fallback: hide loading screen after 5 seconds regardless
+			setTimeout(hideLoadingScreen, 5000);
+		});
+
 		// CTA Section JavaScript
 		document.addEventListener('DOMContentLoaded', function () {
 			// Scroll reveal animation for CTA section
