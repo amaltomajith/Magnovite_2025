@@ -16,41 +16,67 @@
         .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
         .hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
         .hero img { width:100%; height:100%; display:block; object-fit:cover; }
+        .grid { display:grid; gap:24px; grid-template-columns: 1fr; }
+        @media (min-width: 960px){ .grid{ grid-template-columns: 1.3fr 1fr; } }
         .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
         .card h2 { margin: 0 0 10px; color:#fff; font-size:22px; }
+        .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
+        @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
+        .rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
+        .dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
         .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; }
         .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
         .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
-        .coming-soon { text-align: center; padding: 40px 20px; }
-        .coming-soon h2 { color: #ffb0c4; font-size: 24px; margin-bottom: 16px; }
-        .coming-soon p { color: #cfcfcf; font-size: 16px; line-height: 1.6; }
+        footer { margin-top:40px; padding:24px 0; }
+        .contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
+        @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
+        .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
+        .contact-card a{ color:#ffb0c4; text-decoration:none; }
     </style>
 </head>
 <body>
     <div class="wrap">
-        <div class="subchips">
-            <span class="chip">Culturals</span>
-            <span class="chip">Theatre</span>
-        </div>
-        <h1 class="title">STREET PLAY 🎭🎪</h1>
-        <p class="tagline">"Powerful theater on the street"</p>
-
-        <div class="subchips">
+        <div style="display:flex; justify-content:flex-start; margin-bottom:16px;">
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
-        <div style="margin-top:16px;">
-            <div class="hero">
-                <img src="../public/events/streetplay.jpg" alt="Street Play" />
+        <h1 class="title">STREET PLAY</h1>
+        <p class="tagline">🗣️📢 "Drama that speaks, inspires, and awakens."</p>
+        
+        <p style="font-size: 1.1rem; line-height: 1.6; margin: 0 0 24px; color: #e0e0e0;">The voice of the streets brought to life! Street Play blends powerful performances with social messages, engaging the audience through drama, dialogue, and emotion.</p>
+
+        <div class="hero">
+            <img src="../public/events/streetplay.jpg" alt="Street Play" />
+        </div>
+        
+        <div class="subchips">
+            <span class="chip">Cultural</span>
+        </div>
+
+        <div class="card">
+            <h2>Rules and Regulations</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Time Limit: 30 minutes (Entry to Exit Stage, Including setup). Exceeding the time limit will result in point reduction.</div></div>
+                <div class="rule"><span class="dot"></span><div>No Government, Governmental orders, Political Parties or any person can be targeted directly or indirectly.</div></div>
+                <div class="rule"><span class="dot"></span><div>No Religious Slokas, Bhajans or any verses from the scriptures can be used.</div></div>
+                <div class="rule"><span class="dot"></span><div>Usage of loud speakers will NOT be permitted.</div></div>
+                <div class="rule"><span class="dot"></span><div>Judges decision will be final.</div></div>
+                <div class="rule"><span class="dot"></span><div>Explicit language/ Vulgar gestures and costumes/ Offensive behaviour will result in immediate disqualification.</div></div>
             </div>
         </div>
 
-        <div class="card" style="margin-top:24px;">
-            <div class="coming-soon">
-                <h2>🚧 Coming Soon</h2>
-                <p>This event page is currently under construction. Detailed information about Street Play will be available soon. Please check back later for updates on rules, regulations, and registration details.</p>
-            </div>
+        <div style="display:flex; justify-content:flex-start; margin-top:16px;">
+            <button class="btn" type="button">Register Now</button>
         </div>
+
+        <footer>
+            <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
+            <div class="contacts">
+                <div class="contact-card">
+                    <strong>Contact details will be updated soon</strong>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
