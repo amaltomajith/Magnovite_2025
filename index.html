@@ -301,7 +301,7 @@
 		<div class="loading-screen" id="loadingScreen">
 			<img src="./public/magnovite.png" alt="Magnovite Logo" class="loading-logo" />
 			<div class="loading-text">MAGNOVITE'25</div>
-			<div class="loading-subtitle">Where Innovation Meets Excellence</div>
+			<div class="loading-subtitle">Transform Beyond Horizon</div>
 			<div class="loading-spinner"></div>
 			<div class="loading-progress">
 				<div class="loading-progress-bar"></div>
@@ -608,6 +608,13 @@
 			const loadingScreen = document.getElementById('loadingScreen');
 			const body = document.body;
 			const video = document.querySelector('.hero-main-image');
+			
+			// Start video immediately when page loads
+			if (video) {
+				video.play().catch(e => {
+					console.log('Video autoplay prevented:', e);
+				});
+			}
 			
 			// Function to hide loading screen
 			function hideLoadingScreen() {
