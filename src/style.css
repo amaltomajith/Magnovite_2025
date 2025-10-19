@@ -297,28 +297,11 @@ body.page-gallery {
 	transition: transform 0.3s ease;
 }
 
-.nav-link-text::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: linear-gradient(
-		to bottom,
-		#ffb0c4 0%,
-		#ffb0c4 50%,
-		transparent 50%,
-		transparent 100%
-	);
-	background-size: 100% 200%;
-	background-position: 0 100%;
-	transition: background-position 0.3s ease;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	color: transparent;
-}
+/* Remove leading dot-like decoration; keep simple text label */
+.nav-link-text::before { content: none; }
+.nav-link::before { content: none !important; }
+.nav-menu__links { list-style: none; }
+.nav-menu__links .nav-link { list-style: none; }
 
 .nav-link:hover .nav-link-text::before {
 	background-position: 0 0;
@@ -931,10 +914,12 @@ body.page-gallery {
 }
 
 .footer-brand {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    justify-content: flex-end; /* keep both logos grouped on the right side */
+    flex-direction: row-reverse; /* order: Christ then Magnovite */
 }
 
 .footer-logo {
@@ -947,12 +932,7 @@ body.page-gallery {
 	height: 68px;
 }
 
-.footer-divider {
-	display: inline-block;
-	width: 1px;
-	height: 28px;
-	background: rgba(255, 255, 255, 0.15);
-}
+.footer-divider { display: none; }
 
 .footer-columns {
 	display: grid;

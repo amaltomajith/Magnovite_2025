@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Escape Room – Magnovite 2025</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+	<style>
+		* { box-sizing: border-box; }
+		body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
+		.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+		.chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
+		.title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
+		.tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
+		.hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
+		.hero img { width:100%; height:100%; display:block; object-fit:cover; }
+		.card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
+		.rules { display:grid; gap:10px; grid-template-columns: 1fr; }
+		@media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
+		.rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
+		.dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
+		.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; }
+		.btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
+		.subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+		.contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
+		@media (min-width:720px){ .contacts{ grid-template-columns: 1 fr 1 fr 1 fr; } }
+		.contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
+		.contact-card a{ color:#ffb0c4; text-decoration:none; }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="subchips">
+			<span class="chip">AIML & DS</span>
+			<span class="chip">Immersive Puzzles</span>
+		</div>
+		<h1 class="title">ESCAPE ROOM 🚪🎲</h1>
+		<p class="tagline">"Enter the Underworld of Puzzles and Deception"</p>
+		<p>Teams step into a world of hidden identities, secret codes, and timed puzzles. To "escape," players must crack riddles, decode secret mafia communications, and complete immersive challenges before time runs out.</p>
+
+		<div class="subchips">
+			<span class="chip">Team Size: 4–5</span>
+			<span class="chip">Fee: 500 INR/Team</span>
+			<a class="btn" href="../events.html">← Back to Events</a>
+		</div>
+
+		<div class="hero" style="margin-top:16px;">
+			<img src="../public/events/escaperoom.jpg" alt="Escape Room" />
+		</div>
+
+		<div class="card" style="margin-top:24px;">
+			<h2>Event Structure</h2>
+			<p>3 rounds</p>
+		</div>
+
+		<div class="card" style="margin-top:24px;">
+			<h2>Rules & Regulations</h2>
+			<div class="rules">
+				<div class="rule"><span class="dot"></span><div>No direct communication during critical challenges (clues only).</div></div>
+				<div class="rule"><span class="dot"></span><div>Use of external devices is prohibited.</div></div>
+				<div class="rule"><span class="dot"></span><div>Final escape must be achieved within the time limit.</div></div>
+			</div>
+		</div>
+
+		<footer class="wrap" style="padding-left:0;padding-right:0;">
+			<h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
+			<div class="contacts">
+				<div class="contact-card">
+					<strong>Suhaas K</strong><br />
+					<a href="tel:+919894923074">98949 23074</a>
+				</div>
+				<div class="contact-card">
+					<strong>Teona Joby</strong><br />
+					<a href="tel:+918606120736">86061 20736</a>
+				</div>
+				<div class="contact-card">
+					<strong>Event Faculty Coordinator</strong><br />
+					Dr Athulya S
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

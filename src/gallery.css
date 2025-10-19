@@ -83,15 +83,8 @@ body.page-gallery .footer-link {
 	color: var(--accent);
 }
 
-body.page-gallery .nav-link-text::before {
-	background: linear-gradient(
-		to bottom,
-		var(--accent) 0%,
-		var(--accent) 50%,
-		transparent 50%,
-		transparent 100%
-	);
-}
+/* Remove any decorative dot/prefix in gallery nav too */
+body.page-gallery .nav-link-text::before { content: none; }
 
 body.page-gallery .social-link:hover {
 	color: var(--accent);
