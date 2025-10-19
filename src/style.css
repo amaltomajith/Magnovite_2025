@@ -612,14 +612,18 @@ body.page-gallery {
 /* Promo Modal */
 .promo-modal {
 	position: fixed;
-	inset: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	display: none;
-	place-items: center;
+	justify-content: center;
+	align-items: center;
 	z-index: 2000;
 }
 
 .promo-modal.is-open {
-	display: grid;
+	display: flex;
 }
 
 .promo-modal__backdrop {
