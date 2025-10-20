@@ -452,9 +452,9 @@ body.page-gallery {
 	}
 
 	.hero-text-logo {
-		background-size: 25vh;
+		background-size: 30vh;
 		padding-bottom: 0;
-		height: 34vh;
+		height: 36vh;
 		position: relative;
 		inset: auto;
 		background-position: center center;
@@ -485,8 +485,8 @@ body.page-gallery {
 
 @media (max-width: 480px) {
 	.hero-text-logo {
-		background-size: 26vh;
-		height: 30vh;
+		background-size: 30vh;
+		height: 34vh;
 	}
 
 	.hero-text {
