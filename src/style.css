@@ -444,10 +444,29 @@ body.page-gallery {
 
 /* Mobile adjustments for MAGNOVITE 2025 heading */
 @media (max-width: 768px) {
+	.hero-text-logo-container {
+		flex-direction: column;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hero-text-logo {
+		background-size: 25vh;
+		padding-bottom: 0;
+		height: 30vh;
+		position: relative;
+		inset: auto;
+		background-position: center center;
+	}
+
 	.hero-text {
 		font-size: 3.25rem;
 		margin-top: 0;
 		padding: 0 1rem;
+		position: relative;
+		z-index: 2;
+		text-align: center;
 	}
 
 	.hero-vertical-text {
@@ -465,12 +484,20 @@ body.page-gallery {
 }
 
 @media (max-width: 480px) {
+	.hero-text-logo {
+		background-size: 20vh;
+		height: 25vh;
+	}
+
 	.hero-text {
 		font-size: 2.75rem;
 		line-height: 1;
 		margin-top: 0;
 		padding: 0 1rem;
 		overflow-wrap: anywhere;
+		position: relative;
+		z-index: 2;
+		text-align: center;
 	}
 
 	.hero-vertical-text {
