@@ -128,6 +128,12 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
       { opacity: 1, maskImage: `radial-gradient(circle at 50% 105.594%, rgb(0, 0, 0) 62.9372%, rgba(0, 0, 0, 0) 81.4686%)`, duration: 3 },
       "<0.2"
     );
+    // Fade out the introducing.png background as the MAGNOVITE logo/text come in
+    tl.to(
+      ".hero-main-container",
+      { opacity: 0, duration: 0.6 },
+      "<"
+    );
     tl.set(".hero-main-container", { opacity: 0 });
     tl.to(".hero-1-container", { scale: 0.85, duration: 3 }, "<-=3");
     tl.set(
