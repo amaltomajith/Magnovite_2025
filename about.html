@@ -2061,14 +2061,15 @@
 						});
 					});
 
-					// Add mouse move parallax effect
-					document.addEventListener(
-						'mousemove',
-						this.handleMouseMove.bind(this)
-					);
-
-					// Add scroll-based animations
-					window.addEventListener('scroll', this.handleScroll.bind(this));
+					// Add mouse move parallax effect (disabled on mobile to avoid scroll jitter)
+					if (!this.isMobile) {
+						document.addEventListener(
+							'mousemove',
+							this.handleMouseMove.bind(this)
+						);
+						// Add scroll-based animations/parallax only on non-mobile
+						window.addEventListener('scroll', this.handleScroll.bind(this));
+					}
 				}
 
 				handleMouseMove(e) {
@@ -2089,6 +2090,8 @@
 				}
 
 				handleScroll() {
+					// Guard: disable parallax transforms on mobile to keep native scrolling fluid
+					if (this.isMobile) return;
 					const scrolled = window.pageYOffset;
 					const rate = scrolled * -0.5;
 
