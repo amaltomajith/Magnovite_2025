@@ -69,6 +69,118 @@
 				transition: opacity 0.8s ease, visibility 0.8s ease;
 			}
 
+			/* Remove list styling from navigation elements */
+			.mobile-menu-toggle,
+			.mobile-menu-toggle li,
+			.nav-menu,
+			.nav-menu li,
+			.nav-menu__links,
+			.nav-menu__links li,
+			.nav-link,
+			.nav-link li,
+			.nav-link-text,
+			.nav-link-text li,
+			.link,
+			.link li {
+				list-style-type: none !important;
+				list-style: none !important;
+			}
+
+			/* Additional fix for navigation links specifically */
+			.nav-menu__links .nav-link::before,
+			.nav-menu__links .nav-link::after {
+				content: none !important;
+			}
+
+			/* New Simple Mobile Toggle Button */
+			.simple-mobile-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 32px;
+				height: 32px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				z-index: 1003;
+				position: relative;
+				padding: 0;
+				margin: 0;
+				margin-left: -20px;
+			}
+
+			.simple-mobile-toggle:hover {
+				opacity: 0.7;
+			}
+
+			.toggle-line {
+				width: 20px;
+				height: 2px;
+				background: #ffffff;
+				margin: 3px 0;
+				transition: all 0.3s ease;
+				transform-origin: center;
+			}
+
+			.simple-mobile-toggle.is-active .toggle-line:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			.simple-mobile-toggle.is-active .toggle-line:nth-child(2) {
+				opacity: 0;
+			}
+
+			.simple-mobile-toggle.is-active .toggle-line:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+
+			/* Ensure hamburger button stays visible when menu is open */
+			body.mobile-menu-open .simple-mobile-toggle {
+				z-index: 1003 !important;
+			}
+
+			/* Hide simple toggle on desktop */
+			@media (min-width: 769px) {
+				.simple-mobile-toggle {
+					display: none !important;
+					visibility: hidden !important;
+					opacity: 0 !important;
+					width: 0 !important;
+					height: 0 !important;
+					margin: 0 !important;
+					padding: 0 !important;
+					border: none !important;
+					background: transparent !important;
+					pointer-events: none !important;
+					position: absolute !important;
+					left: -9999px !important;
+					top: -9999px !important;
+					overflow: hidden !important;
+					clip: rect(0, 0, 0, 0) !important;
+				}
+				
+				.toggle-line {
+					display: none !important;
+					visibility: hidden !important;
+					opacity: 0 !important;
+					width: 0 !important;
+					height: 0 !important;
+				}
+			}
+
+			/* Show simple toggle on mobile */
+			@media (max-width: 768px) {
+				.simple-mobile-toggle {
+					display: flex;
+				}
+				
+				.toggle-line {
+					display: block;
+				}
+			}
+
 			/* Mobile Navigation Styles */
 			@media (max-width: 768px) {
 				.nav-menu__links {
@@ -161,31 +273,63 @@
 					display: none;
 				}
 
-			/* Mobile Menu Toggle Button - Hidden on desktop */
-			.mobile-menu-toggle {
-				display: none;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				width: 44px;
-				height: 44px;
-				background: rgba(255, 255, 255, 0.1);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				border-radius: 12px;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				z-index: 1001;
-				position: relative;
-			}
+				/* Mobile Menu Toggle Button */
+				.mobile-menu-toggle {
+					display: none;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					width: 44px;
+					height: 44px;
+					background: rgba(255, 255, 255, 0.1);
+					border: 1px solid rgba(255, 255, 255, 0.2);
+					border-radius: 12px;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					z-index: 1001;
+					position: relative;
+				}
 
-			/* Hide lines on desktop to avoid stray dots */
-			.hamburger-line { 
-				display: none; 
-			}
+				/* Hide lines on desktop to avoid stray dots */
+				.hamburger-line { 
+					display: none; 
+				}
 
-				.mobile-menu-toggle:hover {
-					background: rgba(255, 0, 255, 0.1);
-					border-color: rgba(255, 0, 255, 0.3);
+				/* Ensure button is completely hidden on desktop */
+				@media (min-width: 769px) {
+					.mobile-menu-toggle {
+						display: none !important;
+						visibility: hidden !important;
+						opacity: 0 !important;
+						width: 0 !important;
+						height: 0 !important;
+						margin: 0 !important;
+						padding: 0 !important;
+						border: none !important;
+						background: transparent !important;
+						pointer-events: none !important;
+						position: absolute !important;
+						left: -9999px !important;
+						top: -9999px !important;
+						overflow: hidden !important;
+						clip: rect(0, 0, 0, 0) !important;
+					}
+					
+					.hamburger-line {
+						display: none !important;
+						visibility: hidden !important;
+						opacity: 0 !important;
+						width: 0 !important;
+						height: 0 !important;
+					}
+				}
+
+				/* Only apply hover styles on mobile */
+				@media (max-width: 768px) {
+					.mobile-menu-toggle:hover {
+						background: rgba(255, 0, 255, 0.1);
+						border-color: rgba(255, 0, 255, 0.3);
+					}
 				}
 
 				.mobile-menu-toggle.is-active {
@@ -442,11 +586,11 @@
 							/>
 						</a>
 						<div class="nav-menu">
-							<!-- Mobile Menu Toggle Button -->
-							<button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-								<span class="hamburger-line"></span>
-								<span class="hamburger-line"></span>
-								<span class="hamburger-line"></span>
+							<!-- New Simple Mobile Menu Toggle Button -->
+							<button class="simple-mobile-toggle" id="simpleMobileToggle" aria-label="Toggle mobile menu">
+								<span class="toggle-line"></span>
+								<span class="toggle-line"></span>
+								<span class="toggle-line"></span>
 							</button>
 							
 							<!-- Mobile Navigation Backdrop -->
@@ -775,7 +919,7 @@
 
 		// Mobile Navigation JavaScript
 		document.addEventListener('DOMContentLoaded', function() {
-			const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+			const mobileMenuToggle = document.getElementById('simpleMobileToggle');
 			const navMenuLinks = document.getElementById('navMenuLinks');
 			const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
 			const navLinks = document.querySelectorAll('.nav-menu__links .nav-link');
@@ -837,6 +981,18 @@
 			document.addEventListener('keydown', function(e) {
 				if (e.key === 'Escape' && navMenuLinks.classList.contains('is-open')) {
 					closeMobileMenu();
+				}
+			});
+
+			// Close menu when clicking anywhere else on the screen
+			document.addEventListener('click', function(e) {
+				if (navMenuLinks.classList.contains('is-open')) {
+					// Check if click is outside the menu and hamburger button
+					if (!navMenuLinks.contains(e.target) && 
+						!mobileMenuToggle.contains(e.target) && 
+						!mobileNavBackdrop.contains(e.target)) {
+						closeMobileMenu();
+					}
 				}
 			});
 
