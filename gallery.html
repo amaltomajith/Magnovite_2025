@@ -271,7 +271,7 @@
 			}
 
 			.footer-description {
-				color: var(--accent-light);
+				color: white;
 				line-height: 1.6;
 				margin: 0;
 			}
@@ -402,7 +402,7 @@
 				display: none;
 			}
 
-			/* Mobile Menu Toggle Button */
+			/* Mobile Menu Toggle Button - Hidden on desktop */
 			.mobile-menu-toggle {
 				display: none;
 				flex-direction: column;
@@ -415,6 +415,11 @@
 				padding: 0;
 				z-index: 1001;
 				position: relative;
+			}
+
+			/* Hide lines on desktop to avoid stray dots */
+			.hamburger-line { 
+				display: none; 
 			}
 
 			.mobile-menu-toggle.is-active {
@@ -468,6 +473,8 @@
 				.mobile-menu-toggle {
 					display: flex;
 				}
+				/* Show lines on mobile */
+				.hamburger-line { display: block; }
 			}
 		}
 		</style>

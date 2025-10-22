@@ -39,24 +39,6 @@
         @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
-        /* Modal */
-        .modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 5000; }
-        .modal.is-open { display: grid; }
-        .modal-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.7); backdrop-filter: blur(5px); }
-        .modal-dialog { position:relative; width:min(92vw, 720px); background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:hidden; }
-        .modal-header { display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid rgba(255,176,196,.25); }
-        .modal-body { padding:18px; }
-        .close-btn { background:transparent; border:1px solid rgba(255,176,196,.35); color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer; }
-        .form-grid { display:grid; gap:12px; grid-template-columns: 1fr; }
-        @media (min-width:720px){ .form-grid{ grid-template-columns: 1fr 1fr; } }
-        label { font-size:13px; color:#cfcfcf; display:block; margin-bottom:6px; }
-        input, select { width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,176,196,.28); background:#000; color:#fff; }
-        /* hide native arrow for fixed select */
-        select.no-arrow { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: none; padding-right: 12px; cursor: default; }
-        select[disabled] { opacity: 1; color:#fff; border-color: rgba(255,176,196,.28); }
-        .full { grid-column: 1 / -1; }
-        .help { font-size:12px; color:#9d9d9d; }
-        .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
     </style>
 </head>
 <body>
@@ -125,7 +107,7 @@
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
-                <button id="openRegister" class="btn" disabled>Register Now</button>
+                <button class="btn" type="button" onclick="window.open('https://docs.google.com/forms/d/1NEN2vO-BJAsutGdmbN5--V9hEGg5xzofMY5juUJI2as', '_blank')">Register Now</button>
             </div>
         </div>
 
@@ -147,133 +129,5 @@
             </div>
         </footer>
     </div>
-
-    <!-- Registration Modal (Science & Humanities Department) -->
-    <div class="modal" id="registerModal" aria-hidden="true">
-        <div class="modal-backdrop" id="closeBackdrop"></div>
-        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h3 id="modalTitle" style="margin:0; color:#fff;">Science & Humanities Registration</h3>
-                <button class="close-btn" id="closeModal">Close</button>
-            </div>
-            <form id="deptForm" class="modal-body">
-                <div class="form-grid">
-                    <div class="full">
-                        <label>Department</label>
-                        <input type="text" name="department" value="Science & Humanities" readonly />
-                    </div>
-                    <div class="full">
-                        <label>Select Event *</label>
-                        <select name="event" class="no-arrow" required>
-                            <option value="">Choose...</option>
-                            <option value="Severance Cup">Severance Cup</option>
-                            <option value="Byte & Board">Byte & Board</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Name of Team *</label>
-                        <input name="teamName" required />
-                    </div>
-                    <div>
-                        <label>Full Name of Participant/ POC *</label>
-                        <input name="pocName" required />
-                    </div>
-                    <div>
-                        <label>Contact Number (WhatsApp enabled) *</label>
-                        <input name="phone" type="tel" pattern="[0-9\s+()-]{8,15}" required />
-                    </div>
-                    <div>
-                        <label>No. of Team Members * (6–8 for Byte & Board)</label>
-                        <input name="teamSize" type="number" min="6" max="8" value="7" required />
-                    </div>
-                    <div class="full">
-                        <label>Name of College/University *</label>
-                        <input name="college" required />
-                    </div>
-                    <div class="full">
-                        <label>Contingent / Non-contingent *</label>
-                        <select name="contingent" required>
-                            <option value="">Choose...</option>
-                            <option>Contingent</option>
-                            <option>Non-contingent</option>
-                        </select>
-                        <div class="help">One shared form per department (Science & Humanities) covering all events.</div>
-                    </div>
-                </div>
-                <div class="actions">
-                    <button type="button" class="close-btn" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        (function(){
-            const openBtn = document.getElementById('openRegister');
-            const modal = document.getElementById('registerModal');
-            const closeBtn = document.getElementById('closeModal');
-            const closeBackdrop = document.getElementById('closeBackdrop');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const form = document.getElementById('deptForm');
-
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQipsJ2kFu93nFHUIugL61GJrSpaLLbZHmhKesRPJ13yP7pCKom-JcOzYpgd2tMFZLnw/exec';
-
-            function open(){ modal.classList.add('is-open'); }
-            function close(){ modal.classList.remove('is-open'); }
-
-            openBtn.addEventListener('click', open);
-            closeBtn.addEventListener('click', close);
-            closeBackdrop.addEventListener('click', close);
-            cancelBtn.addEventListener('click', close);
-
-            // Fix event to current page (still submitted to same sheet)
-            const eventSelect = form.elements['event'];
-            const fixedEventName = 'Byte & Board';
-            if (eventSelect) {
-                eventSelect.value = fixedEventName;
-                eventSelect.disabled = true;
-                // Disabled fields are not submitted, add hidden mirror
-                const hiddenEvent = document.createElement('input');
-                hiddenEvent.type = 'hidden';
-                hiddenEvent.name = 'event';
-                hiddenEvent.value = fixedEventName;
-                form.appendChild(hiddenEvent);
-            }
-
-            // Enforce team size 6–8
-            const teamSizeInput = form.elements['teamSize'];
-            if (teamSizeInput) {
-                teamSizeInput.addEventListener('input', () => {
-                    const val = parseInt(teamSizeInput.value || '7', 10);
-                    if (val > 8) teamSizeInput.value = '8';
-                    if (val < 6 || isNaN(val)) teamSizeInput.value = '6';
-                });
-            }
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const data = new FormData(form);
-                const val = parseInt((data.get('teamSize')||'7'), 10);
-                if (val < 6 || val > 8) {
-                    alert('For Byte & Board, team size must be between 6-8 members.');
-                    return;
-                }
-                data.append('sourcePage', 'byte-and-board');
-                // Fire-and-forget request; always show success to the user
-                if (SCRIPT_URL) {
-                    fetch(SCRIPT_URL, { method: 'POST', body: data })
-                        .then(async (res) => {
-                            const text = await res.text().catch(() => '');
-                            console.debug('[byte-and-board] submit response:', res.status, text);
-                        })
-                        .catch((err) => console.error('[byte-and-board] submit error:', err));
-                }
-                alert('Application submitted successfully. We will reach out on WhatsApp.');
-                form.reset();
-                close();
-            });
-        })();
-    </script>
 </body>
 </html>

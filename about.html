@@ -1515,26 +1515,33 @@
 					display: none;
 				}
 
-				/* Mobile Menu Toggle Button */
-				.mobile-menu-toggle {
-					display: none;
-					flex-direction: column;
-					justify-content: space-around;
-					width: 30px;
-					height: 30px;
-					background: transparent;
-					border: none;
-					cursor: pointer;
-					padding: 0;
-					z-index: 1001;
-					position: relative;
-				}
+			/* Mobile Menu Toggle Button - Hidden on desktop */
+			.mobile-menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: space-around;
+				width: 30px;
+				height: 30px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 0;
+				z-index: 1001;
+				position: relative;
+			}
+
+			/* Hide lines on desktop to avoid stray dots */
+			.hamburger-line { 
+				display: none; 
+			}
 
 				/* Show hamburger button on mobile */
 				@media (max-width: 768px) {
 					.mobile-menu-toggle {
 						display: flex;
 					}
+					/* Show lines on mobile */
+					.hamburger-line { display: block; }
 				}
 
 				.hamburger-line {

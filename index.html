@@ -161,22 +161,27 @@
 					display: none;
 				}
 
-				/* Mobile Menu Toggle Button */
-				.mobile-menu-toggle {
-					display: none;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					width: 44px;
-					height: 44px;
-					background: rgba(255, 255, 255, 0.1);
-					border: 1px solid rgba(255, 255, 255, 0.2);
-					border-radius: 12px;
-					cursor: pointer;
-					transition: all 0.3s ease;
-					z-index: 1001;
-					position: relative;
-				}
+			/* Mobile Menu Toggle Button - Hidden on desktop */
+			.mobile-menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 44px;
+				height: 44px;
+				background: rgba(255, 255, 255, 0.1);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 12px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				z-index: 1001;
+				position: relative;
+			}
+
+			/* Hide lines on desktop to avoid stray dots */
+			.hamburger-line { 
+				display: none; 
+			}
 
 				.mobile-menu-toggle:hover {
 					background: rgba(255, 0, 255, 0.1);
@@ -215,6 +220,8 @@
 					.mobile-menu-toggle {
 						display: flex;
 					}
+					/* Show lines on mobile */
+					.hamburger-line { display: block; }
 					
 					.nav-menu__links {
 						display: flex;

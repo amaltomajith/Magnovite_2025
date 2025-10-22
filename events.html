@@ -112,7 +112,7 @@
 				display: none;
 			}
 
-			/* Mobile Menu Toggle Button */
+			/* Mobile Menu Toggle Button - Hidden on desktop */
 			.mobile-menu-toggle {
 				display: none;
 				flex-direction: column;
@@ -127,6 +127,11 @@
 				position: relative;
 			}
 
+			/* Hide hamburger lines on desktop to avoid stray dots */
+			.hamburger-line { 
+				display: none; 
+			}
+			
 			.mobile-menu-toggle.is-active {
 				display: flex;
 			}
@@ -178,6 +183,8 @@
 				.mobile-menu-toggle {
 					display: flex;
 				}
+				/* Show lines on mobile */
+				.hamburger-line { display: block; }
 			}
 		}
   	</style>
@@ -451,7 +458,7 @@
 			{ title: 'Revival Outlook', desc: 'Fashion design competition blending architecture and couture.', tags: ['architecture'], link: 'events/revival-outlook.html', img: './public/events/reviwaloutlook.jpg' },
 
 			// IIIC
-			{ title: 'Casecraft: The Industry Edition', desc: 'Real-world case challenge by IIIC.', tags: ['iiic'], link: '#', img: './public/events/casecraft.jpg' },
+			{ title: 'Casecraft: The Industry Edition', desc: 'Real-world case challenge by IIIC.', tags: ['iiic'], link: './events/casecraft-the-industry-edition.html', img: './public/events/casecraft.jpg' },
 
 			// Culturals
 			{ title: "Battle o' Bands", desc: 'Where music meets mayhem - rock the stage!', tags: ['culturals'], link: 'events/battle-of-bands.html', img: './public/events/battleofbands.jpg' },
