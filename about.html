@@ -132,23 +132,44 @@
 				}
 
 				.team-grid {
-					grid-template-columns: repeat(2, 1fr);
-					gap: 2rem;
+					grid-template-columns: repeat(3, 1fr);
+					gap: 1.5rem;
+				}
+			}
+
+			/* Tablet Landscape */
+			@media (min-width: 769px) and (max-width: 1024px) {
+				.team-grid {
+					grid-template-columns: repeat(4, 1fr);
+					gap: 1.5rem;
 				}
 			}
 
 			/* Performance optimizations for mobile */
 			@media (max-width: 768px) {
+				/* Remove hardware acceleration that causes scroll jitter */
 				* {
-					-webkit-transform: translateZ(0); /* Enable hardware acceleration */
-					transform: translateZ(0); /* Standard property for compatibility */
-					backface-visibility: hidden;
+					-webkit-transform: none;
+					transform: none;
+					backface-visibility: visible;
 				}
 
+				/* Disable will-change on mobile to prevent scroll issues */
 				.content-card,
 				.team-member,
 				.stat-item {
-					will-change: transform; /* Optimize for animations */
+					will-change: auto;
+				}
+
+				/* Ensure smooth native scrolling */
+				html {
+					-webkit-overflow-scrolling: touch;
+					scroll-behavior: smooth;
+				}
+
+				body {
+					-webkit-overflow-scrolling: touch;
+					overflow-x: hidden;
 				}
 			}
 
@@ -948,8 +969,8 @@
 
 			.team-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 2.5rem;
+				grid-template-columns: repeat(5, 1fr);
+				gap: 1.5rem;
 				margin: 4rem 0;
 			}
 
@@ -957,11 +978,15 @@
 				text-align: center;
 				background: rgba(255, 255, 255, 0.03);
 				border-radius: 25px;
-				padding: 3rem 2rem;
+				padding: 2rem 1rem;
 				border: 1px solid rgba(255, 255, 255, 0.1);
 				transition: all 0.4s ease;
 				position: relative;
 				overflow: hidden;
+				min-height: 200px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
 			}
 
 			.team-member::before {
@@ -1040,17 +1065,22 @@
 				margin-bottom: 0.5rem;
 				position: relative;
 				z-index: 2;
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
 
 			.member-role {
 				color: rgba(255, 0, 255, 0.9);
 				font-weight: 600;
-				margin-bottom: 1.5rem;
 				font-size: 1rem;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
 				position: relative;
 				z-index: 2;
+				margin-top: auto;
+				padding-top: 1rem;
 			}
 
 			.member-bio {
@@ -1304,12 +1334,13 @@
 				}
 
 				.team-grid {
-					grid-template-columns: 1fr;
-					gap: 2rem;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 1.5rem;
 				}
 
 				.team-member {
-					padding: 2.5rem 1.5rem;
+					padding: 1.5rem 1rem;
+					min-height: 180px;
 				}
 
 				.member-avatar {
@@ -1325,6 +1356,7 @@
 
 				.member-role {
 					font-size: 0.9rem;
+					padding-top: 0.8rem;
 				}
 
 				.member-bio {
@@ -1401,14 +1433,25 @@
 					font-size: 2rem;
 				}
 
+				.team-grid {
+					grid-template-columns: repeat(5, 1fr);
+					gap: 0.8rem;
+				}
+
 				.team-member {
-					padding: 2rem 1rem;
+					padding: 1.2rem 0.5rem;
+					min-height: 160px;
 				}
 
 				.member-avatar {
 					width: 80px;
 					height: 80px;
 					font-size: 1.8rem;
+				}
+
+				.member-role {
+					font-size: 0.8rem;
+					padding-top: 0.6rem;
 				}
 			}
 
@@ -1798,44 +1841,29 @@
 					</p>
 					<div class="team-grid">
 						<div class="team-member">
-							<div class="member-avatar">JD</div>
-							<h3 class="member-name">Jobin Shiji Daniel</h3>
-							<p class="member-role">SWO Faculty Incharge</p>
-							<p class="member-bio">
-								Experienced faculty leader overseeing all aspects of student
-								welfare and event coordination for MAGNOVITE'25, ensuring
-								seamless execution and participant satisfaction.
-							</p>
+							<div class="member-avatar">SC</div>
+							<h3 class="member-name">Dr. SARATH CHANDRA</h3>
+							<p class="member-role">Faculty Incharge</p>
 						</div>
 						<div class="team-member">
-							<div class="member-avatar">AS</div>
-							<h3 class="member-name">Anirudh Sharma</h3>
-							<p class="member-role">SWO Core Member</p>
-							<p class="member-bio">
-								Dynamic student leader driving innovation and collaboration
-								across all technical and cultural events, ensuring MAGNOVITE'25
-								reaches new heights of excellence.
-							</p>
+							<div class="member-avatar">JC</div>
+							<h3 class="member-name">Dr. JINCY CHERIAN</h3>
+							<p class="member-role">Faculty Incharge</p>
 						</div>
 						<div class="team-member">
-							<div class="member-avatar">TM</div>
-							<h3 class="member-name">Tanmai Mokashi</h3>
-							<p class="member-role">SWO Core Member</p>
-							<p class="member-bio">
-								Passionate organizer focused on creating engaging experiences
-								and managing logistics to deliver an unforgettable fest for all
-								participants and attendees.
-							</p>
+							<div class="member-avatar">AG</div>
+							<h3 class="member-name">Dr. ANOOP G L</h3>
+							<p class="member-role">Faculty Incharge</p>
 						</div>
 						<div class="team-member">
-							<div class="member-avatar">VY</div>
-							<h3 class="member-name">Vyshnavi</h3>
-							<p class="member-role">SWO Core Member</p>
-							<p class="member-bio">
-								Creative strategist and event coordinator bringing fresh ideas
-								and enthusiasm to make MAGNOVITE'25 a memorable experience for
-								the entire community.
-							</p>
+							<div class="member-avatar">SD</div>
+							<h3 class="member-name">Mr. Suryanarayan D</h3>
+							<p class="member-role">Student Coordinator</p>
+						</div>
+						<div class="team-member">
+							<div class="member-avatar">EB</div>
+							<h3 class="member-name">Ms. Elsa Baiju</h3>
+							<p class="member-role">Student Coordinator</p>
 						</div>
 					</div>
 				</section>
@@ -2021,10 +2049,11 @@
 								display: none; /* Disable complex animations on mobile */
 							}
 							
+							/* Remove hover effects on mobile to prevent scroll issues */
 							.mobile-optimized .content-card:hover,
 							.mobile-optimized .stat-item:hover,
 							.mobile-optimized .team-member:hover {
-								transform: translateY(-5px) scale(1.01);
+								transform: none;
 							}
 							
 							/* Better tap targets for mobile */
@@ -2039,11 +2068,12 @@
 								padding: 8px 12px;
 							}
 							
-							/* Improved touch feedback */
+							/* Improved touch feedback without transforms */
 							.mobile-optimized .content-card,
 							.mobile-optimized .team-member,
 							.mobile-optimized .contact-item {
 								-webkit-tap-highlight-color: rgba(255, 0, 255, 0.2);
+								transform: none !important;
 							}
 						`;
 						document.head.appendChild(mobileStyles);
@@ -2054,37 +2084,8 @@
 				}
 
 				addTouchEvents() {
-					// Add smooth touch scrolling for better mobile experience
-					let touchStartY = 0;
-					let touchStartTime = 0;
-
-					document.addEventListener(
-						'touchstart',
-						(e) => {
-							touchStartY = e.touches[0].clientY;
-							touchStartTime = Date.now();
-						},
-						{ passive: true }
-					);
-
-					document.addEventListener(
-						'touchend',
-						(e) => {
-							const touchEndY = e.changedTouches[0].clientY;
-							const touchDuration = Date.now() - touchStartTime;
-							const touchDistance = touchStartY - touchEndY;
-
-							// Implement smooth scroll for quick swipes
-							if (Math.abs(touchDistance) > 50 && touchDuration < 300) {
-								const scrollSpeed = Math.min(Math.abs(touchDistance) * 2, 500);
-								window.scrollBy({
-									top: touchDistance > 0 ? scrollSpeed : -scrollSpeed,
-									behavior: 'smooth',
-								});
-							}
-						},
-						{ passive: true }
-					);
+					// Remove custom touch scrolling to prevent interference with native scroll
+					// Native mobile scrolling is already optimized and smooth
 				}
 
 				createObserver() {
@@ -2250,37 +2251,13 @@
 
 				addMobileInteractions() {
 					if (this.isMobile) {
-						// Add touch-friendly interactions
-						document
-							.querySelectorAll('.content-card, .team-member, .contact-item')
-							.forEach((element) => {
-								element.addEventListener(
-									'touchstart',
-									(e) => {
-										element.style.transform = 'translateY(-5px) scale(1.01)';
-										element.style.transition = 'all 0.2s ease';
-									},
-									{ passive: true }
-								);
-
-								element.addEventListener(
-									'touchend',
-									() => {
-										setTimeout(() => {
-											element.style.transform = '';
-										}, 150);
-									},
-									{ passive: true }
-								);
-							});
-
-						// Improve button interactions on mobile
+						// Remove touch interactions that interfere with scrolling
+						// Keep only essential button feedback without transforms
 						document.querySelectorAll('.cta-button').forEach((btn) => {
 							btn.addEventListener(
 								'touchstart',
 								(e) => {
-									btn.style.transform = 'translateY(-2px) scale(0.98)';
-									btn.style.boxShadow = '0 10px 25px rgba(255, 0, 255, 0.3)';
+									btn.style.opacity = '0.8';
 								},
 								{ passive: true }
 							);
@@ -2289,8 +2266,7 @@
 								'touchend',
 								() => {
 									setTimeout(() => {
-										btn.style.transform = '';
-										btn.style.boxShadow = '';
+										btn.style.opacity = '';
 									}, 100);
 								},
 								{ passive: true }
