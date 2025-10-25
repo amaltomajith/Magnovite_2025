@@ -28,6 +28,76 @@
         @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -38,16 +108,55 @@
         </div>
         <h1 class="title">THE NEXUS ⚔️🤝</h1>
         <p class="tagline">"Every Alliance is a Gamble. Every Battle is a Weapon."</p>
-        <p>The Nexus is a negotiation-based strategy event where teams representing rival factions, with limited resources and a secret mission, must survive by trading, forming alliances, and adapting to unexpected challenges. The aim is to survive by revealing, persuading, and strategically decision-making under pressure.</p>
+        <p>Enter The Nexus, a high-stakes strategy game where every move can make or break you. Teams of four must trade, forge alliances and complete secret missions in a world full of curveballs and surprises. Loyalties are fragile, deals are risky, and betrayals can happen at any moment. With logic, persuasion and strategy as your weapons, you will navigate negotiations, defend your choices and outwit rival factions. Only the sharpest, most cunning minds will survive the chaos and claim ultimate victory in this battle of wits.</p>
 
+        <div class="price-card">
+            <div class="price-label">Total Prize Pool</div>
+            <div class="price-amount">₹15,000</div>
+            <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🎯</span>
+                <div class="info-card-title">Rounds</div>
+                <div class="info-card-value">3 Rounds</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">👤</span>
+                <div class="info-card-title">Participants</div>
+                <div class="info-card-value">Individual</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">💰</span>
+                <div class="info-card-title">Registration</div>
+                <div class="info-card-value">₹200</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">📅</span>
+                <div class="info-card-title">Duration</div>
+                <div class="info-card-value">2 Days</div>
+            </div>
+        </div>
+        
         <div class="subchips">
-            <span class="chip">Team Size: 4</span>
-            <span class="chip">Fee: 400 INR</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
         <div class="hero" style="margin-top:16px;">
             <img src="../public/events/thenexus.jpg" alt="The Nexus" />
+        </div>
+        
+        <div class="card" style="margin-top:24px;">
+            <h2>Event Schedule</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Date:</strong> 26th & 27th November, 2025</p>
+                <p><strong>Department:</strong> Psychology</p>
+                <p><strong>Registration Fee:</strong> ₹200</p>
+                <p><strong>Participants:</strong> Individual</p>
+            </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
@@ -62,11 +171,17 @@
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                <div class="rule"><span class="dot"></span><div>Event phases: Preliminary Round, Negotiation Arena, Final Round.</div></div>
-                <div class="rule"><span class="dot"></span><div>Teams of 4 with fixed roles: Leader, Trader, Spy, Strategist.</div></div>
-                <div class="rule"><span class="dot"></span><div>All trades/negotiations go through the Game Master; secret deals via written notes.</div></div>
-                <div class="rule"><span class="dot"></span><div>Curveballs announced are mandatory and final; betrayals allowed but must be revealed in presentations.</div></div>
-                <div class="rule"><span class="dot"></span><div>No obscene, vulgar, or inappropriate language; violations lead to disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>The event unfolds in three phases: The Preliminary Round, The Negotiation Arena and The Final Round, comprising results and awards.</div></div>
+                <div class="rule"><span class="dot"></span><div>The top 24 participants who achieve the highest score in the preliminary round will qualify for the main event.</div></div>
+                <div class="rule"><span class="dot"></span><div>There will be no eliminations after the preliminary round, and winners will be selected in the final stage.</div></div>
+                <div class="rule"><span class="dot"></span><div>Teams must consist of 4 members with pre-assigned roles.</div></div>
+                <div class="rule"><span class="dot"></span><div>All trades and negotiations must be channelled through the Game Master.</div></div>
+                <div class="rule"><span class="dot"></span><div>Secret deals must be passed as written notes via the Game Master.</div></div>
+                <div class="rule"><span class="dot"></span><div>Curveballs announced during the event are mandatory and final.</div></div>
+                <div class="rule"><span class="dot"></span><div>Betrayals are allowed but must be revealed in the presentation rounds.</div></div>
+                <div class="rule"><span class="dot"></span><div>Final scoring will be based on mission completion, resource supremacy, alliance survival and strategy.</div></div>
+                <div class="rule"><span class="dot"></span><div>No obscene, vulgar or inappropriate language is permitted; violations will result in disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants must comply with all the rules and regulations of CHRIST (Deemed to be University).</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -79,15 +194,18 @@
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Jawahar G S</strong><br />
-                    <a href="tel:+917904989310">79049 89310</a>
+                    <a href="tel:+917904989310">79049 89310</a><br />
+                    <a href="mailto:jawahar.ganesh@psyh.christuniversity.in">jawahar.ganesh@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Jared Luke Newton</strong><br />
-                    <a href="tel:+919384664899">93846 64899</a>
+                    <a href="tel:+919384664899">93846 64899</a><br />
+                    <a href="mailto:jared.luke@psyh.christuniversity.in">jared.luke@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Vinay Krishna – <a href="tel:+919152233795">91522 33795</a>
+                    Dr. Vinay Krishna – <a href="tel:+919152233795">91522 33795</a><br />
+                    <a href="mailto:venkatavinay.krishna@christuniversity.in">venkatavinay.krishna@christuniversity.in</a>
                 </div>
             </div>
         </footer>

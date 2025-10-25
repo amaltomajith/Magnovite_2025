@@ -39,6 +39,76 @@
         @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -49,11 +119,40 @@
         </div>
         <h1 class="title">BYTE & BOARD 🧠🔗</h1>
         <p class="tagline">"Circuit the Challenge, Byte the Victory"</p>
-        <p>Byte & Board is a four-round technical challenge blending logic circuits, binary and hexadecimal decoding, programming analysis, and cryptic password deduction. Teams will solve a series of interlinked puzzles across electronics, coding, and problem-solving disciplines to crack a final password—the fastest teams win.</p>
+        <p>Byte & Board is a four-round technical puzzle gauntlet that merges electronics, programming, and logical reasoning. Teams will navigate challenges involving logic circuits, binary and hexadecimal decoding, code analysis, and cryptic password deduction. Each round unlocks a crucial "key" leading to the next stage. The final mission: combine all keys to generate a master password — the fastest team to crack it, wins.</p>
 
+        <div class="price-card">
+            <div class="price-label">Total Prize Pool</div>
+            <div class="price-amount">₹15,000</div>
+            <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🎯</span>
+                <div class="info-card-title">Rounds</div>
+                <div class="info-card-value">4 Rounds</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">👥</span>
+                <div class="info-card-title">Team Size</div>
+                <div class="info-card-value">2-4 Members</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">💰</span>
+                <div class="info-card-title">Registration</div>
+                <div class="info-card-value">₹500/Team</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">🧠</span>
+                <div class="info-card-title">Focus</div>
+                <div class="info-card-value">Technical Puzzles</div>
+            </div>
+        </div>
+        
         <div class="subchips">
-            <span class="chip">Team Size: 6–8 Members</span>
-            <span class="chip">Registration Fee: 500 INR Per Team</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
@@ -66,54 +165,42 @@
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 27th, 2025</p>
+                <p><strong>Date:</strong> 26th & 27th November, 2025</p>
                 <p><strong>Department:</strong> Science and Humanities</p>
                 <p><strong>Registration Fee:</strong> ₹500</p>
-                <p><strong>Team Size:</strong> 6-8 persons</p>
+                <p><strong>Team Size:</strong> 2-4 persons</p>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Event Structure</h2>
-            <div class="flowchart">
-                <div class="node">
-                    <p class="title">Code 1: Logic Gate Circuit</p>
-                    <p class="meta">Round 1</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Participants solve logic gate circuit puzzle to get binary string (Key 1).</p>
-                </div>
-                <div class="node">
-                    <p class="title">Code 2: Binary to Hex</p>
-                    <p class="meta">Round 2</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Teams decode binary string from Round 1 into hexadecimal string (Key 2).</p>
-                </div>
-                <div class="node">
-                    <p class="title">Code 3: C Program Analysis</p>
-                    <p class="meta">Round 3</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Analyze complex C program with conditional/loop statements to get decimal string (Key 3).</p>
-                </div>
-                <div class="node">
-                    <p class="title">Final Code: Password Creation</p>
-                    <p class="meta">Round 4</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Process all three keys using algorithm, Python code, and equation to form final password.</p>
-                </div>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div><strong>Round 1 – Logic Gate Challenge:</strong> Teams solve a circuit-based puzzle whose output forms a binary string (Key 1) — the clue for Round 2.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Round 2 – Binary to Hex Decode:</strong> Teams convert Key 1 into a hexadecimal string (Key 2) using decoding logic.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Round 3 – Code Analysis:</strong> Participants analyze a C program featuring loops and conditions. The program's output provides Key 3 (a decimal string) required for the final challenge.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Round 4 – The Final Password:</strong> Using all three keys, teams must apply an algorithm to process Key 1, execute a provided Python code using Key 2, and solve a mathematical equation with Key 3. The results are combined in a specific pattern to form the final password.</div></div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                    <div class="rule"><span class="dot"></span><div>Only registered teams may participate.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Each team receives a starting kit for Round 1 containing puzzles and essentials.</div></div>
-                    <div class="rule"><span class="dot"></span><div>External electronic devices are prohibited except when specifically allowed (entering final password).</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams proceed to the next round only after verification of their answers.</div></div>
-                    <div class="rule"><span class="dot"></span><div>During the final round, only one team member may approach the laptop to enter the password.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Team size must be between 6-8 members.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Registration fee is 500 INR per team.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must solve interlinked puzzles across electronics, coding, and problem-solving disciplines.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Final password must be entered on central laptop to win.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Fastest teams to complete all rounds and enter correct password win.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must work together to solve logic circuits, binary/hex decoding, and programming analysis.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Any misconduct or rule violation will lead to immediate disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Only registered teams are eligible to participate.</div></div>
+                <div class="rule"><span class="dot"></span><div>Each team receives a starter kit for Round 1 containing all required materials.</div></div>
+                <div class="rule"><span class="dot"></span><div>External electronic devices are prohibited unless explicitly permitted (e.g., final password entry).</div></div>
+                <div class="rule"><span class="dot"></span><div>Teams progress only after verification of each round's solution.</div></div>
+                <div class="rule"><span class="dot"></span><div>In the final round, only one team member may approach the laptop to enter the password.</div></div>
+                <div class="rule"><span class="dot"></span><div>Team composition: 2–4 participants per team.</div></div>
+                <div class="rule"><span class="dot"></span><div>Registration Fee: 500 INR per team.</div></div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,176,196,0.2); border-radius: 12px;">
+                <h3 style="color: #ffb0c4; margin: 0 0 12px 0; font-size: 16px;">Judging Criteria</h3>
+                <div style="color: #cfcfcf; font-size: 14px;">
+                    <p style="margin: 0 0 8px 0;"><strong>Speed:</strong> Fastest correct team to enter the final password wins.</p>
+                    <p style="margin: 0 0 8px 0;"><strong>Accuracy:</strong> Only teams with verified correct solutions in all rounds qualify for the final.</p>
+                    <p style="margin: 0;"><strong>Teamwork:</strong> Effective collaboration may be rewarded in the event of a tie.</p>
+                </div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -126,15 +213,18 @@
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Shriya Sarah Goka</strong><br />
-                    <a href="tel:+919686855303">968 685 5303</a>
+                    <a href="tel:+919686855303">9686855303</a><br />
+                    <a href="mailto:shriya.sarah@btech.christuniversity.in">shriya.sarah@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Deepadhrit Pandey</strong><br />
-                    <a href="tel:+919830332245">983 033 2245</a>
+                    <strong>Shashwat Buragohain</strong><br />
+                    <a href="tel:+917099062182">7099062182</a><br />
+                    <a href="mailto:shashwat.burgohain@btech.christuniversity.in">shashwat.burgohain@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Dr. Shwetha R – <a href="tel:+919986217753">998 621 7753</a>
+                    Dr. Shwetha R – <a href="tel:+919986217753">9986217753</a><br />
+                    <a href="mailto:shwetha.r@christuniversity.in">shwetha.r@christuniversity.in</a>
                 </div>
             </div>
         </footer>

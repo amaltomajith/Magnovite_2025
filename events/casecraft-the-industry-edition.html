@@ -3,32 +3,118 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Casecraft: The Industry Edition – Magnovite 2025</title>
+    <title>CaseCraft: The Industry Edition – Magnovite 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
+        /* General Reset and Base Styles */
         * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
         .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+
+        /* Component Styles */
         .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
         .title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
         .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
         .hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
         .hero img { width:100%; height:100%; display:block; object-fit:cover; }
         .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
+        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+
+        /* Flow Chart Structure (Used for Round Structure) */
+        .flowchart { display:grid; gap:18px; grid-template-columns: repeat(2, 1fr); }
+        @media (max-width:768px){ .flowchart{ grid-template-columns: 1fr; } }
+        .node { position:relative; padding:14px 16px; border-radius:12px; background:#000; border:1px solid rgba(255,176,196,.35); box-shadow:0 10px 26px rgba(158,63,255,.18); min-height: 150px; display:flex; flex-direction:column; justify-content:space-between; }
+        .node .title { font-size:18px; margin:0; font-weight: 700; }
+        .node .meta { color:#ffb0c4; font-size:12px; font-weight:700; margin-top:4px; }
+
+        /* Rules Layout */
         .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
         @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
         .rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
         .dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
-        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; }
+
+        /* Button Style */
+        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; border: none; cursor: pointer; }
         .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
-        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+
+        /* Contacts Layout */
         footer { margin-top:40px; padding:24px 0; }
         .contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
-        @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
+        @media (min-width:720px){ .contacts{ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles (Price Card and Info Grid) */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -36,70 +122,104 @@
         <div class="subchips">
             <span class="chip">IIIC</span>
             <span class="chip">Case Competition</span>
-            <a class="btn" href="../events.html">← Back to Events</a>
         </div>
-        <h1 class="title">CASECRAFT : THE INDUSTRY EDITION 💼⚙️</h1>
+        <h1 class="title">CASECRAFT: THE INDUSTRY EDITION 💼📊</h1>
         <p class="tagline">"Solving real-world challenges with technical insight"</p>
-        <p>CaseCraft is a dynamic case competition built around two critical domains: technical problem-solving and business strategy. Participants will tackle real-world challenges that test their analytical skills while driving practically-oriented strategic decision-making. By bringing these domains together, CaseCraft fosters innovation, holistic thinking, and solutions that are both technically robust and strategically impactful.</p>
-
-        <div class="hero" style="margin-top:16px;">
-            <img src="../public/events/casecraft.jpg" alt="Casecraft: The Industry Edition" />
-        </div>
+        <p>CaseCraft is a dynamic real-life case competition built around the critical domains of business strategy and technical problem-solving. Participants will receive an industry case during the event, requiring them to ideate, analyse, and develop viable solutions under time constraints. This competition tests their ability to apply analytical reasoning, strategic thinking, and technical insight to real-world challenges. CaseCraft fosters innovation, holistic thinking, and solutions that are both technically sound and strategically impactful.</p>
 
         <div class="subchips">
-            <span class="chip">Team Size: 2–3 Members</span>
-            <span class="chip">Registration Fee: 400 INR/Team</span>
+            <span class="chip">Team Size: 2–4 Members</span>
+            <span class="chip">Registration Fee: 300 INR/Team</span>
+            <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
-        <div class="card" style="margin-top:24px;">
-            <h2>Event Schedule</h2>
-            <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
-                <p><strong>Department:</strong> IIIC</p>
-                <p><strong>Registration Fee:</strong> ₹300</p>
-                <p><strong>Team Size:</strong> 2-3 persons</p>
+        <div style="margin-top:16px;">
+            <div class="hero">
+                <img src="../public/events/casecraft.jpg" alt="CaseCraft: The Industry Edition" />
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Structure (2 Rounds)</h2>
-            <div class="rules">
-                <div class="rule"><span class="dot"></span><div><strong>Pitch Deck Submission:</strong> Each team submits their final pitch deck strictly limited to 7 slides (exclusive of title slide and annexures); any excess content will not be considered.</div></div>
-                <div class="rule"><span class="dot"></span><div><strong>Final Presentation:</strong> The top 10 teams shortlisted from each domain (technical and business/strategy) in the submission rounds will present their solutions in person to a panel of judges, inclusive of industry experts and organisation representatives, and academic judges.</div></div>
+            <h2>Event Details & Structure</h2>
+            
+            <!-- Prize Money Card -->
+            <div class="price-card">
+                <div class="price-label">Total Prize Pool</div>
+                <div class="price-amount">₹15,000</div>
+                <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                    Exciting cash prizes for the winning teams.
+                </div>
+            </div>
+
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">👥</span>
+                    <div class="info-card-title">Team Size</div>
+                    <div class="info-card-value">2-4 members</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💰</span>
+                    <div class="info-card-title">Registration Fee</div>
+                    <div class="info-card-value">₹300</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🎯</span>
+                    <div class="info-card-title">Rounds</div>
+                    <div class="info-card-value">2 Rounds (Live Case + Presentation)</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">📚</span>
+                    <div class="info-card-title">Focus</div>
+                    <div class="info-card-value">Strategy & Technical Problem-Solving</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top:24px; color:#fff;">Round Structure</h3>
+            <div class="flowchart">
+                <div class="node">
+                    <p class="title">Live Case Analysis & Pitch Deck Submission</p>
+                    <p class="meta">Round 1</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Teams collaboratively analyse the case, design a strategic and technically feasible solution, and submit a pitch deck limited to 7 slides.</p>
+                </div>
+                <div class="node">
+                    <p class="title">Final Presentation</p>
+                    <p class="meta">Round 2</p>
+                    <p style="margin:6px 0 0 0; font-size:13px; color:#cfcfcf;">Top teams present their solutions before a panel of industry experts and academic representatives.</p>
+                </div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                <div class="rule"><span class="dot"></span><div>Each team must consist of 2 to 4 currently enrolled students from any recognized postgraduate or undergraduate program.</div></div>
-                <div class="rule"><span class="dot"></span><div>Mixed-discipline teams (across technical and business domains) are encouraged.</div></div>
-                <div class="rule"><span class="dot"></span><div>Each participant may only be part of one team.</div></div>
-                <div class="rule"><span class="dot"></span><div>Submissions must be original work created during the competition period and must not feature any identifying university names, logos, or personal details.</div></div>
-                <div class="rule"><span class="dot"></span><div>Respectful, professional behavior is expected throughout the event toward all participants, coordinators, and judges.</div></div>
-                <div class="rule"><span class="dot"></span><div>Judges’ decisions are final and binding in all matters related to rankings and awards.</div></div>
-                <div class="rule"><span class="dot"></span><div>The organizing committee reserves the right to adjust the event structure, schedule, or rules as necessary.</div></div>
+                <div class="rule"><span class="dot"></span><div>Each team shall comprise 2 to 4 participants currently enrolled in any recognised undergraduate or postgraduate programme.</div></div>
+                <div class="rule"><span class="dot"></span><div>Interdisciplinary teams are encouraged, as diverse academic perspectives often lead to more comprehensive and practically viable outcomes.</div></div>
+                <div class="rule"><span class="dot"></span><div>A briefing session will be conducted prior to the competition to outline the case structure and address participant queries.</div></div>
+                <div class="rule"><span class="dot"></span><div>All submissions and presentations must represent original work developed during the event. Any form of plagiarism will result in immediate disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants are expected to maintain professional conduct and adhere to event timelines throughout the competition.</div></div>
+                <div class="rule"><span class="dot"></span><div>The organising committee reserves the right to modify the event structure, schedule, or rules if deemed necessary for the effective conduct of the competition.</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
-                <button class="btn" type="button" onclick="window.open('https://docs.google.com/forms/d/1NPrTnTkPS4OT41W4t93dnCYGstK2_GHGdNft13TxPoc', '_blank')">Register Now</button>
+                <button class="btn" type="button" onclick="window.open('https://docs.google.com/forms/d/1gdTSfjw-5zdlh_u5e6yFTn0IT1JY4H5K2TGgLAOCaUw', '_blank')">Register Now</button>
             </div>
         </div>
 
         <footer class="wrap" style="padding-left:0;padding-right:0;">
-            <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
+            <h2 class="title" style="font-size:28px; margin:24px 0 12px;">Contact Us</h2>
             <div class="contacts">
                 <div class="contact-card">
-                    <strong>POC</strong><br />
-                    M Manoj Reddy – <a href="tel:+918618627856">86186 27856</a>
+                    <strong>M Manoj Reddy (Student POC)</strong><br />
+                    <a href="tel:+918618627856">861 862 7856</a>
                 </div>
                 <div class="contact-card">
-                    <strong>POC</strong><br />
-                    Diya Chatterjee – <a href="tel:+919108355382">91083 55382</a>
+                    <strong>Diya Chatterjee (Student POC)</strong><br />
+                    <a href="tel:+919108355382">910 835 5382</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Event Faculty Coordinator</strong><br />
-                    Dr Joseph Rodrigues – <a href="tel:+919420594564">94205 94564</a>
+                    <strong>Dr Joseph Rodrigues (Faculty Coordinator)</strong><br />
+                    <a href="tel:+919420594564">942 059 4564</a>
                 </div>
             </div>
         </footer>

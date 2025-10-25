@@ -45,6 +45,76 @@
         .full { grid-column: 1 / -1; }
         .help { font-size:12px; color:#9d9d9d; }
         .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -55,11 +125,40 @@
         </div>
         <h1 class="title">SWITCH AND SCENE 🎭🔄</h1>
         <p class="tagline">"Where Talent Meets Unpredictability"</p>
-        <p>Switch and Scene is a theatrical showdown of spontaneous improv scenes. Pairs of performers prepare quickly, then must adapt instantly to sudden role reversals, rapid genre changes, and an emotion switch mid-performance, all while maintaining a coherent narrative.</p>
+        <p>Step into Switch and Scene, the ultimate improv showdown where anything can happen! Pairs of performers dive into spontaneous scenes with only minutes to prepare, but the real twist comes with the buzzers — roles, genres, and emotions flip instantly. Teams must think fast, adapt and keep their story coherent while juggling sudden changes. Quick thinking, creativity and chemistry are the keys to shining. With every switch, the stage becomes unpredictable, exciting and hilariously challenging. Only the sharpest performers will master the chaos and make a lasting impression.</p>
 
+        <div class="price-card">
+            <div class="price-label">Total Prize Pool</div>
+            <div class="price-amount">₹15,000</div>
+            <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🎯</span>
+                <div class="info-card-title">Rounds</div>
+                <div class="info-card-value">1 Round</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">👥</span>
+                <div class="info-card-title">Team Size</div>
+                <div class="info-card-value">2 People</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">💰</span>
+                <div class="info-card-title">Registration</div>
+                <div class="info-card-value">₹300/Team</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">📅</span>
+                <div class="info-card-title">Duration</div>
+                <div class="info-card-value">1 Day</div>
+            </div>
+        </div>
+        
         <div class="subchips">
-            <span class="chip">Team Size: 2</span>
-            <span class="chip">Fee: 300 INR/Team</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
@@ -70,7 +169,7 @@
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 27th, 2025</p>
+                <p><strong>Date:</strong> 27th November, 2025</p>
                 <p><strong>Department:</strong> Psychology</p>
                 <p><strong>Registration Fee:</strong> ₹300</p>
                 <p><strong>Team Size:</strong> 2 persons</p>
@@ -90,10 +189,17 @@
             <h2>Rules & Regulations</h2>
             <div class="rules">
                 <div class="rule"><span class="dot"></span><div>Each team consists of two participants.</div></div>
-                <div class="rule"><span class="dot"></span><div>Characters with contrasting power dynamics will be assigned; initial approach discussed in 2–3 minutes.</div></div>
-                <div class="rule"><span class="dot"></span><div>No costumes allowed; minimal props may be provided. Rely on acting skills.</div></div>
-                <div class="rule"><span class="dot"></span><div>Maintain a coherent narrative throughout.</div></div>
-                <div class="rule"><span class="dot"></span><div>Offensive language or inappropriate content leads to disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Each team member will be assigned a character whose power dynamic will be contrasting to that of their partner.</div></div>
+                <div class="rule"><span class="dot"></span><div>Characters will be revealed on the spot.</div></div>
+                <div class="rule"><span class="dot"></span><div>Teams will have 2-3 minutes to discuss and prepare their initial approach.</div></div>
+                <div class="rule"><span class="dot"></span><div>No costumes are allowed; some minimal props will be provided to choose from. Performers must rely solely on their acting skills.</div></div>
+                <div class="rule"><span class="dot"></span><div>When the first buzzer sounds, performers must immediately switch characters.</div></div>
+                <div class="rule"><span class="dot"></span><div>Along with the role reversal, teams must change the genre of their scene, which will be shown to them through placards.</div></div>
+                <div class="rule"><span class="dot"></span><div>When the second buzzer sounds, performers must change the emotions of their characters, which are also to be shown through placards.</div></div>
+                <div class="rule"><span class="dot"></span><div>Teams must maintain a coherent narrative throughout their performance despite changes.</div></div>
+                <div class="rule"><span class="dot"></span><div>The total time given for each performance will be 6+1 minutes (subject to change).</div></div>
+                <div class="rule"><span class="dot"></span><div>Use of offensive language or inappropriate content will result in immediate disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants must comply with all the rules and regulations of CHRIST (Deemed to be University).</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -106,15 +212,18 @@
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Aditi Balaji</strong><br />
-                    <a href="tel:+917676516409">76765 16409</a>
+                    <a href="tel:+917676516409">76765 16409</a><br />
+                    <a href="mailto:aditi.balaji@psyh.christuniversity.in">aditi.balaji@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Ekaansh Pasari</strong><br />
-                    <a href="tel:+918657321955">86573 21955</a>
+                    <a href="tel:+918657321955">86573 21955</a><br />
+                    <a href="mailto:ekaansh.pasari@psyh.christuniversity.in">ekaansh.pasari@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Arul Prabakaran – <a href="tel:+919442394623">94423 94623</a>
+                    Dr. Arul Prabakaran – <a href="tel:+919442394623">94423 94623</a><br />
+                    <a href="mailto:arulprabakaran.s@christuniversity.in">arulprabakaran.s@christuniversity.in</a>
                 </div>
             </div>
         </footer>

@@ -57,6 +57,76 @@
         .full { grid-column: 1 / -1; }
         .help { font-size:12px; color:#9d9d9d; }
         .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -67,11 +137,40 @@
         </div>
         <h1 class="title">SEVERANCE CUP 🏆🎮</h1>
         <p class="tagline">"Compete, conquer, and claim the crown!"</p>
-        <p>The Severance Cup is an inter-collegiate esports tournament featuring competitions in two games: Valorant and EA FC (EFOOTBALL). A points system is used to calculate the performance of each college across both games, and the institution with the highest cumulative score is declared the overall winner of the tournament.</p>
+        <p>The Severance Cup is an inter-collegiate esports tournament featuring two titles — Valorant and EA FC (E-Football). Each participating college must field players in both games to qualify for the overall championship. Points are awarded based on placements in each event, and the college with the highest cumulative score is declared the Severance Cup Champion.</p>
 
+        <div class="price-card">
+            <div class="price-label">Total Prize Pool</div>
+            <div class="price-amount">₹15,000</div>
+            <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🎮</span>
+                <div class="info-card-title">Games</div>
+                <div class="info-card-value">Valorant & EA FC</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">👥</span>
+                <div class="info-card-title">Team Size</div>
+                <div class="info-card-value">8 Students</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">💰</span>
+                <div class="info-card-title">Registration</div>
+                <div class="info-card-value">₹600/Team</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">🏆</span>
+                <div class="info-card-title">Format</div>
+                <div class="info-card-value">Single Elimination</div>
+            </div>
+        </div>
+        
         <div class="subchips">
-            <span class="chip">Team Size: 8 Members Per College Contingent</span>
-            <span class="chip">Registration Fee: 600 INR Per College Contingent</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
@@ -84,46 +183,46 @@
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
+                <p><strong>Date:</strong> 26th & 27th November, 2025</p>
                 <p><strong>Department:</strong> Science and Humanities</p>
                 <p><strong>Registration Fee:</strong> ₹600</p>
-                <p><strong>Team Size:</strong> 8 persons</p>
+                <p><strong>Team Size:</strong> 8 persons per college contingent</p>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Event Structure</h2>
-            <div class="flowchart">
-                <div class="node">
-                    <p class="title">Valorant Tournament</p>
-                    <p class="meta">5+1 Players per team</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Single elimination best of 1 match till finals. Final is best of 3. BYOC policy applies.</p>
-                </div>
-                <div class="node">
-                    <p class="title">EFOOTBALL Tournament</p>
-                    <p class="meta">1-2 Players per college</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">1v1 single elimination knockout bracket on EA Sports FIFA with 6-minute halves.</p>
-                </div>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Format: Single-elimination knockout for both Valorant and EA FC.</div></div>
+                <div class="rule"><span class="dot"></span><div>Gameplay: Both tournaments will run simultaneously.</div></div>
+                <div class="rule"><span class="dot"></span><div>Schedule: Final brackets and timings will be released 3 days before the event.</div></div>
+                <div class="rule"><span class="dot"></span><div>Finals may be played the following day depending upon the number of teams.</div></div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                    <div class="rule"><span class="dot"></span><div>College Contingent Size: Must field participants in both events - one Valorant team (5+1) and 1-2 EFOOTBALL players.</div></div>
-                    <div class="rule"><span class="dot"></span><div>All members must be full-time students from the same institution.</div></div>
-                    <div class="rule"><span class="dot"></span><div>All participants must present valid, current college-issued photo ID card for verification.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Both tournaments are single-elimination knockout format running simultaneously.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Championship Scoring: 1st (100 pts), 2nd (60 pts), 3rd-4th (30 pts each), 5th-8th (10 pts each).</div></div>
-                    <div class="rule"><span class="dot"></span><div>Valorant: BYOC policy - players must bring complete setup including laptop/PC, monitor, peripherals.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Valorant: Teams must be ready 15 minutes before scheduled match with 10-minute grace period.</div></div>
-                    <div class="rule"><span class="dot"></span><div>EFOOTBALL: Tournament played on EA Sports FIFA on organizers' consoles with standard controllers.</div></div>
-                    <div class="rule"><span class="dot"></span><div>EFOOTBALL: Team selection limited to current Clubs or International teams. Classic XI and All-Star teams banned.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Code of Conduct: Aggression, harassment, toxicity, or cheating leads to immediate disqualification.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Schedule/Bracket Draw: Random draw conducted 3 days prior to event start date.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Tie-Breaker: College with higher individual placement (1st place finish) wins.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Registration fee is 600 INR per college contingent.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Decisions of tournament administrators are final and binding.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> Open to full-time students with valid college ID.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> BYOC (Bring Your Own Computer): Players must bring their own setups (laptop/PC, peripherals, cables).</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> Format: Single elimination, Best of 1 for league matches, Best of 3 for finals.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> Standard competitive mode (Mumbai server).</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> 2 tactical timeouts per map; map veto handled by admins.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Valorant:</strong> Cheating, toxicity, or misconduct will lead to disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football (EA FC):</strong> Individual 1 v 1 knockout format on organizer-provided consoles.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football (EA FC):</strong> Players may use personal controllers (no modded devices).</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football (EA FC):</strong> Game settings: 6-min halves; Extra Time & Penalties if tied.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football (EA FC):</strong> Maximum 3 pauses per player (only when the ball is out of play).</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football (EA FC):</strong> Misconduct or Cheating will lead to disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Tie-breaker: Higher position in the event will decide the winner.</div></div>
+                <div class="rule"><span class="dot"></span><div>Severe infractions may lead to team or contingent disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>For E-Football, only the highest-ranking player's score from each college will be considered.</div></div>
+                <div class="rule"><span class="dot"></span><div>Team composition: 8 students per college team (Valorant: 5+1 players, E-Football: 2 individual players).</div></div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,176,196,0.2); border-radius: 12px;">
+                <h3 style="color: #ffb0c4; margin: 0 0 12px 0; font-size: 16px;">Code of Conduct</h3>
+                <p style="margin: 0; color: #cfcfcf; font-size: 14px;">All participants are expected to uphold professionalism, fairness, and respect throughout the event. Any form of cheating, harassment, toxicity, or unsportsmanlike behaviour will result in immediate disqualification and possible banning of the team or college from future tournaments. Participants must follow coordinator and admin instructions at all times.</p>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -136,15 +235,18 @@
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Shriya Sarah Goka</strong><br />
-                    <a href="tel:+919686855303">968 685 5303</a>
+                    <a href="tel:+919686855303">9686855303</a><br />
+                    <a href="mailto:shriya.sarah@btech.christuniversity.in">shriya.sarah@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Deepadhrit Pandey</strong><br />
-                    <a href="tel:+919830332245">983 033 2245</a>
+                    <strong>Shashwat Buragohain</strong><br />
+                    <a href="tel:+917099062182">7099062182</a><br />
+                    <a href="mailto:shashwat.burgohain@btech.christuniversity.in">shashwat.burgohain@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Dr. Shwetha R – <a href="tel:+919986217753">998 621 7753</a>
+                    Dr. Shwetha R – <a href="tel:+919986217753">9986217753</a><br />
+                    <a href="mailto:shwetha.r@christuniversity.in">shwetha.r@christuniversity.in</a>
                 </div>
             </div>
         </footer>

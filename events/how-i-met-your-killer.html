@@ -45,6 +45,76 @@
         .full { grid-column: 1 / -1; }
         .help { font-size:12px; color:#9d9d9d; }
         .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -55,20 +125,49 @@
         </div>
         <h1 class="title">HOW I MET YOUR KILLER ? 🔎🔪</h1>
         <p class="tagline">"Where Allegiance Meets Suspicion"</p>
-        <p>This is a three-round event delving into suspicion, mystery, and decoding murder. Participants use puzzles, clues, and live interrogations to build a criminal case profile and a convincing story to identify the killer.</p>
+        <p>Dive into a realm of intrigue and deception with How I Met Your Killer?, an exhilarating three-round competition where psychology intertwines with crime investigation. Over the course of two days, teams of 3-4 players hurriedly work to decipher clues, question suspects and formulate the most compelling theory surrounding a murder. Featuring mind-twisting quizzes, treasure hunts for clues, engaging live interrogations and case-profiling, this event puts your powers of observation, reasoning and creativity to the test. With no established murderer, only the most astute thinkers and persuasive theories will escape suspicion and claim victory.</p>
 
+        <div class="price-card">
+            <div class="price-label">Total Prize Pool</div>
+            <div class="price-amount">₹15,000</div>
+            <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🎯</span>
+                <div class="info-card-title">Rounds</div>
+                <div class="info-card-value">3 Rounds</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">👥</span>
+                <div class="info-card-title">Team Size</div>
+                <div class="info-card-value">3-4 Members</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">💰</span>
+                <div class="info-card-title">Registration</div>
+                <div class="info-card-value">₹400/Team</div>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">📅</span>
+                <div class="info-card-title">Duration</div>
+                <div class="info-card-value">2 Days</div>
+            </div>
+        </div>
+        
         <div class="subchips">
-            <span class="chip">Team Size: 3–4</span>
-            <span class="chip">Fee: 300 INR/Team</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
+                <p><strong>Date:</strong> 26th & 27th November, 2025</p>
                 <p><strong>Department:</strong> Psychology</p>
-                <p><strong>Registration Fee:</strong> ₹300</p>
+                <p><strong>Registration Fee:</strong> ₹400</p>
                 <p><strong>Team Size:</strong> 3-4 persons</p>
             </div>
         </div>
@@ -89,11 +188,19 @@
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                <div class="rule"><span class="dot"></span><div>No predetermined killer; winners chosen based on the most convincing theory and defense during Q&A.</div></div>
-                <div class="rule"><span class="dot"></span><div>Interrogation Time: 15 minutes (subject to change) to interrogate all suspects.</div></div>
-                <div class="rule"><span class="dot"></span><div>No electrical gadgets during interrogations; notes can be taken with pen and paper.</div></div>
-                <div class="rule"><span class="dot"></span><div>Time Allocation: 15 min interrogation; 20 min profiling/theory; 5 + 2 min presentation (Q&A).</div></div>
-                <div class="rule"><span class="dot"></span><div>No obscene, vulgar, or inappropriate language is permitted.</div></div>
+                <div class="rule"><span class="dot"></span><div>The event will consist of 3 rounds: Preliminary Round, Clue Collection Round and Murder Mystery Round.</div></div>
+                <div class="rule"><span class="dot"></span><div>The Preliminary Round will consist of a series of auditory and visual quizzes. The top teams will advance to the clue collection round.</div></div>
+                <div class="rule"><span class="dot"></span><div>The Clue Collection Round will feature a mini treasure hunt in a designated area, and the top teams will qualify for the Murder Mystery Round.</div></div>
+                <div class="rule"><span class="dot"></span><div>The Final Round is based on the idea of a killer who is on the loose. In order to find the killer, the teams must interrogate a set number of suspects provided to them and make a profile for each. In the end, each team will have to come up with a theory describing who they think is the actual killer.</div></div>
+                <div class="rule"><span class="dot"></span><div>All teams will be given a total time of 15 minutes (subject to change) to interrogate all the suspects. Teams are free to use this time at their own discretion.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants may discuss their ideas about the 'case' once the interrogations are complete.</div></div>
+                <div class="rule"><span class="dot"></span><div>No electrical gadgets are allowed during the interrogations. Participants are allowed to take notes using pen and paper.</div></div>
+                <div class="rule"><span class="dot"></span><div>No discussion is permitted other than with one's own teammates.</div></div>
+                <div class="rule"><span class="dot"></span><div>No obscene, vulgar or inappropriate language is permitted; violations will result in disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants must comply with all the rules and regulations of CHRIST (Deemed to be University).</div></div>
+                <div class="rule"><span class="dot"></span><div>Total time for interrogation: 15 min (subject to change)</div></div>
+                <div class="rule"><span class="dot"></span><div>Time for profiling and theory formulation: 20 min</div></div>
+                <div class="rule"><span class="dot"></span><div>Time for presenting to judges: 5 min + 2 min</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -106,15 +213,18 @@
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Dhreeti Shah</strong><br />
-                    <a href="tel:+917016600557">70166 00557</a>
+                    <a href="tel:+917016600557">70166 00557</a><br />
+                    <a href="mailto:dhreeti.shah@psyh.christuniversity.in">dhreeti.shah@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Maanya Bhatia</strong><br />
-                    <a href="tel:+917304853140">73048 53140</a>
+                    <a href="tel:+917304853140">73048 53140</a><br />
+                    <a href="mailto:maanya.bhatia@psyh.christuniversity.in">maanya.bhatia@psyh.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Venugopal N – <a href="tel:+919148112106">91481 12106</a>
+                    Dr. Venugopal N – <a href="tel:+919148112106">91481 12106</a><br />
+                    <a href="mailto:venugopal.n@christuniversity.in">venugopal.n@christuniversity.in</a>
                 </div>
             </div>
         </footer>
