@@ -157,9 +157,10 @@
 				}
 
 				/* Page blur when menu is open - only blur specific content sections */
+				body.mobile-menu-open #professional-header,
 				body.mobile-menu-open .gallery-container,
 				body.mobile-menu-open .gallery-grid,
-				body.mobile-menu-open .footer {
+				body.mobile-menu-open .site-footer {
 					filter: blur(8px);
 					transition: filter 0.3s ease;
 				}
