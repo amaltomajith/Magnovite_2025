@@ -231,14 +231,49 @@ if (promoCloseBtn) {
   promoCloseBtn.addEventListener('click', closePromoModal);
 }
 
+// Store original scroll position for mobile
+let originalScrollPosition = 0;
+
 // Main video modal functions
 function openVideoModal() {
   if (!videoModal) return;
+  
+  // Store current scroll position for mobile return
+  originalScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Check if mobile device
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // Mobile: Fullscreen landscape mode
+    videoModal.style.position = 'fixed';
+    videoModal.style.top = '0';
+    videoModal.style.left = '0';
+    videoModal.style.width = '100vw';
+    videoModal.style.height = '100vh';
+    videoModal.style.background = '#000';
+    videoModal.style.zIndex = '9999';
+    videoModal.style.padding = '0';
+    videoModal.style.alignItems = 'center';
+    videoModal.style.justifyContent = 'center';
+  } else {
+    // Desktop: Position 10cm above current scroll position
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const videoTop = Math.max(0, scrollTop - 100);
+    
+    videoModal.style.alignItems = 'flex-start';
+    videoModal.style.paddingTop = '0';
+    videoModal.style.top = `${videoTop}px`;
+    videoModal.style.background = 'transparent';
+  }
+  
   videoModal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
+  
   if (mainVideoModal) {
     mainVideoModal.currentTime = 0;
     mainVideoModal.play().catch(() => {});
+    updatePlayPauseButton();
   }
 }
 
@@ -246,9 +281,105 @@ function closeVideoModal() {
   if (!videoModal) return;
   videoModal.classList.remove('is-open');
   document.body.style.overflow = 'visible';
+  
+  // Check if mobile device
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // Mobile: Return to original scroll position
+    window.scrollTo(0, originalScrollPosition);
+    
+    // Reset mobile styles
+    videoModal.style.position = 'fixed';
+    videoModal.style.top = '0';
+    videoModal.style.left = '0';
+    videoModal.style.width = '100vw';
+    videoModal.style.height = '100vh';
+    videoModal.style.background = 'transparent';
+    videoModal.style.zIndex = '2000';
+    videoModal.style.padding = '';
+  } else {
+    // Desktop: Reset video position
+    videoModal.style.alignItems = 'flex-start';
+    videoModal.style.paddingTop = '0';
+    videoModal.style.top = '0';
+    videoModal.style.background = 'transparent';
+  }
+  
   if (mainVideoModal) {
     mainVideoModal.pause();
   }
+}
+
+// Custom video controls
+const playPauseBtn = document.getElementById('playPauseBtn');
+const progressBar = document.getElementById('progressBar');
+const progressFill = document.getElementById('progressFill');
+const timeDisplay = document.getElementById('timeDisplay');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+
+function updatePlayPauseButton() {
+  if (!mainVideoModal || !playIcon || !pauseIcon) return;
+  
+  if (mainVideoModal.paused) {
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+  } else {
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+  }
+}
+
+function updateProgress() {
+  if (!mainVideoModal || !progressFill || !timeDisplay) return;
+  
+  const progress = (mainVideoModal.currentTime / mainVideoModal.duration) * 100;
+  progressFill.style.width = `${progress}%`;
+  
+  const currentTime = formatTime(mainVideoModal.currentTime);
+  const duration = formatTime(mainVideoModal.duration);
+  timeDisplay.textContent = `${currentTime} / ${duration}`;
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function seekVideo(e) {
+  if (!mainVideoModal || !progressBar) return;
+  
+  const rect = progressBar.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const percentage = clickX / rect.width;
+  const newTime = percentage * mainVideoModal.duration;
+  
+  mainVideoModal.currentTime = newTime;
+}
+
+// Event listeners for custom controls
+if (playPauseBtn && mainVideoModal) {
+  playPauseBtn.addEventListener('click', () => {
+    if (mainVideoModal.paused) {
+      mainVideoModal.play();
+    } else {
+      mainVideoModal.pause();
+    }
+    updatePlayPauseButton();
+  });
+}
+
+if (progressBar && mainVideoModal) {
+  progressBar.addEventListener('click', seekVideo);
+}
+
+if (mainVideoModal) {
+  mainVideoModal.addEventListener('play', updatePlayPauseButton);
+  mainVideoModal.addEventListener('pause', updatePlayPauseButton);
+  mainVideoModal.addEventListener('timeupdate', updateProgress);
+  mainVideoModal.addEventListener('loadedmetadata', updateProgress);
 }
 
 // Add click handler to main video
@@ -277,6 +408,27 @@ if (videoModal) {
 
 if (videoCloseBtn) {
   videoCloseBtn.addEventListener('click', closeVideoModal);
+}
+
+// Handle Android back button on mobile
+if (videoModal) {
+  // Listen for popstate (back button) on mobile
+  window.addEventListener('popstate', function(event) {
+    if (videoModal.classList.contains('is-open')) {
+      closeVideoModal();
+    }
+  });
+  
+  // Add history state when opening video on mobile
+  const originalOpenVideoModal = openVideoModal;
+  openVideoModal = function() {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Push state to history for back button support
+      history.pushState({videoOpen: true}, '', '');
+    }
+    originalOpenVideoModal();
+  };
 }
 
 // Gallery Lightbox (only runs on gallery page)
