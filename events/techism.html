@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drone Event – Magnovite 2025</title>
+    <title>TECHSIM – Magnovite 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -21,7 +21,7 @@
         .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
         .card h2 { margin: 0 0 10px; color:#fff; font-size:22px; }
         /* Flow steps (uniform cards, no arrows) */
-        .flowchart { display:grid; gap:18px; grid-template-columns: repeat(4, 1fr); }
+        .flowchart { display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
         .node { position:relative; padding:14px 16px; border-radius:12px; background:#000; border:1px solid rgba(255,176,196,.35); box-shadow:0 10px 26px rgba(158,63,255,.18); min-height: 150px; display:flex; flex-direction:column; justify-content:space-between; }
         .node .title { font-size:18px; margin:0; }
         .node .meta { color:#ffb0c4; font-size:12px; font-weight:700; margin-top:4px; }
@@ -57,102 +57,156 @@
         .full { grid-column: 1 / -1; }
         .help { font-size:12px; color:#9d9d9d; }
         .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        .prize-grid { display:grid; gap:12px; grid-template-columns: repeat(3, 1fr); margin:16px 0; }
+        .prize-card { background:#000; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:16px; text-align:center; }
+        .prize-card .amount { font-size:24px; font-weight:800; color:#ffb0c4; margin:8px 0; }
+        .prize-card .position { font-size:14px; color:#cfcfcf; }
     </style>
 </head>
 <body>
     <div class="wrap">
         <div class="subchips">
             <span class="chip">Electronics & Communications</span>
-            <span class="chip">Autonomous Navigation</span>
+            <span class="chip">Custom Compiler</span>
+            <span class="chip">IC Design</span>
         </div>
-        <h1 class="title">DRONE EVENT 🚁</h1>
-        <p class="tagline">"Innovation Takes Wing"</p>
-        <p>The Autonomous Drone Challenge is a hands-on technical event emphasizing technical knowledge, practical drone-building skills, and innovation in autonomous navigation. Participants will design, build, and program a drone to navigate autonomously without GPS or external navigation aids, first simulating the dynamics in MATLAB/Simulink and then flying their drone in an arena to scan, detect, and precisely land.</p>
+        <h1 class="title">TECHSIM 🔬</h1>
+        <p class="tagline">"Custom Compiler Simulation & Design Challenge"</p>
+        <p>TECHSIM 2025 is a one-day technical workshop and design competition organized by the Department of ECE, CHRIST (Deemed to be University), in collaboration with C2S, MeitY, CDAC, and CHIPIN. The event provides hands-on exposure to the Synopsys Custom Compiler, enabling participants to explore the fundamentals of analog and digital IC design and simulation.</p>
 
         <div class="subchips">
-            <span class="chip">Team Size: 3 Members</span>
-            <span class="chip">Registration Fee: 200 INR</span>
+            <span class="chip">Team Size: 2 Members</span>
+            <span class="chip">Registration Fee: ₹250-500</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
         <div style="margin-top:16px;">
             <div class="hero">
-                <img src="../public/events/drone.jpg" alt="Drone Event" />
+                <img src="../public/events/techism.jpg" alt="TECHSIM Event" />
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Event Details</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Date:</strong> November 25th, 2025</p>
+                <p><strong>Venue:</strong> Department of ECE, CHRIST (Deemed to be University), Kengeri Campus</p>
+                <p><strong>Organized by:</strong> Department of Electronics and Communication Engineering, CHRIST (Deemed to be University), Kengeri Campus, Bengaluru – 560074</p>
+                <p><strong>In Association With:</strong> C2S (Chips to Startup Programme) | Ministry of Electronics and Information Technology (MeitY) | CDAC | CHIPIN</p>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
-            <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 27th, 2025</p>
-                <p><strong>Department:</strong> Electronics and Communications Engineering</p>
-                <p><strong>Registration Fee:</strong> ₹300</p>
-                <p><strong>Team Size:</strong> 2-4 persons</p>
+            <div class="flowchart">
+                <div class="node">
+                    <p class="title">Morning Session</p>
+                    <p class="meta">10:00 AM – 12:30 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Workshop on Synopsys Custom Compiler - Introduction to environment, fundamentals of analog and digital IC design, hands-on guided session</p>
+                </div>
+                <div class="node">
+                    <p class="title">Lunch Break</p>
+                    <p class="meta">12:30 PM – 1:30 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Break for lunch and networking</p>
+                </div>
+                <div class="node">
+                    <p class="title">Afternoon Competition</p>
+                    <p class="meta">1:30 PM – 4:00 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Custom Compiler Design Competition - Apply learned concepts to solve real-time circuit design challenge</p>
+                </div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Structure</h2>
-            <div class="flowchart">
-                <div class="node">
-                    <p class="title">Round 1: Simulation Modelling</p>
-                    <p class="meta">1 hour</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Simulink simulation challenge for all 100 teams. Points: 10.</p>
+            <h2>Prize Money</h2>
+            <div class="prize-grid">
+                <div class="prize-card">
+                    <div class="position">1st Prize</div>
+                    <div class="amount">₹7,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Round 2: Scan Zone Arena</p>
-                    <p class="meta">1.5 hours</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Autonomous Drone Arena Challenge - Detection & Navigation. Points: 15.</p>
+                <div class="prize-card">
+                    <div class="position">2nd Prize</div>
+                    <div class="amount">₹5,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Round 3: Pathfinder Navigation</p>
-                    <p class="meta">1.5-2 hours</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Autonomous Navigation & Precision for top 50% teams. Points: 25.</p>
+                <div class="prize-card">
+                    <div class="position">3rd Prize</div>
+                    <div class="amount">₹4,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Final Round: Grand Challenge</p>
-                    <p class="meta">1-1.5 hours</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Combines Scan Zone and Pathfinder elements for top 5-10 teams. Winners decided.</p>
-                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Workshop Highlights</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Introduction to Synopsys Custom Compiler environment</div></div>
+                <div class="rule"><span class="dot"></span><div>Fundamentals of analog and digital IC design</div></div>
+                <div class="rule"><span class="dot"></span><div>Hands-on guided session on creating, analyzing, and testing circuits</div></div>
+                <div class="rule"><span class="dot"></span><div>Applying fundamentals in a design challenge</div></div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                    <div class="rule"><span class="dot"></span><div>Team Composition: Teams must consist of exactly 3 participants.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Each team is responsible for designing, building, and programming their own drone.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must bring their own drone for all physical flight rounds.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Drone Requirements: No GPS or external navigation aids are allowed; drones must operate fully autonomously.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Drones must be safe to operate indoors or in the designated arena.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must ensure drones are in flight-ready condition at the start of each round.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Scoring: Round 1 (10 points), Round 2 (15 points), Round 3 (25 points). Total: 50 points.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Filtering: Top 50% of teams from Rounds 1 & 2 advance to Round 3.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Final Round: Top 5-10 teams compete for prizes based on cumulative points.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Use of external help or pre-programmed solutions outside the team is prohibited.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must stay within the designated arena during drone flights.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Judges' decisions are final and binding.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Registration fee is 200 INR per team.</div></div>
+                <div class="rule"><span class="dot"></span><div>Team Size: Maximum 2 members per team</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants may register individually (team allocation on event day) or as a pre-formed group</div></div>
+                <div class="rule"><span class="dot"></span><div>Limited to 60 participants (30 teams)</div></div>
+                <div class="rule"><span class="dot"></span><div>Attendance in the workshop is mandatory to qualify for the competition</div></div>
+                <div class="rule"><span class="dot"></span><div>Systems and software access will be provided during the event</div></div>
+                <div class="rule"><span class="dot"></span><div>External design files or pre-made projects are not permitted</div></div>
+                <div class="rule"><span class="dot"></span><div>The judges' decisions are final and binding</div></div>
+                <div class="rule"><span class="dot"></span><div>Certificates will be awarded to all participants</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Registration Details</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Individual Registration:</strong> ₹250</p>
+                <p><strong>Team Registration (2 members):</strong> ₹500</p>
+                <p><strong>Limited Seats:</strong> 60 participants only</p>
+                <p><strong>Registration:</strong> First-come, first-served basis</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Who Can Participate</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Open to all engineering students (B.Tech / M.Tech / Ph.D.) across institutions</div></div>
+                <div class="rule"><span class="dot"></span><div>Beginner-friendly — no prior experience in Synopsys Custom Compiler is required</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Highlights</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Hands-on experience with Synopsys Custom Compiler</div></div>
+                <div class="rule"><span class="dot"></span><div>Practical exposure to analog/digital IC design and simulation</div></div>
+                <div class="rule"><span class="dot"></span><div>Participation and Winner Certificates</div></div>
+                <div class="rule"><span class="dot"></span><div>Mentorship from faculty experts and industry collaborators</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
                 <button class="btn" type="button" onclick="window.open('https://forms.gle/z5EXUQYqTMH6Z2VE8', '_blank')">Register Now</button>
             </div>
+        </div>
 
         <footer class="wrap" style="padding-left:0;padding-right:0;">
             <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
             <div class="contacts">
                 <div class="contact-card">
                     <strong>Meenakshi Nair</strong><br />
-                    <a href="tel:+919037977123">903 797 7123</a>
-                </div>
-                <div class="contact-card">
-                    <strong>PM Appaiah</strong><br />
-                    <a href="tel:+919113914240">911 391 4240</a>
+                    <a href="tel:+919037977133">+91 90379 77133</a><br />
+                    <a href="mailto:meenakshi.nair@btech.christuniversity.in">meenakshi.nair@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    <span style="color:#cfcfcf;">Faculty coordinator details will be updated soon.</span>
+                    <span style="color:#cfcfcf;">Department of ECE</span><br />
+                    <span style="color:#cfcfcf;">CHRIST (Deemed to be University)</span>
+                </div>
+                <div class="contact-card">
+                    <strong>Organizing Partners</strong><br />
+                    <span style="color:#cfcfcf;">C2S | MeitY | CDAC | CHIPIN</span>
                 </div>
             </div>
         </footer>
@@ -177,7 +231,7 @@
                         <select name="event" class="no-arrow" required>
                             <option value="">Choose...</option>
                             <option value="Antenna Odyssey">Antenna Odyssey</option>
-                            <option value="Drone Event">Drone Event</option>
+                            <option value="TECHSIM">TECHSIM</option>
                         </select>
                     </div>
                     <div>
@@ -193,8 +247,8 @@
                         <input name="phone" type="tel" pattern="[0-9\s+()-]{8,15}" required />
                     </div>
                     <div>
-                        <label>No. of Team Members * (3 for Drone Event)</label>
-                        <input name="teamSize" type="number" min="3" max="3" value="3" required />
+                        <label>No. of Team Members * (1-2 for TECHSIM)</label>
+                        <input name="teamSize" type="number" min="1" max="2" value="2" required />
                     </div>
                     <div class="full">
                         <label>Name of College/University *</label>
@@ -239,7 +293,7 @@
 
             // Fix event to current page (still submitted to same sheet)
             const eventSelect = form.elements['event'];
-            const fixedEventName = 'Drone Event';
+            const fixedEventName = 'TECHSIM';
             if (eventSelect) {
                 eventSelect.value = fixedEventName;
                 eventSelect.disabled = true;
@@ -251,31 +305,33 @@
                 form.appendChild(hiddenEvent);
             }
 
-            // Enforce team size 3
+            // Enforce team size 1-2
             const teamSizeInput = form.elements['teamSize'];
             if (teamSizeInput) {
                 teamSizeInput.addEventListener('input', () => {
-                    teamSizeInput.value = '3';
+                    const val = parseInt(teamSizeInput.value, 10);
+                    if (val < 1) teamSizeInput.value = '1';
+                    if (val > 2) teamSizeInput.value = '2';
                 });
             }
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const data = new FormData(form);
-                const val = parseInt((data.get('teamSize')||'3'), 10);
-                if (val !== 3) {
-                    alert('For Drone Event, team size must be exactly 3 members.');
+                const val = parseInt((data.get('teamSize')||'2'), 10);
+                if (val < 1 || val > 2) {
+                    alert('For TECHSIM, team size must be 1-2 members.');
                     return;
                 }
-                data.append('sourcePage', 'drone-event');
+                data.append('sourcePage', 'techsim');
                 // Fire-and-forget request; always show success to the user
                 if (SCRIPT_URL) {
                     fetch(SCRIPT_URL, { method: 'POST', body: data })
                         .then(async (res) => {
                             const text = await res.text().catch(() => '');
-                            console.debug('[drone-event] submit response:', res.status, text);
+                            console.debug('[techsim] submit response:', res.status, text);
                         })
-                        .catch((err) => console.error('[drone-event] submit error:', err));
+                        .catch((err) => console.error('[techsim] submit error:', err));
                 }
                 alert('Application submitted successfully. We will reach out on WhatsApp.');
                 form.reset();

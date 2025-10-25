@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Antenna Odyssey – Magnovite 2025</title>
+    <title>ASTEW 2.0 – Magnovite 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -21,11 +21,11 @@
         .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
         .card h2 { margin: 0 0 10px; color:#fff; font-size:22px; }
         /* Flow steps (uniform cards, no arrows) */
-        .flowchart { display:grid; gap:18px; grid-template-columns: repeat(5, 1fr); }
+        .flowchart { display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
         .node { position:relative; padding:14px 16px; border-radius:12px; background:#000; border:1px solid rgba(255,176,196,.35); box-shadow:0 10px 26px rgba(158,63,255,.18); min-height: 150px; display:flex; flex-direction:column; justify-content:space-between; }
         .node .title { font-size:18px; margin:0; }
         .node .meta { color:#ffb0c4; font-size:12px; font-weight:700; margin-top:4px; }
-        @media (max-width:1200px){ .flowchart{ grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width:1200px){ .flowchart{ grid-template-columns: repeat(2, 1fr); } }
         @media (max-width:720px){ .flowchart{ grid-template-columns: 1fr; } }
         .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
         @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
@@ -57,106 +57,233 @@
         .full { grid-column: 1 / -1; }
         .help { font-size:12px; color:#9d9d9d; }
         .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        .prize-grid { display:grid; gap:12px; grid-template-columns: repeat(3, 1fr); margin:16px 0; }
+        .prize-card { background:#000; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:16px; text-align:center; }
+        .prize-card .amount { font-size:24px; font-weight:800; color:#ffb0c4; margin:8px 0; }
+        .prize-card .position { font-size:14px; color:#cfcfcf; }
+        .schedule-table { width:100%; border-collapse:collapse; margin:16px 0; }
+        .schedule-table th, .schedule-table td { padding:12px; text-align:left; border:1px solid rgba(255,176,196,.28); }
+        .schedule-table th { background:#000; color:#ffb0c4; font-weight:700; }
+        .schedule-table td { background:#0b0b0b; }
     </style>
 </head>
 <body>
     <div class="wrap">
         <div class="subchips">
             <span class="chip">Electronics & Communications</span>
-            <span class="chip">Antenna Innovation</span>
+            <span class="chip">Antenna Design</span>
+            <span class="chip">ANSYS HFSS</span>
         </div>
-        <h1 class="title">THE ANTENNA ODYSSEY 📡</h1>
-        <p class="tagline">"Where theory meets hands-on antenna innovation."</p>
-        <p>The Antenna Odyssey is a fun, engaging, and technical event designed for ECE students to explore the world of antennas. The event combines puzzles, challenges, and a hands-on HFSS antenna design workshop, allowing participants to showcase both theoretical knowledge and practical design skills.</p>
+        <h1 class="title">ASTEW 2.0 📡</h1>
+        <p class="tagline">"Antenna Simulation, Training & Engineering Workshop"</p>
+        <p>ASTEW 2.0 is a two-day technical workshop and competition jointly organized by the Department of ECE and the IEEE AP/MTT Chapter of CHRIST (Deemed to be University). This event provides hands-on experience in antenna design, simulation, and testing using ANSYS Electronics Suite (HFSS).</p>
 
         <div class="subchips">
-            <span class="chip">Team Size: 2–4 Members</span>
-            <span class="chip">Registration Fee: 300 INR Per College Contingent</span>
+            <span class="chip">Team Size: 2 Members</span>
+            <span class="chip">Registration Fee: ₹600-750</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
 
         <div style="margin-top:16px;">
             <div class="hero">
-                <img src="../public/events/antenna.jpg" alt="Antenna Odyssey" />
+                <img src="../public/events/antenna.jpg" alt="ASTEW 2.0 Event" />
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Event Details</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Organized by:</strong> Department of Electronics and Communication Engineering, CHRIST (Deemed to be University), Kengeri Campus</p>
+                <p><strong>In Association with:</strong> IEEE Microwave Theory & Techniques Society (MTTS) and IEEE Antennas & Propagation Society (APS)</p>
+                <p><strong>Venue:</strong> Department of ECE, Christ University, Kengeri Campus</p>
+                <p><strong>Total Seats:</strong> 70 Participants only</p>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Event Schedule</h2>
-            <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
-                <p><strong>Department:</strong> Electronics and Communications Engineering</p>
-                <p><strong>Registration Fee:</strong> ₹300</p>
-                <p><strong>Team Size:</strong> 2-4 persons</p>
+            <div class="flowchart">
+                <div class="node">
+                    <p class="title">Day 1: Workshop</p>
+                    <p class="meta">9:30 AM – 4:30 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Basics of Antenna Theory, Introduction to ANSYS HFSS, Simulations of Microstrip Patch Antenna, Horn antenna, Circularly Polarized Antennas</p>
+                </div>
+                <div class="node">
+                    <p class="title">Day 2 Morning</p>
+                    <p class="meta">9:30 AM – 12:00 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Workshop Final Session - Parameter Optimization, Understanding Gain, Return Loss, and Radiation Patterns</p>
+                </div>
+                <div class="node">
+                    <p class="title">Day 2 Afternoon</p>
+                    <p class="meta">1:30 PM – 4:30 PM</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Antenna Design Competition - Design and simulate an antenna using ANSYS HFSS</p>
+                </div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Structure</h2>
-            <div class="flowchart">
-                <div class="node">
-                    <p class="title">Workshop: Antenna Basics & HFSS</p>
-                    <p class="meta">2 hours</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Demo/Training session for all 100 teams. Mandatory workshop providing baseline knowledge.</p>
+            <h2>Prize Money</h2>
+            <div class="prize-grid">
+                <div class="prize-card">
+                    <div class="position">1st Prize</div>
+                    <div class="amount">₹25,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Round 1: Quickfire Technical Quiz</p>
-                    <p class="meta">1 hour</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Written/Projected Quiz with points for correct answers (no negatives). Top 50 teams advance.</p>
+                <div class="prize-card">
+                    <div class="position">2nd Prize</div>
+                    <div class="amount">₹15,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Round 2: Crossword + Rapid Fire</p>
-                    <p class="meta">45 min</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Crossword (5 points per word, +10 bonus for fastest) + Rapid Fire (+5 per correct). Top 25 teams advance.</p>
+                <div class="prize-card">
+                    <div class="position">3rd Prize</div>
+                    <div class="amount">₹10,000</div>
                 </div>
-                <div class="node">
-                    <p class="title">Round 3: Treasure Hunt / Signal Sprint</p>
-                    <p class="meta">45-60 min</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Non-technical campus hunt collecting 4-5 colored chips. Top 15 teams advance.</p>
-                </div>
-                <div class="node">
-                    <p class="title">Final: HFSS Grand Design</p>
-                    <p class="meta">1-1.5 hours</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Calculate patch parameters, design in HFSS, simulate and submit results. Winners decided.</p>
-                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Workshop Topics</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Basics of Antenna Theory</div></div>
+                <div class="rule"><span class="dot"></span><div>Introduction to ANSYS HFSS</div></div>
+                <div class="rule"><span class="dot"></span><div>Simulations of Microstrip Patch Antenna, Horn antenna</div></div>
+                <div class="rule"><span class="dot"></span><div>Circularly Polarized Antennas</div></div>
+                <div class="rule"><span class="dot"></span><div>Parameter Optimization and Simulation</div></div>
+                <div class="rule"><span class="dot"></span><div>Understanding Gain, Return Loss, and Radiation Patterns</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Resource Persons</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Dr. Shashi Kumar D</strong> – Department of ECE</p>
+                <p><strong>Dr. Naveen Kumar</strong> – Department of ECE</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Competition Details</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Team Size: 2 members</div></div>
+                <div class="rule"><span class="dot"></span><div>Software: ANSYS Electronics Suite (HFSS)</div></div>
+                <div class="rule"><span class="dot"></span><div>Task: Design a given type of antenna within the allotted time and achieve the most accurate results</div></div>
+                <div class="rule"><span class="dot"></span><div>Judging Criteria: Simulation Accuracy (Gain, Return Loss, Bandwidth), Design Approach and Documentation, Time of Completion</div></div>
             </div>
         </div>
 
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                    <div class="rule"><span class="dot"></span><div>Teams must consist of 3 members.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Workshop is mandatory; all teams start with a baseline knowledge.</div></div>
-                    <div class="rule"><span colspan="dot"></span><div>Use of external help is prohibited.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Judges' decision is final.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Teams must stay together during the treasure hunt.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Team size must be between 2-4 members.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Registration fee is 200 INR per college contingent.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Round 1: Points awarded for correct answers; no negatives.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Round 2: Crossword points: 5 per correct word, +10 bonus for fastest teams.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Round 3: Teams must collect 4-5 colored chips (one per checkpoint).</div></div>
-                    <div class="rule"><span class="dot"></span><div>Final Round: Evaluation based on calculations, HFSS setup, simulation results, and explanation.</div></div>
-                    <div class="rule"><span class="dot"></span><div>Any misconduct or rule violation will lead to immediate disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div>Participants must register individually; team formation will be done after the workshop</div></div>
+                <div class="rule"><span class="dot"></span><div>Each team will be provided with a system and ANSYS software access</div></div>
+                <div class="rule"><span class="dot"></span><div>External design files or pre-made models are strictly not allowed</div></div>
+                <div class="rule"><span class="dot"></span><div>The problem statement will be revealed at the start of the competition</div></div>
+                <div class="rule"><span class="dot"></span><div>Judges' decisions will be final and binding</div></div>
+                <div class="rule"><span class="dot"></span><div>All participants must attend the full workshop to qualify for the competition</div></div>
+                <div class="rule"><span class="dot"></span><div>Certificates will be awarded to all participants</div></div>
+                <div class="rule"><span class="dot"></span><div>Volunteers will be present throughout to assist with technical or procedural queries</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Registration Details</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Fee:</strong> ₹750 (for Non-IEEE Students) | ₹600 (for IEEE Students)</p>
+                <p><strong>Includes:</strong> Workshop materials, lunch & snacks</p>
+                <p><strong>Total Seats:</strong> 70 Participants only</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Who Can Participate</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Open to all engineering students (B.Tech / M.Tech / Ph.D.)</div></div>
+                <div class="rule"><span class="dot"></span><div>Beginner-friendly — no prior experience in ANSYS required</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Takeaways</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Hands-on training on ANSYS HFSS</div></div>
+                <div class="rule"><span class="dot"></span><div>Real-world exposure to antenna design and analysis</div></div>
+                <div class="rule"><span class="dot"></span><div>Participation and winner certificates</div></div>
+                <div class="rule"><span class="dot"></span><div>Networking and mentorship from faculty experts</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
-                <button class="btn" type="button" onclick="window.open('https://forms.gle/XrbKEViTnErbGNq77', '_blank')">Register Now</button>
+                <button class="btn" type="button" onclick="window.open('https://forms.gle/z5EXUQYqTMH6Z2VE8', '_blank')">Register Now</button>
             </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Tentative Schedule</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Session</th>
+                        <th>Time</th>
+                        <th>Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">Day 1</td>
+                        <td>Morning</td>
+                        <td>9:30 AM – 12:30 PM</td>
+                        <td>Workshop Session 1</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>12:30 PM – 1:30 PM</td>
+                        <td>Lunch Break</td>
+                    </tr>
+                    <tr>
+                        <td>Afternoon</td>
+                        <td>1:30 PM – 4:30 PM</td>
+                        <td>Workshop Session 2</td>
+                    </tr>
+                    <tr>
+                        <td>Breaks</td>
+                        <td>11:00 AM & 3:00 PM</td>
+                        <td>Snacks</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Day 2</td>
+                        <td>Morning</td>
+                        <td>9:30 AM – 12:00 PM</td>
+                        <td>Workshop Final Session</td>
+                    </tr>
+                    <tr>
+                        <td>Afternoon</td>
+                        <td>1:30 PM – 4:00 PM</td>
+                        <td>Antenna Design Competition</td>
+                    </tr>
+                    <tr>
+                        <td>Evening</td>
+                        <td>4:00 PM – 4:30 PM</td>
+                        <td>Valedictory & Prize Distribution</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <footer class="wrap" style="padding-left:0;padding-right:0;">
             <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
             <div class="contacts">
                 <div class="contact-card">
                     <strong>PM Appaiah</strong><br />
-                    <a href="tel:+919113914240">911 391 4240</a>
+                    <a href="tel:+919113914240">911 391 4240</a><br />
+                    <a href="mailto:pm.appaiah@btech.christuniversity.in">pm.appaiah@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Meenakshi Nair</strong><br />
-                    <a href="tel:+919037977123">903 797 7123</a>
+                    <strong>Manasvi Shetty</strong><br />
+                    <a href="tel:+918073544928">807 354 4928</a><br />
+                    <a href="mailto:manasvi.m@btech.christuniversity.in">manasvi.m@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Event Faculty Coordinator</strong><br />
-                    Dr. Shweta R – <a href="tel:+919986217753">998 621 7753</a>
+                    <strong>Oswin Biju</strong><br />
+                    <a href="tel:+916267447889">6267 447 889</a><br />
+                    <a href="mailto:oswin.biju@btech.christuniversity.in">oswin.biju@btech.christuniversity.in</a>
                 </div>
             </div>
         </footer>
@@ -180,8 +307,8 @@
                         <label>Select Event *</label>
                         <select name="event" class="no-arrow" required>
                             <option value="">Choose...</option>
-                            <option value="Antenna Odyssey">Antenna Odyssey</option>
-                            <option value="Drone Event">Drone Event</option>
+                            <option value="ASTEW 2.0">ASTEW 2.0</option>
+                            <option value="TECHSIM">TECHSIM</option>
                         </select>
                     </div>
                     <div>
@@ -197,8 +324,8 @@
                         <input name="phone" type="tel" pattern="[0-9\s+()-]{8,15}" required />
                     </div>
                     <div>
-                        <label>No. of Team Members * (2–4 for Antenna Odyssey)</label>
-                        <input name="teamSize" type="number" min="2" max="4" value="3" required />
+                        <label>No. of Team Members * (2 for ASTEW 2.0)</label>
+                        <input name="teamSize" type="number" min="2" max="2" value="2" required />
                     </div>
                     <div class="full">
                         <label>Name of College/University *</label>
@@ -243,7 +370,7 @@
 
             // Fix event to current page (still submitted to same sheet)
             const eventSelect = form.elements['event'];
-            const fixedEventName = 'Antenna Odyssey';
+            const fixedEventName = 'ASTEW 2.0';
             if (eventSelect) {
                 eventSelect.value = fixedEventName;
                 eventSelect.disabled = true;
@@ -255,33 +382,31 @@
                 form.appendChild(hiddenEvent);
             }
 
-            // Enforce team size 2–4
+            // Enforce team size 2
             const teamSizeInput = form.elements['teamSize'];
             if (teamSizeInput) {
                 teamSizeInput.addEventListener('input', () => {
-                    const val = parseInt(teamSizeInput.value || '3', 10);
-                    if (val > 4) teamSizeInput.value = '4';
-                    if (val < 2 || isNaN(val)) teamSizeInput.value = '2';
+                    teamSizeInput.value = '2';
                 });
             }
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const data = new FormData(form);
-                const val = parseInt((data.get('teamSize')||'3'), 10);
-                if (val < 2 || val > 4) {
-                    alert('For Antenna Odyssey, team size must be between 2-4 members.');
+                const val = parseInt((data.get('teamSize')||'2'), 10);
+                if (val !== 2) {
+                    alert('For ASTEW 2.0, team size must be exactly 2 members.');
                     return;
                 }
-                data.append('sourcePage', 'antenna-odyssey');
+                data.append('sourcePage', 'astew-2.0');
                 // Fire-and-forget request; always show success to the user
                 if (SCRIPT_URL) {
                     fetch(SCRIPT_URL, { method: 'POST', body: data })
                         .then(async (res) => {
                             const text = await res.text().catch(() => '');
-                            console.debug('[antenna-odyssey] submit response:', res.status, text);
+                            console.debug('[astew-2.0] submit response:', res.status, text);
                         })
-                        .catch((err) => console.error('[antenna-odyssey] submit error:', err));
+                        .catch((err) => console.error('[astew-2.0] submit error:', err));
                 }
                 alert('Application submitted successfully. We will reach out on WhatsApp.');
                 form.reset();
