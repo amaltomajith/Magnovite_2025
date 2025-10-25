@@ -181,6 +181,12 @@ const promoModal = document.getElementById('promoModal');
 const promoVideo = document.getElementById('promoVideo');
 const promoCloseBtn = document.querySelector('.promo-modal__close');
 
+// Main video modal logic
+const mainVideo = document.querySelector('.hero-main-image');
+const videoModal = document.getElementById('videoModal');
+const mainVideoModal = document.getElementById('mainVideoModal');
+const videoCloseBtn = document.querySelector('.video-modal__close');
+
 function openPromoModal() {
   if (!promoModal) return;
   promoModal.classList.add('is-open');
@@ -223,6 +229,54 @@ if (promoModal) {
 
 if (promoCloseBtn) {
   promoCloseBtn.addEventListener('click', closePromoModal);
+}
+
+// Main video modal functions
+function openVideoModal() {
+  if (!videoModal) return;
+  videoModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  if (mainVideoModal) {
+    mainVideoModal.currentTime = 0;
+    mainVideoModal.play().catch(() => {});
+  }
+}
+
+function closeVideoModal() {
+  if (!videoModal) return;
+  videoModal.classList.remove('is-open');
+  document.body.style.overflow = 'visible';
+  if (mainVideoModal) {
+    mainVideoModal.pause();
+  }
+}
+
+// Add click handler to main video
+if (mainVideo) {
+  mainVideo.addEventListener('click', openVideoModal);
+  mainVideo.style.cursor = 'pointer';
+}
+
+// Add modal event handlers
+if (videoModal) {
+  videoModal.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    // Close when clicking on elements marked with data-close (including their children)
+    if (target.closest('[data-close]')) {
+      closeVideoModal();
+      return;
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal.classList.contains('is-open')) {
+      closeVideoModal();
+    }
+  });
+}
+
+if (videoCloseBtn) {
+  videoCloseBtn.addEventListener('click', closeVideoModal);
 }
 
 // Gallery Lightbox (only runs on gallery page)

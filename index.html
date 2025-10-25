@@ -869,6 +869,47 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- Main Video Modal -->
+			<div
+				class="video-modal"
+				id="videoModal"
+				aria-hidden="true"
+				role="dialog"
+				aria-label="Main video"
+			>
+				<div class="video-modal__backdrop" data-close="video"></div>
+				<div class="video-modal__dialog" role="document">
+					<button
+						class="video-modal__close"
+						type="button"
+						aria-label="Close video"
+						data-close="video"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M18 6L6 18M6 6l12 12"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</button>
+					<div class="video-modal__video-wrap">
+						<video
+							id="mainVideoModal"
+							class="video-modal__video"
+							preload="metadata"
+							playsinline
+							controls
+						>
+							<source src="./public/initialbg.mp4" type="video/mp4" />
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				</div>
+			</div>
+			
 			<!-- Scroll Indicator -->
 			<div class="scroll-indicator">
 				<svg
@@ -974,7 +1015,13 @@
 				mobileNavBackdrop.classList.remove('is-open');
 				mobileMenuToggle.classList.remove('is-active');
 				document.body.classList.remove('mobile-menu-open');
-				document.body.style.overflow = '';
+				document.body.style.overflow = 'visible';
+				document.body.style.overflowX = 'hidden';
+				
+				// Refresh ScrollTrigger to ensure proper scroll behavior
+				if (typeof window !== 'undefined' && window.ScrollTrigger) {
+					window.ScrollTrigger.refresh();
+				}
 			}
 
 			// Event listeners
