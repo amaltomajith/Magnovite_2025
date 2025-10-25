@@ -135,6 +135,239 @@
 				}
 			}
 
+			/* Mobile Navigation Styles */
+			@media (max-width: 768px) {
+				.nav-menu__links {
+					position: fixed;
+					top: 0;
+					right: -100%;
+					width: 50vw;
+					height: 100vh;
+					background: rgba(0, 0, 0, 0.95);
+					backdrop-filter: blur(20px);
+					border-left: 1px solid rgba(255, 255, 255, 0.1);
+					display: flex;
+					flex-direction: column;
+					padding: 80px 0 40px;
+					transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+					z-index: 1000;
+					box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+				}
+
+				.nav-menu__links.is-open {
+					right: 0;
+				}
+
+				/* Page blur when menu is open - only blur specific content sections */
+				body.mobile-menu-open .about-hero,
+				body.mobile-menu-open .about-hero-content,
+				body.mobile-menu-open .story-section,
+				body.mobile-menu-open .contact-section,
+				body.mobile-menu-open .site-footer {
+					filter: blur(8px);
+					transition: filter 0.3s ease;
+				}
+
+				/* Keep navigation and header completely sharp */
+				body.mobile-menu-open .header,
+				body.mobile-menu-open .nav-container,
+				body.mobile-menu-open .nav-row,
+				body.mobile-menu-open .nav-inner,
+				body.mobile-menu-open .nav-menu,
+				body.mobile-menu-open .mobile-menu-toggle,
+				body.mobile-menu-open .nav-menu__links,
+				body.mobile-menu-open .mobile-nav-backdrop {
+					filter: none !important;
+				}
+
+				/* Ensure proper z-index layering */
+				body.mobile-menu-open .header {
+					z-index: 1002;
+				}
+
+				body.mobile-menu-open .mobile-menu-toggle {
+					z-index: 1003;
+				}
+
+				body.mobile-menu-open .nav-menu__links {
+					z-index: 1001;
+				}
+
+				.nav-menu__links .nav-link {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 16px 24px;
+					margin: 4px 16px;
+					border-radius: 12px;
+					background: rgba(255, 255, 255, 0.05);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					transition: all 0.3s ease;
+					text-decoration: none;
+					color: #fff;
+					font-weight: 600;
+				}
+
+				.nav-menu__links .nav-link:hover {
+					background: rgba(255, 0, 255, 0.1);
+					border-color: rgba(255, 0, 255, 0.3);
+					transform: translateX(8px);
+				}
+
+				.nav-menu__links .nav-link::after,
+				.nav-menu__links .nav-link::before {
+					content: none !important;
+				}
+
+				/* Hide navigation arrows on mobile */
+				.nav-menu__links .nav-link-arrow {
+					display: none;
+				}
+
+				/* Mobile Menu Toggle Button */
+				.mobile-menu-toggle {
+					display: none;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					width: 44px;
+					height: 44px;
+					background: rgba(255, 255, 255, 0.1);
+					border: 1px solid rgba(255, 255, 255, 0.2);
+					border-radius: 12px;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					z-index: 1001;
+					position: relative;
+				}
+
+				/* Hide lines on desktop to avoid stray dots */
+				.hamburger-line { 
+					display: none; 
+				}
+
+				/* Ensure button is completely hidden on desktop */
+				@media (min-width: 769px) {
+					.mobile-menu-toggle {
+						display: none !important;
+						visibility: hidden !important;
+						opacity: 0 !important;
+						width: 0 !important;
+						height: 0 !important;
+						margin: 0 !important;
+						padding: 0 !important;
+						border: none !important;
+						background: transparent !important;
+						pointer-events: none !important;
+						position: absolute !important;
+						left: -9999px !important;
+						top: -9999px !important;
+						overflow: hidden !important;
+						clip: rect(0, 0, 0, 0) !important;
+					}
+					
+					.hamburger-line {
+						display: none !important;
+						visibility: hidden !important;
+						opacity: 0 !important;
+						width: 0 !important;
+						height: 0 !important;
+					}
+				}
+
+				/* Only apply hover styles on mobile */
+				@media (max-width: 768px) {
+					.mobile-menu-toggle:hover {
+						background: rgba(255, 0, 255, 0.1);
+						border-color: rgba(255, 0, 255, 0.3);
+					}
+				}
+
+				.mobile-menu-toggle.is-active {
+					background: rgba(255, 0, 255, 0.2);
+					border-color: rgba(255, 0, 255, 0.5);
+				}
+
+				.hamburger-line {
+					width: 20px;
+					height: 2px;
+					background: #fff;
+					margin: 2px 0;
+					transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+					transform-origin: center;
+				}
+
+				.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
+					transform: rotate(45deg) translate(0, 8px);
+				}
+
+				.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
+					opacity: 0;
+					transform: scaleX(0);
+				}
+
+				.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
+					transform: rotate(-45deg) translate(0, -8px);
+				}
+
+				/* Show mobile toggle on mobile */
+				@media (max-width: 768px) {
+					.mobile-menu-toggle {
+						display: flex;
+					}
+					/* Show lines on mobile */
+					.hamburger-line { display: block; }
+					
+					.nav-menu__links {
+						display: flex;
+					}
+				}
+
+				/* Mobile backdrop */
+				.mobile-nav-backdrop {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: rgba(0, 0, 0, 0.5);
+					backdrop-filter: blur(4px);
+					opacity: 0;
+					visibility: hidden;
+					transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+					z-index: 999;
+				}
+
+				.mobile-nav-backdrop.is-open {
+					opacity: 1;
+					visibility: visible;
+				}
+
+				.mobile-nav-backdrop::before {
+					content: '';
+					position: absolute;
+					top: 50vh;
+					left: 25%;
+					transform: translate(-50%, -50%) scale(0.8);
+					width: 120px;
+					height: 120px;
+					background-image: url('./public/MAGNOVITEBW.png');
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+					opacity: 0;
+					z-index: 1000;
+					transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+					transition-delay: 0.1s;
+				}
+
+				.mobile-nav-backdrop.is-open::before {
+					opacity: 0.9;
+					transform: translate(-50%, -50%) scale(1);
+					transition-delay: 0.1s;
+				}
+			}
+
 			/* Mobile First Approach - Additional Optimizations */
 
 			/* Base Mobile Styles */
@@ -1556,292 +1789,6 @@
 				transform: translateY(0);
 			}
 		</style>
-		<style>
-			/* Desktop Navigation Styles */
-			.nav-menu__links {
-				display: flex;
-				gap: 30px;
-			}
-
-			.nav-link {
-				color: white;
-				text-decoration: none;
-				display: flex;
-				align-items: center;
-				gap: 8px;
-				font-weight: 500;
-				transition: all 0.3s ease;
-			}
-
-			.nav-link:hover {
-				color: #ff00ff;
-				transform: translateY(-2px);
-			}
-
-			/* Mobile Navigation Styles */
-			@media (max-width: 768px) {
-				.nav-menu__links {
-					position: fixed;
-					top: 0;
-					right: -100%;
-					width: 50vw;
-					height: 100vh;
-					background: rgba(0, 0, 0, 0.95);
-					backdrop-filter: blur(20px);
-					border-left: 1px solid rgba(255, 255, 255, 0.1);
-					display: flex;
-					flex-direction: column;
-					padding: 80px 0 40px;
-					transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-					z-index: 1000;
-					box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
-					opacity: 0;
-					visibility: hidden;
-				}
-
-				.nav-menu__links.is-open {
-					right: 0;
-					opacity: 1;
-					visibility: visible;
-				}
-
-				/* Page blur when menu is open - only blur specific content sections */
-				body.mobile-menu-open .about-hero,
-				body.mobile-menu-open .content-section,
-				body.mobile-menu-open .stats-grid,
-				body.mobile-menu-open .team-section,
-				body.mobile-menu-open .cta-section,
-				body.mobile-menu-open .footer {
-					filter: blur(8px);
-					transition: filter 0.3s ease;
-				}
-
-				/* Keep navigation and header completely sharp */
-				body.mobile-menu-open .header,
-				body.mobile-menu-open .nav-container,
-				body.mobile-menu-open .nav-row,
-				body.mobile-menu-open .nav-inner,
-				body.mobile-menu-open .nav-menu,
-				body.mobile-menu-open .mobile-menu-toggle,
-				body.mobile-menu-open .nav-menu__links,
-				body.mobile-menu-open .mobile-nav-backdrop {
-					filter: none !important;
-				}
-
-				/* Ensure proper z-index layering */
-				body.mobile-menu-open .header {
-					z-index: 1002;
-				}
-
-				body.mobile-menu-open .mobile-menu-toggle {
-					z-index: 1003;
-				}
-
-				body.mobile-menu-open .nav-menu__links {
-					z-index: 1001;
-				}
-
-				.nav-menu__links .nav-link {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					padding: 16px 24px;
-					margin: 4px 16px;
-					border-radius: 12px;
-					background: rgba(255, 255, 255, 0.05);
-					border: 1px solid rgba(255, 255, 255, 0.1);
-					transition: all 0.3s ease;
-					text-decoration: none;
-					color: #fff;
-					font-weight: 600;
-				}
-
-				.nav-menu__links .nav-link:hover {
-					background: rgba(255, 0, 255, 0.1);
-					border-color: rgba(255, 0, 255, 0.3);
-					transform: translateX(8px);
-				}
-
-				.nav-menu__links .nav-link::after,
-				.nav-menu__links .nav-link::before {
-					content: none !important;
-				}
-
-				/* Hide navigation arrows on mobile */
-				.nav-menu__links .nav-link-arrow {
-					display: none;
-				}
-
-				/* Mobile Navigation Backdrop */
-				.mobile-nav-backdrop {
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: rgba(0, 0, 0, 0.5);
-					backdrop-filter: blur(4px);
-					z-index: 999;
-					opacity: 0;
-					visibility: hidden;
-					transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				}
-
-				.mobile-nav-backdrop.is-open {
-					opacity: 1;
-					visibility: visible;
-				}
-
-				.mobile-nav-backdrop::before {
-					content: '';
-					position: absolute;
-					top: 50vh;
-					left: 25%;
-					transform: translate(-50%, -50%) scale(0.8);
-					width: 100px;
-					height: 100px;
-					background-image: url('./public/MAGNOVITEBW.png');
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position: center;
-					opacity: 0;
-					z-index: 1000;
-					transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-					transition-delay: 0.1s;
-				}
-
-				.mobile-nav-backdrop.is-open::before {
-					opacity: 0.9;
-					transform: translate(-50%, -50%) scale(1);
-					transition-delay: 0.1s;
-				}
-
-				/* New Simple Mobile Toggle Button */
-				.simple-mobile-toggle {
-					display: none;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					width: 32px;
-					height: 32px;
-					background: transparent;
-					border: none;
-					cursor: pointer;
-					transition: all 0.2s ease;
-					z-index: 1003;
-					position: relative;
-					padding: 0;
-					margin: 0;
-					margin-left: -20px;
-				}
-
-				.simple-mobile-toggle:hover {
-					opacity: 0.7;
-				}
-
-				.toggle-line {
-					width: 20px;
-					height: 2px;
-					background: #ffffff;
-					margin: 3px 0;
-					transition: all 0.3s ease;
-					transform-origin: center;
-				}
-
-				.simple-mobile-toggle.is-active .toggle-line:nth-child(1) {
-					transform: rotate(45deg) translate(5px, 5px);
-				}
-
-				.simple-mobile-toggle.is-active .toggle-line:nth-child(2) {
-					opacity: 0;
-				}
-
-				.simple-mobile-toggle.is-active .toggle-line:nth-child(3) {
-					transform: rotate(-45deg) translate(5px, -5px);
-				}
-
-				/* Ensure hamburger button stays visible when menu is open */
-				body.mobile-menu-open .simple-mobile-toggle {
-					z-index: 1003 !important;
-				}
-
-				/* Hide simple toggle on desktop (aggressive hiding) */
-				@media (min-width: 769px) {
-					.simple-mobile-toggle {
-						display: none !important; visibility: hidden !important; opacity: 0 !important;
-						width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important;
-						border: none !important; background: transparent !important; pointer-events: none !important;
-						position: absolute !important; left: -9999px !important; top: -9999px !important;
-						overflow: hidden !important; clip: rect(0, 0, 0, 0) !important;
-					}
-					.toggle-line {
-						display: none !important; visibility: hidden !important; opacity: 0 !important;
-						width: 0 !important; height: 0 !important;
-					}
-				}
-
-				/* Show simple toggle on mobile */
-				@media (max-width: 768px) {
-					.simple-mobile-toggle { display: flex; }
-					.toggle-line { display: block; }
-				}
-
-				/* Mobile Navigation Styles */
-				@media (max-width: 768px) {
-					.nav-menu__links {
-						position: fixed;
-						top: 0;
-						right: -100%;
-						width: 50vw;
-						height: 100vh;
-						background: rgba(0, 0, 0, 0.95);
-						backdrop-filter: blur(20px);
-						border-left: 1px solid rgba(255, 255, 255, 0.1);
-						display: flex;
-						flex-direction: column;
-						padding: 80px 0 40px;
-						transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-						z-index: 1000;
-						box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
-					}
-
-					.nav-menu__links.is-open {
-						right: 0;
-					}
-
-					/* Page blur when menu is open */
-					body.mobile-menu-open .about-hero,
-					body.mobile-menu-open .about-hero-content,
-					body.mobile-menu-open .story-section,
-					body.mobile-menu-open .contact-section,
-					body.mobile-menu-open .site-footer {
-						filter: blur(8px);
-						transition: filter 0.3s ease;
-					}
-
-					/* Mobile Navigation Backdrop */
-					.mobile-nav-backdrop {
-						position: fixed;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background: rgba(0, 0, 0, 0.5);
-						backdrop-filter: blur(4px);
-						z-index: 999;
-						opacity: 0;
-						visibility: hidden;
-						transition: all 0.3s ease;
-					}
-
-					.mobile-nav-backdrop.is-open {
-						opacity: 1;
-						visibility: visible;
-					}
-				}
-
-			}
-		</style>
 	</head>
 	<body id="about" class="page-about">
 		<!-- Navigation -->
@@ -2664,7 +2611,13 @@
 					mobileNavBackdrop.classList.remove('is-open');
 					mobileMenuToggle.classList.remove('is-active');
 					document.body.classList.remove('mobile-menu-open');
-					document.body.style.overflow = '';
+					document.body.style.overflow = 'visible';
+					document.body.style.overflowX = 'hidden';
+					
+					// Refresh ScrollTrigger to ensure proper scroll behavior
+					if (typeof window !== 'undefined' && window.ScrollTrigger) {
+						window.ScrollTrigger.refresh();
+					}
 				}
 
 				// Event listeners
