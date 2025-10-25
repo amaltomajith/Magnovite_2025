@@ -132,7 +132,7 @@
 				}
 
 				.team-grid {
-					grid-template-columns: repeat(3, 1fr);
+					grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 					gap: 1.5rem;
 				}
 			}
@@ -140,8 +140,8 @@
 			/* Tablet Landscape */
 			@media (min-width: 769px) and (max-width: 1024px) {
 				.team-grid {
-					grid-template-columns: repeat(4, 1fr);
-					gap: 1.5rem;
+					grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+					gap: 2rem;
 				}
 			}
 
@@ -969,8 +969,8 @@
 
 			.team-grid {
 				display: grid;
-				grid-template-columns: repeat(5, 1fr);
-				gap: 1.5rem;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
 				margin: 4rem 0;
 			}
 
@@ -1334,7 +1334,7 @@
 				}
 
 				.team-grid {
-					grid-template-columns: repeat(2, 1fr);
+					grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 					gap: 1.5rem;
 				}
 
@@ -1434,8 +1434,8 @@
 				}
 
 				.team-grid {
-					grid-template-columns: repeat(5, 1fr);
-					gap: 0.8rem;
+					grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+					gap: 1rem;
 				}
 
 				.team-member {
