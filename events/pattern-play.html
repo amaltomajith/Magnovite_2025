@@ -8,53 +8,113 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
+        /* General Reset and Base Styles */
         * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
         .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+
+        /* Component Styles */
         .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
         .title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
         .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
         .hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
         .hero img { width:100%; height:100%; display:block; object-fit:cover; }
-        .grid { display:grid; gap:24px; grid-template-columns: 1fr; }
-        @media (min-width: 960px){ .grid{ grid-template-columns: 1.3fr 1fr; } }
         .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
-        .card h2 { margin: 0 0 10px; color:#fff; font-size:22px; }
-        /* Flow steps (uniform cards, no arrows) */
+        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+
+        /* Flow Chart Structure */
         .flowchart { display:grid; gap:18px; grid-template-columns: repeat(2, 1fr); }
+        @media (max-width:768px){ .flowchart{ grid-template-columns: 1fr; } }
         .node { position:relative; padding:14px 16px; border-radius:12px; background:#000; border:1px solid rgba(255,176,196,.35); box-shadow:0 10px 26px rgba(158,63,255,.18); min-height: 150px; display:flex; flex-direction:column; justify-content:space-between; }
-        .node .title { font-size:18px; margin:0; }
+        .node .title { font-size:18px; margin:0; font-weight: 700; }
         .node .meta { color:#ffb0c4; font-size:12px; font-weight:700; margin-top:4px; }
-        @media (max-width:1200px){ .flowchart{ grid-template-columns: 1fr; } }
+
+        /* Rules Layout */
         .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
         @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
         .rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
         .dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
-        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; }
+
+        /* Button Style */
+        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; border: none; cursor: pointer; }
         .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
-        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+
+        /* Contacts Layout */
         footer { margin-top:40px; padding:24px 0; }
         .contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
-        @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
+        @media (min-width:720px){ .contacts{ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
-        /* Modal */
-        .modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 5000; }
-        .modal.is-open { display: grid; }
-        .modal-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.7); backdrop-filter: blur(5px); }
-        .modal-dialog { position:relative; width:min(92vw, 720px); background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:hidden; }
-        .modal-header { display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid rgba(255,176,196,.25); }
-        .modal-body { padding:18px; }
-        .close-btn { background:transparent; border:1px solid rgba(255,176,196,.35); color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer; }
-        .form-grid { display:grid; gap:12px; grid-template-columns: 1fr; }
-        @media (min-width:720px){ .form-grid{ grid-template-columns: 1fr 1fr; } }
-        label { font-size:13px; color:#cfcfcf; display:block; margin-bottom:6px; }
-        input, select { width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,176,196,.28); background:#000; color:#fff; }
-        select.no-arrow { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: none; padding-right: 12px; cursor: default; }
-        select[disabled] { opacity: 1; color:#fff; border-color: rgba(255,176,196,.28); }
-        .full { grid-column: 1 / -1; }
-        .help { font-size:12px; color:#9d9d9d; }
-        .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }
+        
+        /* Visual Enhancement Styles (Price Card and Info Grid) */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -65,10 +125,10 @@
         </div>
         <h1 class="title">PATTERN PLAY 🖼️🌀</h1>
         <p class="tagline">Unleash your imagination through chance and repetition</p>
-        <p>Pattern Play is an interactive art event that invites participants to discover creativity through spontaneity and repetition. Using stencils, stamps, or everyday objects, participants generate abstract compositions that transform random impressions into meaningful visual patterns. The event celebrates the playful side of design, encouraging participants to experiment with textures and embrace unpredictability.</p>
+        <p>Pattern Play is an interactive art event where participants discover creativity through spontaneity and repetition, generating abstract compositions that transform random impressions into meaningful visual patterns. Themes include "Chaos to Order" and "Rhythm of Lines". The event celebrates the playful side of design, encouraging participants to experiment with textures and embrace unpredictability.</p>
 
         <div class="subchips">
-            <span class="chip">Team Size: 2 Members</span>
+            <span class="chip">Team Size: 1-2 Members</span>
             <span class="chip">Registration Fee: 500 INR</span>
             <a class="btn" href="../events.html">← Back to Events</a>
         </div>
@@ -80,27 +140,52 @@
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Schedule</h2>
-            <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
-                <p><strong>Department:</strong> School of Architecture</p>
-                <p><strong>Registration Fee:</strong> ₹500</p>
-                <p><strong>Team Size:</strong> 2 persons</p>
+            <h2>Event Details & Structure</h2>
+            
+            <!-- Prize Money Card -->
+            <div class="price-card">
+                <div class="price-label">Total Prize Pool</div>
+                <div class="price-amount">₹15,000</div>
+                <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                    Exciting cash prizes for the most innovative design.
+                </div>
             </div>
-        </div>
 
-        <div class="card" style="margin-top:24px;">
-            <h2>Event Structure</h2>
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">👥</span>
+                    <div class="info-card-title">Team Size</div>
+                    <div class="info-card-value">1-2 members</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💰</span>
+                    <div class="info-card-title">Registration Fee</div>
+                    <div class="info-card-value">₹500</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🎯</span>
+                    <div class="info-card-title">Rounds</div>
+                    <div class="info-card-value">2 Rounds (Prelims + Finals)</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">⏱️</span>
+                    <div class="info-card-title">Time Limit</div>
+                    <div class="info-card-value">1.5 hr (R1), 2 hr (R2)</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top:24px; color:#fff;">Round Structure</h3>
             <div class="flowchart">
                 <div class="node">
                     <p class="title">Spontaneous Creation – Prelims</p>
                     <p class="meta">Round 1</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Objective: Translate randomness into an abstract pattern. Choose from given themes: Chaos to Order or Rhythm of Lines. Time limit: 1.5 hours.</p>
+                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Objective: Translate randomness into an abstract pattern. Choose from given themes: "Chaos to Order" or "Rhythm of Lines". Time limit: 1.5 hours.</p>
                 </div>
                 <div class="node">
                     <p class="title">Thematic Refinement – Finals</p>
                     <p class="meta">Round 2</p>
-                    <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">A surprise theme will be given on the spot (e.g., Nature Prints, Urban Impressions, Symmetry in Motion). Time limit: 2 hours. Participants must refine their artwork into a cohesive thematic piece.</p>
+                    <p style="margin:6px 0 0 0; font-size:13px; color:#cfcfcf;">A surprise theme will be given on the spot (e.g., "Nature Prints", "Urban Impressions"). Time limit: 2 hours. Participants must refine their artwork into a cohesive thematic piece.</p>
                 </div>
             </div>
         </div>
@@ -108,11 +193,11 @@
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                <div class="rule"><span class="dot"></span><div>Eligibility: Open to all students; individual or team of 2 members permitted.</div></div>
-                <div class="rule"><span class="dot"></span><div>Materials: Basic tools (stencils, stamps, sponges, and sheets) will be provided. Participants may bring additional simple objects for stamping or texturing (e.g., leaves, coins, bottle caps).</div></div>
-                <div class="rule"><span class="dot"></span><div>Originality: Plagiarism or use of pre-made molds/templates is prohibited.</div></div>
+                <div class="rule"><span class="dot"></span><div>Eligibility: Open to all students; individual or team of 1-2 members permitted.</div></div>
+                <div class="rule"><span class="dot"></span><div>Materials: Basic tools (stencils, stamps, sponges, and sheets) will be provided.</div></div>
+                <div class="rule"><span class="dot"></span><div>External Items: Participants may bring additional simple objects for stamping or texturing (e.g., leaves, coins, bottle caps).</div></div>
+                <div class="rule"><span class="dot"></span><div>Originality: Plagiarism or use of pre-made molds/templates is strictly prohibited.</div></div>
                 <div class="rule"><span class="dot"></span><div>Judging Criteria: Creativity, interpretation of theme, composition, and innovation in material use.</div></div>
-                <div class="rule"><span class="dot"></span><div>Jury Decision: The decision of the jury panel will be final and binding.</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -121,145 +206,26 @@
         </div>
 
         <footer class="wrap" style="padding-left:0;padding-right:0;">
-            <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
+            <h2 class="title" style="font-size:28px; margin:24px 0 12px;">Contact Us</h2>
             <div class="contacts">
                 <div class="contact-card">
-                    <strong>Neha Manoj</strong><br />
-                    <a href="tel:+916361279078">636 127 9078</a>
+                    <strong>Akshara Shaju (Student POC)</strong><br />
+                    <a href="tel:+917736814154">773 681 4154</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Vridhi P</strong><br />
+                    <strong>Vridhi P (Student POC)</strong><br />
                     <a href="tel:+918248493218">824 849 3218</a>
+                </div>
+                <div class="contact-card">
+                    <strong>Prof. Rashmi (Faculty Coordinator)</strong><br />
+                    <a href="tel:+919986406742">998 640 6742</a>
+                </div>
+                <div class="contact-card">
+                    <strong>Prof. Chaitra K B (Faculty Coordinator)</strong><br />
+                    <a href="tel:+919742200346">974 220 0346</a>
                 </div>
             </div>
         </footer>
     </div>
-
-    <!-- Registration Modal (Architecture Department) -->
-    <div class="modal" id="registerModal" aria-hidden="true">
-        <div class="modal-backdrop" id="closeBackdrop"></div>
-        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h3 id="modalTitle" style="margin:0; color:#fff;">Architecture Registration</h3>
-                <button class="close-btn" id="closeModal">Close</button>
-            </div>
-            <form id="deptForm" class="modal-body">
-                <div class="form-grid">
-                    <div class="full">
-                        <label>Department</label>
-                        <input type="text" name="department" value="Architecture" readonly />
-                    </div>
-                    <div class="full">
-                        <label>Select Event *</label>
-                        <select name="event" class="no-arrow" required>
-                            <option value="">Choose...</option>
-                            <option value="Revival Outlook">Revival Outlook</option>
-                            <option value="Pixel Perspectives">Pixel Perspectives</option>
-                            <option value="Pattern Play">Pattern Play</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Name of Team *</label>
-                        <input name="teamName" required />
-                    </div>
-                    <div>
-                        <label>Full Name of Participant/ POC *</label>
-                        <input name="pocName" required />
-                    </div>
-                    <div>
-                        <label>Contact Number (WhatsApp enabled) *</label>
-                        <input name="phone" type="tel" pattern="[0-9\s+()-]{8,15}" required />
-                    </div>
-                    <div>
-                        <label>No. of Team Members * (1-2 for Pattern Play)</label>
-                        <input name="teamSize" type="number" min="1" max="2" value="2" required />
-                    </div>
-                    <div class="full">
-                        <label>Name of College/University *</label>
-                        <input name="college" required />
-                    </div>
-                    <div class="full">
-                        <label>Contingent / Non-contingent *</label>
-                        <select name="contingent" required>
-                            <option value="">Choose...</option>
-                            <option>Contingent</option>
-                            <option>Non-contingent</option>
-                        </select>
-                        <div class="help">One shared form per department (Architecture) covering all events.</div>
-                    </div>
-                </div>
-                <div class="actions">
-                    <button type="button" class="close-btn" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        (function(){
-            const openBtn = document.getElementById('openRegister');
-            const modal = document.getElementById('registerModal');
-            const closeBtn = document.getElementById('closeModal');
-            const closeBackdrop = document.getElementById('closeBackdrop');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const form = document.getElementById('deptForm');
-
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQipsJ2kFu93nFHUIugL61GJrSpaLLbZHmhKesRPJ13yP7pCKom-JcOzYpgd2tMFZLnw/exec';
-
-            function open(){ modal.classList.add('is-open'); }
-            function close(){ modal.classList.remove('is-open'); }
-
-            openBtn.addEventListener('click', open);
-            closeBtn.addEventListener('click', close);
-            closeBackdrop.addEventListener('click', close);
-            cancelBtn.addEventListener('click', close);
-
-            // Fix event to current page
-            const eventSelect = form.elements['event'];
-            const fixedEventName = 'Pattern Play';
-            if (eventSelect) {
-                eventSelect.value = fixedEventName;
-                eventSelect.disabled = true;
-                const hiddenEvent = document.createElement('input');
-                hiddenEvent.type = 'hidden';
-                hiddenEvent.name = 'event';
-                hiddenEvent.value = fixedEventName;
-                form.appendChild(hiddenEvent);
-            }
-
-            // Enforce team size 1-2
-            const teamSizeInput = form.elements['teamSize'];
-            if (teamSizeInput) {
-                teamSizeInput.addEventListener('input', () => {
-                    const val = parseInt(teamSizeInput.value || '2', 10);
-                    if (val > 2) teamSizeInput.value = '2';
-                    if (val < 1 || isNaN(val)) teamSizeInput.value = '1';
-                });
-            }
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const data = new FormData(form);
-                const val = parseInt((data.get('teamSize')||'2'), 10);
-                if (val < 1 || val > 2) {
-                    alert('For Pattern Play, team size must be between 1-2 members.');
-                    return;
-                }
-                data.append('sourcePage', 'pattern-play');
-                if (SCRIPT_URL) {
-                    fetch(SCRIPT_URL, { method: 'POST', body: data })
-                        .then(async (res) => {
-                            const text = await res.text().catch(() => '');
-                            console.debug('[pattern-play] submit response:', res.status, text);
-                        })
-                        .catch((err) => console.error('[pattern-play] submit error:', err));
-                }
-                alert('Application submitted successfully. We will reach out on WhatsApp.');
-                form.reset();
-                close();
-            });
-        })();
-    </script>
 </body>
 </html>

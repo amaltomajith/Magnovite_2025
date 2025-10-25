@@ -28,6 +28,76 @@
         @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
         /* Modal */
         .modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 5000; }
         .modal.is-open { display: grid; }
@@ -68,12 +138,33 @@
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Schedule</h2>
+            <h2>Event Details</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
-                <p><strong>Department:</strong> Automobile Engineering</p>
-                <p><strong>Registration Fee:</strong> ₹700</p>
-                <p><strong>Team Size:</strong> 2-5 persons</p>
+                <p><strong>Description:</strong> A thrilling competition designed for both aspiring engineers and racing enthusiasts to showcase their remote-control (RC) car design and driving skills. Teams will navigate RC cars through a challenging off-road track featuring sharp turns, jumps, and dynamic obstacles, testing precision, speed, and control in real time.</p>
+            </div>
+            
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">🏎️</span>
+                    <div class="info-card-title">Team Size</div>
+                    <div class="info-card-value">2-5 members</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💰</span>
+                    <div class="info-card-title">Registration</div>
+                    <div class="info-card-value">₹700 per team</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🚗</span>
+                    <div class="info-card-title">RC Cars</div>
+                    <div class="info-card-value">Self-built required</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">⚡</span>
+                    <div class="info-card-title">Max Voltage</div>
+                    <div class="info-card-value">16.8V</div>
+                </div>
             </div>
         </div>
 
@@ -89,9 +180,10 @@
         <div class="card" style="margin-top:24px;">
             <h2>Rules & Regulations</h2>
             <div class="rules">
-                <div class="rule"><span class="dot"></span><div><strong>General Rules:</strong> Teams of 2–5; valid student ID required; pre-registration mandatory; RC car compliance check; unsportsmanlike conduct leads to disqualification; judges' decisions are final; organizers may clarify/modify rules.</div></div>
-                <div class="rule"><span class="dot"></span><div><strong>RC Car Specifications:</strong> Own RC/E-RC cars (self-built or bought); max dimensions 30×30 cm (5% tolerance); max operating voltage 16.8V; IC engine cars and LEGO kits not allowed.</div></div>
-                <div class="rule"><span class="dot"></span><div><strong>Game Rules & Penalties:</strong> Best lap time in qualifiers counts for finals. Penalties: +5s per wheel outside boundary; +5s per hand touch; +10s if car exits arena (restart at same spot); +25s for skipping an obstacle; intentional track/car damage leads to disqualification.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>General Rules:</strong> Each team can have 2–5 members (students from different institutes can team up). Every participant must carry a valid student ID card. Teams must register online before the deadline (no on-spot registrations).</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>RC Car Specifications:</strong> Participants must bring their own RC / E-RC cars (self-built or bought). Maximum dimensions: 30 cm × 30 cm (5% tolerance allowed). Maximum operating voltage: 16.8V. IC engine cars and LEGO kits are not allowed.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Game Rules:</strong> Each team's best lap time across qualifying rounds will be considered for finals.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Penalties:</strong> +5 seconds for each wheel touching outside the boundary line. +5 seconds for each hand touch. +10 seconds if the car goes out of the arena (must be placed back at the same spot). +25 seconds for skipping an obstacle. Intentional damage to the track or cars will result in disqualification.</div></div>
             </div>
 
             <div style="display:flex; justify-content:flex-start; margin-top:16px;">
@@ -112,7 +204,7 @@
                 </div>
                 <div class="contact-card">
                     <strong>Event Faculty Coordinator</strong><br />
-                    Dr. Niranjan – <a href="tel:+919164779971">91647 79971</a>
+                    Dr. Niranjan S J – <a href="tel:+919438807709">94388 07709</a>
                 </div>
             </div>
         </footer>

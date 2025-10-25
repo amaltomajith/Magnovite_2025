@@ -22,6 +22,80 @@
 		@media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1 fr 1 fr; } }
 		.contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
 		.contact-card a{ color:#ffb0c4; text-decoration:none; }
+		
+		/* Visual Enhancement Styles */
+		.price-card { 
+			background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+			border: 1px solid rgba(255,176,196,0.3);
+			border-radius: 16px;
+			padding: 20px;
+			margin: 16px 0;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+		.price-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+		}
+		.price-amount { 
+			font-size: 32px; 
+			font-weight: 800; 
+			color: #ffb0c4; 
+			margin: 8px 0;
+			text-shadow: 0 0 20px rgba(255,176,196,0.3);
+		}
+		.price-label { 
+			color: #cfcfcf; 
+			font-size: 14px; 
+			font-weight: 600; 
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		.info-grid { 
+			display: grid; 
+			gap: 16px; 
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+			margin: 20px 0; 
+		}
+		.info-card { 
+			background: rgba(0,0,0,0.3); 
+			border: 1px solid rgba(255,176,196,0.2); 
+			border-radius: 12px; 
+			padding: 16px; 
+			text-align: center;
+			transition: all 0.3s ease;
+		}
+		.info-card:hover { 
+			transform: translateY(-4px); 
+			border-color: rgba(255,176,196,0.4);
+			box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+		}
+		.info-card-icon { 
+			font-size: 24px; 
+			margin-bottom: 8px; 
+			display: block;
+		}
+		.info-card-title { 
+			font-weight: 700; 
+			color: #fff; 
+			margin-bottom: 4px; 
+			font-size: 16px;
+		}
+		.info-card-value { 
+			color: #ffb0c4; 
+			font-size: 14px; 
+			font-weight: 600;
+		}
+		.rules { display:grid; gap:10px; grid-template-columns: 1fr; }
+		@media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
+		.rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
+		.dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
 		/* Button style (match engineering events) */
 		.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; }
 		.btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
@@ -47,12 +121,58 @@
 		</div>
 
 		<div class="card" style="margin-top:24px;">
-			<h2>Event Schedule</h2>
+			<h2>Event Details</h2>
 			<div style="margin-bottom: 20px;">
-				<p><strong>Date:</strong> November 27th, 2025</p>
-				<p><strong>Department:</strong> BBA & MBA</p>
-				<p><strong>Registration Fee:</strong> ₹500</p>
-				<p><strong>Team Size:</strong> 2 persons</p>
+				<p><strong>Description:</strong> More than just celebrating birthdays and farewells, this event is packed with mind-boggling HR cases, hiring sprees, and wicked treasure hunts. Participants will get a preview into the HR field and put their thinking caps on to tackle real-world human resource challenges, recruitment scenarios, and organizational behavior puzzles.</p>
+			</div>
+			
+			<!-- Prize Money Card -->
+			<div class="price-card">
+				<div class="price-label">Total Prize Pool</div>
+				<div class="price-amount">₹15,000</div>
+				<div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+					1st: ₹7,000 | 2nd: ₹5,000 | 3rd: ₹3,000
+				</div>
+			</div>
+			
+			<!-- Info Grid -->
+			<div class="info-grid">
+				<div class="info-card">
+					<span class="info-card-icon">👥</span>
+					<div class="info-card-title">Team Size</div>
+					<div class="info-card-value">2 members</div>
+				</div>
+				<div class="info-card">
+					<span class="info-card-icon">💰</span>
+					<div class="info-card-title">Registration</div>
+					<div class="info-card-value">₹500</div>
+				</div>
+				<div class="info-card">
+					<span class="info-card-icon">🎯</span>
+					<div class="info-card-title">Focus</div>
+					<div class="info-card-value">HR Management</div>
+				</div>
+				<div class="info-card">
+					<span class="info-card-icon">🏆</span>
+					<div class="info-card-title">Competition</div>
+					<div class="info-card-value">National Level</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card" style="margin-top:24px;">
+			<h2>Rules & Regulations</h2>
+			<div class="rules">
+				<div class="rule"><span class="dot"></span><div>The fest is open to Undergraduate & Postgraduate students of all disciplines.</div></div>
+				<div class="rule"><span class="dot"></span><div>Multiple teams from the same university are allowed to participate in the fest.</div></div>
+				<div class="rule"><span class="dot"></span><div>The fest is a national inter-collegiate competition and is not open to CHRIST (Deemed-to-be-University) students.</div></div>
+				<div class="rule"><span class="dot"></span><div>All participants are required to carry their respective College ID cards and valid ID Proof.</div></div>
+				<div class="rule"><span class="dot"></span><div>Online registrations can be done via the registration link provided in the e-mail or at magnovite.christuniversity.in.</div></div>
+				<div class="rule"><span class="dot"></span><div>Registration fees must only be paid through the South Indian Bank Portal link available on the registration form.</div></div>
+				<div class="rule"><span class="dot"></span><div>Participants have to report to the assigned venue at least 30 minutes prior to the start of the event.</div></div>
+				<div class="rule"><span class="dot"></span><div>If you have registered for more than one event, please make sure the event timings do not overlap.</div></div>
+				<div class="rule"><span class="dot"></span><div>Unethical practices such as plagiarism, vulgarity, obscenity and violence of any kind will lead to immediate disqualification.</div></div>
+				<div class="rule"><span class="dot"></span><div>The decision of the judges will be final and binding for all events.</div></div>
 			</div>
 		</div>
 
@@ -63,14 +183,18 @@
 		<footer class="wrap" style="padding-left:0;padding-right:0;">
 			<h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
 			<div class="contacts">
-				<div class="contact-card">
-					<strong>Rwijuta Bhadra</strong><br />
-					<a href="tel:+918649843193">86498 43193</a>
-				</div>
-				<div class="contact-card">
-					<strong>Rucha Rao</strong><br />
-					<a href="tel:+919819992945">98199 92945</a>
-				</div>
+			<div class="contact-card">
+				<strong>Niharika K R</strong><br />
+				<a href="tel:+919353851461">93538 51461</a>
+			</div>
+			<div class="contact-card">
+				<strong>K Sakthishree</strong><br />
+				<a href="tel:+919886063153">98860 63153</a>
+			</div>
+			<div class="contact-card">
+				<strong>Mishi Khandelwal</strong><br />
+				<a href="tel:+919981867464">99818 67464</a>
+			</div>
 			</div>
 		</footer>
 	</div>

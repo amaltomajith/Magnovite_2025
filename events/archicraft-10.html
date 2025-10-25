@@ -39,6 +39,76 @@
         @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
         .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
         .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
         /* Modal */
         .modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 5000; }
         .modal.is-open { display: grid; }
@@ -107,12 +177,42 @@
         </div>
 
         <div class="card" style="margin-top:24px;">
-            <h2>Event Schedule</h2>
+            <h2>Event Details</h2>
             <div style="margin-bottom: 20px;">
-                <p><strong>Date:</strong> November 26th, 2025</p>
-                <p><strong>Department:</strong> Civil Engineering</p>
-                <p><strong>Registration Fee:</strong> ₹300</p>
-                <p><strong>Team Size:</strong> 1-2 persons</p>
+                <p><strong>Description:</strong> The event is designed to evaluate participant's drafting skills in AutoCAD, testing them across speed, accuracy, and creativity, while reflecting real-world civil engineering tasks. Participants will showcase their ability to transform conceptual information into precise and professional drawings.</p>
+            </div>
+            
+            <!-- Prize Money Card -->
+            <div class="price-card">
+                <div class="price-label">Total Prize Pool</div>
+                <div class="price-amount">₹10,000</div>
+                <div style="color: #cfcfcf; font-size: 14px; margin-top: 8px;">
+                    1st: ₹5,000 | 2nd: ₹3,000 | 3rd: ₹2,000
+                </div>
+            </div>
+            
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">👥</span>
+                    <div class="info-card-title">Team Size</div>
+                    <div class="info-card-value">Individual or 2 members</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💰</span>
+                    <div class="info-card-title">Registration</div>
+                    <div class="info-card-value">₹300</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">⏱️</span>
+                    <div class="info-card-title">Duration</div>
+                    <div class="info-card-value">4 hours</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💻</span>
+                    <div class="info-card-title">Software</div>
+                    <div class="info-card-value">AutoCAD</div>
+                </div>
             </div>
         </div>
 
@@ -139,16 +239,19 @@
             <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
             <div class="contacts">
                 <div class="contact-card">
-                    <strong>Sania V Fernandes</strong><br />
-                    <a href="tel:+917887886622">788 788 6622</a>
+                    <strong>Amandeep</strong><br />
+                    <a href="tel:+916376863225">6376 863 225</a><br />
+                    <a href="mailto:amandeep.p@btech.christuniversity.in">amandeep.p@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
-                    <strong>Malavika Manoj</strong><br />
-                    <a href="tel:+919605096092">96050 96092</a>
+                    <strong>Ribi S</strong><br />
+                    <a href="tel:+919345861539">93458 61539</a><br />
+                    <a href="mailto:ribi.s@btech.christuniversity.in">ribi.s@btech.christuniversity.in</a>
                 </div>
                 <div class="contact-card">
                     <strong>Faculty Coordinator</strong><br />
-                    Srinidhi L Kumar – <a href="tel:+919886587788">98865 87788</a>
+                    Srinidhi L Kumar – <a href="tel:+919886587788">98865 87788</a><br />
+                    <a href="mailto:srinidhi.kumar@christuniversity.in">srinidhi.kumar@christuniversity.in</a>
                 </div>
             </div>
         </footer>

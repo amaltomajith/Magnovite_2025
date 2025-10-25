@@ -11,6 +11,12 @@
         * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
         .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+        @media (max-width: 768px) {
+            .wrap { padding: 16px 12px 60px; }
+            .node { padding: 12px 14px; min-height: 120px; }
+            .node .title { font-size: 16px; }
+            .node p { font-size: 12px; }
+        }
         .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
         .title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
         .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
@@ -25,7 +31,8 @@
         .node { position:relative; padding:14px 16px; border-radius:12px; background:#000; border:1px solid rgba(255,176,196,.35); box-shadow:0 10px 26px rgba(158,63,255,.18); min-height: 150px; display:flex; flex-direction:column; justify-content:space-between; }
         .node .title { font-size:18px; margin:0; }
         .node .meta { color:#ffb0c4; font-size:12px; font-weight:700; margin-top:4px; }
-        @media (max-width:1200px){ .flowchart{ grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width:1400px){ .flowchart{ grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width:1000px){ .flowchart{ grid-template-columns: repeat(2, 1fr); } }
         @media (max-width:720px){ .flowchart{ grid-template-columns: 1fr; } }
         .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
         @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
@@ -44,6 +51,11 @@
         .modal.is-open { display: grid; }
         .modal-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.7); backdrop-filter: blur(5px); }
         .modal-dialog { position:relative; width:min(92vw, 720px); background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:hidden; }
+        @media (max-width: 768px) {
+            .modal-dialog { width: 95vw; margin: 10px; }
+            .modal-body { padding: 12px; }
+            .modal-header { padding: 12px 14px; }
+        }
         .modal-header { display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid rgba(255,176,196,.25); }
         .modal-body { padding:18px; }
         .close-btn { background:transparent; border:1px solid rgba(255,176,196,.35); color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer; }
