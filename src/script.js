@@ -4,22 +4,63 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
       window.gsap.registerPlugin(window.ScrollTrigger);
     }
 
-    // First step
-    window.gsap.from(".hero-main-container", {
-      scale: 1.45,
-      duration: 2.8,
-      ease: "power3.out",
-    });
+    // Wait for video to be ready before starting animations
+    function waitForVideoAndStartAnimations() {
+      const video = document.querySelector('.hero-main-image');
+      
+      // If video is already ready, start animations immediately
+      if (video && video.readyState >= 4) {
+        startAnimations();
+        return;
+      }
+      
+      // Otherwise, wait for video to be ready
+      if (video) {
+        const checkVideoReady = () => {
+          if (video.readyState >= 4) {
+            console.log('Video ready for scroll animations');
+            startAnimations();
+          } else {
+                // Check again in 100ms
+                setTimeout(checkVideoReady, 100);
+          }
+        };
+        
+        // Start checking after a short delay
+        setTimeout(checkVideoReady, 200);
+        
+        // Fallback: start animations after 3 seconds regardless
+        setTimeout(() => {
+          console.log('Starting animations - video timeout fallback');
+          startAnimations();
+        }, 3000);
+      } else {
+        // No video, start animations immediately
+        startAnimations();
+      }
+    }
 
-    window.gsap.to(".overlay", {
-      opacity: 0,
-      duration: 2.8,
-      ease: "power3.out",
-      onComplete: () => {
-        document.body.style.overflow = "visible";
-        document.body.style.overflowX = "hidden";
-      },
-    });
+    function startAnimations() {
+      // First step
+      window.gsap.from(".hero-main-container", {
+        scale: 1.45,
+        duration: 2.8,
+        ease: "power3.out",
+      });
+
+      window.gsap.to(".overlay", {
+        opacity: 0,
+        duration: 2.8,
+        ease: "power3.out",
+        onComplete: () => {
+          document.body.style.overflow = "visible";
+          document.body.style.overflowX = "hidden";
+        },
+      });
+    }
+
+    // Start the animation process
+    waitForVideoAndStartAnimations();
 
     // Scroll Indicator
     const scrollIndicator = document.querySelector(".scroll-indicator");
