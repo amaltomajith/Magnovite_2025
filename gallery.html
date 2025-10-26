@@ -114,7 +114,7 @@
 					overflow: hidden !important;
 					clip: rect(0, 0, 0, 0) !important;
 				}
-				
+
 				.toggle-line {
 					display: none !important;
 					visibility: hidden !important;
@@ -129,7 +129,7 @@
 				.simple-mobile-toggle {
 					display: flex;
 				}
-				
+
 				.toggle-line {
 					display: block;
 				}
@@ -203,19 +203,6 @@
 					text-decoration: none;
 					color: #fff;
 					font-weight: 600;
-					min-height: 56px;
-					width: calc(100% - 32px);
-					box-sizing: border-box;
-				}
-
-				.nav-menu__links .nav-link-text {
-					flex: 1;
-					text-align: left;
-					font-size: 16px;
-					line-height: 1.2;
-					white-space: nowrap;
-					overflow: hidden;
-					text-overflow: ellipsis;
 				}
 
 				.nav-menu__links .nav-link:hover {
@@ -315,7 +302,8 @@
 				box-sizing: border-box;
 			}
 
-			html, body {
+			html,
+			body {
 				font-family: 'Poppins', sans-serif;
 				background: var(--bg-dark);
 				color: white;
@@ -367,6 +355,38 @@
 				border-bottom: 1px solid rgba(199, 128, 255, 0.3);
 			}
 
+			/* Scroll indicators */
+			.marquee-row::before {
+				content: '← Swipe or scroll to explore →';
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				background: rgba(0, 0, 0, 0.8);
+				color: var(--accent-light);
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 600;
+				z-index: 10;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+				pointer-events: none;
+			}
+
+			.marquee-row:hover::before {
+				opacity: 1;
+			}
+
+			@media (max-width: 768px) {
+				.marquee-row::before {
+					content: '← Swipe to explore →';
+					font-size: 0.7rem;
+					padding: 6px 12px;
+					top: 8px;
+					right: 15px;
+				}
+			}
+
 			.marquee-content {
 				display: flex;
 				align-items: center;
@@ -389,9 +409,53 @@
 				animation-duration: 40s;
 			}
 
-			/* Pause animation on hover */
-			.marquee-row:hover .marquee-content {
+			/* Pause animation on hover and during user interaction */
+			.marquee-row:hover .marquee-content,
+			.marquee-row.user-scrolling .marquee-content {
 				animation-play-state: paused;
+			}
+
+			/* Enable horizontal scrolling */
+			.marquee-row {
+				cursor: grab;
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+
+			.marquee-row:active {
+				cursor: grabbing;
+			}
+
+			.marquee-row.user-scrolling {
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+
+			.marquee-row.user-scrolling .marquee-content {
+				animation: none !important;
+				width: max-content;
+			}
+
+			/* Custom scrollbar for better UX */
+			.marquee-row::-webkit-scrollbar {
+				height: 8px;
+			}
+
+			.marquee-row::-webkit-scrollbar-track {
+				background: rgba(199, 128, 255, 0.1);
+				border-radius: 4px;
+			}
+
+			.marquee-row::-webkit-scrollbar-thumb {
+				background: var(--accent-focus);
+				border-radius: 4px;
+				transition: background 0.3s ease;
+			}
+
+			.marquee-row::-webkit-scrollbar-thumb:hover {
+				background: var(--accent-light);
 			}
 
 			.gallery-image {
@@ -402,6 +466,7 @@
 				transition: transform 0.3s ease, filter 0.3s ease;
 				border: 2px solid transparent;
 				flex-shrink: 0;
+				pointer-events: auto;
 			}
 
 			.gallery-image:hover {
@@ -503,8 +568,8 @@
 				height: 68px;
 			}
 
-			.footer-divider { 
-				display: none; 
+			.footer-divider {
+				display: none;
 			}
 
 			.footer-columns {
@@ -548,7 +613,6 @@
 					align-items: start;
 				}
 			}
-
 		</style>
 	</head>
 	<body class="page-gallery">
@@ -570,15 +634,19 @@
 						</a>
 						<div class="nav-menu">
 							<!-- New Simple Mobile Menu Toggle Button -->
-							<button class="simple-mobile-toggle" id="simpleMobileToggle" aria-label="Toggle mobile menu">
+							<button
+								class="simple-mobile-toggle"
+								id="simpleMobileToggle"
+								aria-label="Toggle mobile menu"
+							>
 								<span class="toggle-line"></span>
 								<span class="toggle-line"></span>
 								<span class="toggle-line"></span>
 							</button>
-							
+
 							<!-- Mobile Navigation Backdrop -->
 							<div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
-							
+
 							<div class="nav-menu__links" id="navMenuLinks">
 								<a href="index.html" class="link nav-link">
 									<span class="nav-link-text">Home</span>
@@ -610,7 +678,11 @@
 										></path>
 									</svg>
 								</a>
-								<a href="https://drive.google.com/drive/folders/1TNWVrJHn9yUxaFPlXjRroZUuLViHofQZ?usp=sharing" target="_blank" class="link nav-link">
+								<a
+									href="https://drive.google.com/drive/folders/1TNWVrJHn9yUxaFPlXjRroZUuLViHofQZ?usp=sharing"
+									target="_blank"
+									class="link nav-link"
+								>
 									<span class="nav-link-text">Brochure</span>
 									<svg
 										class="nav-link-arrow"
@@ -674,17 +746,17 @@
 				<div class="marquee-row marquee-right">
 					<div class="marquee-content" id="marquee-1"></div>
 				</div>
-				
+
 				<!-- Row 2 - Moving Left -->
 				<div class="marquee-row marquee-left">
 					<div class="marquee-content" id="marquee-2"></div>
 				</div>
-				
+
 				<!-- Row 3 - Moving Right -->
 				<div class="marquee-row marquee-right">
 					<div class="marquee-content" id="marquee-3"></div>
 				</div>
-				
+
 				<!-- Row 4 - Moving Left -->
 				<div class="marquee-row marquee-left">
 					<div class="marquee-content" id="marquee-4"></div>
@@ -695,84 +767,84 @@
 		<!-- Image Modal -->
 		<div id="image-modal" class="modal">
 			<span class="close-modal">&times;</span>
-			<img class="modal-content" id="expanded-image">
+			<img class="modal-content" id="expanded-image" />
 		</div>
 
 		<!-- Footer -->
-			<footer class="site-footer">
-				<div class="footer-inner">
-					<div class="footer-brand">
-						<img
-							src="./public/magnovite.png"
-							alt="Magnovite"
-							class="footer-logo"
-						/>
-						<span class="footer-divider"></span>
-						<img
-							src="./public/christwhite.png"
-							alt="Christ University"
-							class="footer-logo footer-logo--christ"
-						/>
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<div class="footer-brand">
+					<img
+						src="./public/magnovite.png"
+						alt="Magnovite"
+						class="footer-logo"
+					/>
+					<span class="footer-divider"></span>
+					<img
+						src="./public/christwhite.png"
+						alt="Christ University"
+						class="footer-logo footer-logo--christ"
+					/>
+				</div>
+				<div class="footer-columns">
+					<div class="footer-col footer-about">
+						<p>
+							Christ University, Kengeri Campus offers a blend of traditional
+							and world-class facilities, including department-specific
+							buildings, libraries, research facilities, and residences, amidst
+							the city's greenery.
+						</p>
 					</div>
-					<div class="footer-columns">
-						<div class="footer-col footer-about">
-							<p>
-								Christ University, Kengeri Campus offers a blend of traditional
-								and world-class facilities, including department-specific
-								buildings, libraries, research facilities, and residences,
-								amidst the city's greenery.
-							</p>
-						</div>
-						<div class="footer-col footer-desc">
-							<p>
-								MAGNOVITE, the 15th edition of CHRIST University's flagship
-								fest, fosters creativity, collaboration, healthy competition,
-								and positive connections among participants.
-							</p>
-							<div class="footer-social">
-								<a
-									href="https://www.linkedin.com/company/christ-university-faculty-of-engineering/?originalSubdomain=in"
-									target="_blank"
-									class="social-link linkedin-link"
-									aria-label="LinkedIn"
+					<div class="footer-col footer-desc">
+						<p>
+							MAGNOVITE, the 15th edition of CHRIST University's flagship fest,
+							fosters creativity, collaboration, healthy competition, and
+							positive connections among participants.
+						</p>
+						<div class="footer-social">
+							<a
+								href="https://www.linkedin.com/company/christ-university-faculty-of-engineering/?originalSubdomain=in"
+								target="_blank"
+								class="social-link linkedin-link"
+								aria-label="LinkedIn"
+							>
+								<svg
+									class="social-icon"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
 								>
-									<svg
-										class="social-icon"
-										width="20"
-										height="20"
-										viewBox="0 0 24 24"
-										fill="none"
-									>
-										<path
-											d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-											fill="currentColor"
-										/>
-									</svg>
-								</a>
-								<a
-									href="https://www.instagram.com/magnovite.kengeri/"
-									target="_blank"
-									class="social-link instagram-link"
-									aria-label="Instagram"
+									<path
+										d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+										fill="currentColor"
+									/>
+								</svg>
+							</a>
+							<a
+								href="https://www.instagram.com/magnovite.kengeri/"
+								target="_blank"
+								class="social-link instagram-link"
+								aria-label="Instagram"
+							>
+								<svg
+									class="social-icon"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
 								>
-									<svg
-										class="social-icon"
-										width="20"
-										height="20"
-										viewBox="0 0 24 24"
-										fill="none"
-									>
-										<path
-											d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-											fill="currentColor"
-										/>
-									</svg>
-								</a>
-							</div>
+									<path
+										d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+										fill="currentColor"
+									/>
+								</svg>
+							</a>
 						</div>
 					</div>
 				</div>
-			</footer>
+			</div>
+		</footer>
 
 		<script>
 			// Gallery Images Array
@@ -817,7 +889,7 @@
 				'./public/Gallery/38_400x400.jpg',
 				'./public/Gallery/39_400x400.jpg',
 				'./public/Gallery/40_400x400.jpg',
-				'./public/Gallery/41_400x400.jpg'
+				'./public/Gallery/41_400x400.jpg',
 			];
 
 			// Function to create image elements
@@ -833,22 +905,33 @@
 			// Function to populate marquee rows
 			function populateMarqueeRows() {
 				const imagesPerRow = Math.ceil(galleryImages.length / 4);
-				
+
 				for (let i = 1; i <= 4; i++) {
 					const marqueeContent = document.getElementById(`marquee-${i}`);
 					if (!marqueeContent) continue;
-					
+
 					const startIndex = (i - 1) * imagesPerRow;
-					const endIndex = Math.min(startIndex + imagesPerRow, galleryImages.length);
-					
+					const endIndex = Math.min(
+						startIndex + imagesPerRow,
+						galleryImages.length
+					);
+
 					// Create images for this row
 					const rowImages = galleryImages.slice(startIndex, endIndex);
-					
+
 					// Duplicate images multiple times to create seamless scrolling
-					const duplicatedImages = [...rowImages, ...rowImages, ...rowImages, ...rowImages];
-					
+					const duplicatedImages = [
+						...rowImages,
+						...rowImages,
+						...rowImages,
+						...rowImages,
+					];
+
 					duplicatedImages.forEach((imageSrc, index) => {
-						const img = createImageElement(imageSrc, `Gallery Image ${startIndex + (index % rowImages.length) + 1}`);
+						const img = createImageElement(
+							imageSrc,
+							`Gallery Image ${startIndex + (index % rowImages.length) + 1}`
+						);
 						marqueeContent.appendChild(img);
 					});
 				}
@@ -876,6 +959,9 @@
 				// Populate marquee rows
 				populateMarqueeRows();
 
+				// Initialize scroll controls
+				initializeScrollControls();
+
 				// Modal close events
 				const modal = document.getElementById('image-modal');
 				const closeBtn = document.querySelector('.close-modal');
@@ -899,19 +985,105 @@
 					}
 				});
 			});
+
+			// Function to initialize scroll controls for each marquee row
+			function initializeScrollControls() {
+				const marqueeRows = document.querySelectorAll('.marquee-row');
+				
+				marqueeRows.forEach((row, index) => {
+					let isUserScrolling = false;
+					let scrollTimeout;
+					let startX = 0;
+					let startScrollLeft = 0;
+					let isDragging = false;
+
+					// Mouse events for desktop
+					row.addEventListener('mousedown', (e) => {
+						isDragging = true;
+						startX = e.pageX - row.offsetLeft;
+						startScrollLeft = row.scrollLeft;
+						enableUserScrolling(row);
+						e.preventDefault();
+					});
+
+					row.addEventListener('mousemove', (e) => {
+						if (!isDragging) return;
+						e.preventDefault();
+						const x = e.pageX - row.offsetLeft;
+						const walk = (x - startX) * 2; // Scroll speed multiplier
+						row.scrollLeft = startScrollLeft - walk;
+					});
+
+					row.addEventListener('mouseup', () => {
+						isDragging = false;
+						resetScrollTimeout(row);
+					});
+
+					row.addEventListener('mouseleave', () => {
+						isDragging = false;
+						resetScrollTimeout(row);
+					});
+
+					// Touch events for mobile
+					row.addEventListener('touchstart', (e) => {
+						startX = e.touches[0].pageX - row.offsetLeft;
+						startScrollLeft = row.scrollLeft;
+						enableUserScrolling(row);
+					});
+
+					row.addEventListener('touchmove', (e) => {
+						const x = e.touches[0].pageX - row.offsetLeft;
+						const walk = (x - startX) * 1.5; // Scroll speed multiplier for touch
+						row.scrollLeft = startScrollLeft - walk;
+						e.preventDefault();
+					});
+
+					row.addEventListener('touchend', () => {
+						resetScrollTimeout(row);
+					});
+
+					// Wheel event for horizontal scrolling
+					row.addEventListener('wheel', (e) => {
+						e.preventDefault();
+						enableUserScrolling(row);
+						row.scrollLeft += e.deltaY;
+						resetScrollTimeout(row);
+					});
+
+					// Manual scroll event
+					row.addEventListener('scroll', () => {
+						enableUserScrolling(row);
+						resetScrollTimeout(row);
+					});
+
+					function enableUserScrolling(element) {
+						element.classList.add('user-scrolling');
+						clearTimeout(scrollTimeout);
+					}
+
+					function resetScrollTimeout(element) {
+						clearTimeout(scrollTimeout);
+						scrollTimeout = setTimeout(() => {
+							element.classList.remove('user-scrolling');
+						}, 3000); // Resume animation after 3 seconds of inactivity
+					}
+				});
+			}
 		</script>
 		<script>
 			// Mobile Navigation JavaScript
-			document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('DOMContentLoaded', function () {
 				const mobileMenuToggle = document.getElementById('simpleMobileToggle');
 				const navMenuLinks = document.getElementById('navMenuLinks');
 				const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-				const navLinks = document.querySelectorAll('.nav-menu__links .nav-link');
+				const navLinks = document.querySelectorAll(
+					'.nav-menu__links .nav-link'
+				);
 
 				// Toggle mobile menu
 				function toggleMobileMenu() {
 					const isOpen = navMenuLinks.classList.contains('is-open');
-					
+
 					if (isOpen) {
 						closeMobileMenu();
 					} else {
@@ -939,7 +1111,7 @@
 
 				// Event listeners
 				if (mobileMenuToggle) {
-					mobileMenuToggle.addEventListener('click', function(e) {
+					mobileMenuToggle.addEventListener('click', function (e) {
 						e.stopPropagation();
 						toggleMobileMenu();
 					});
@@ -951,37 +1123,42 @@
 
 				// Prevent menu from closing when clicking on the menu itself
 				if (navMenuLinks) {
-					navMenuLinks.addEventListener('click', function(e) {
+					navMenuLinks.addEventListener('click', function (e) {
 						e.stopPropagation();
 					});
 				}
 
 				// Close menu when clicking on nav links
-				navLinks.forEach(link => {
+				navLinks.forEach((link) => {
 					link.addEventListener('click', closeMobileMenu);
 				});
 
 				// Close menu on escape key
-				document.addEventListener('keydown', function(e) {
-					if (e.key === 'Escape' && navMenuLinks.classList.contains('is-open')) {
+				document.addEventListener('keydown', function (e) {
+					if (
+						e.key === 'Escape' &&
+						navMenuLinks.classList.contains('is-open')
+					) {
 						closeMobileMenu();
 					}
 				});
 
 				// Close menu when clicking anywhere else on the screen
-				document.addEventListener('click', function(e) {
+				document.addEventListener('click', function (e) {
 					if (navMenuLinks.classList.contains('is-open')) {
 						// Check if click is outside the menu and hamburger button
-						if (!navMenuLinks.contains(e.target) && 
-							!mobileMenuToggle.contains(e.target) && 
-							!mobileNavBackdrop.contains(e.target)) {
+						if (
+							!navMenuLinks.contains(e.target) &&
+							!mobileMenuToggle.contains(e.target) &&
+							!mobileNavBackdrop.contains(e.target)
+						) {
 							closeMobileMenu();
 						}
 					}
 				});
 
 				// Close menu on window resize (if screen becomes larger)
-				window.addEventListener('resize', function() {
+				window.addEventListener('resize', function () {
 					if (window.innerWidth > 768) {
 						closeMobileMenu();
 					}
