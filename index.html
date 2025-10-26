@@ -51,16 +51,8 @@
 				border-top: 4px solid #ffffff;
 				border-radius: 50%;
 				animation: spin 1s linear infinite;
-				margin-bottom: 20px;
 			}
 
-			.loading-text {
-				color: #ffffff;
-				font-size: 14px;
-				font-weight: 500;
-				opacity: 0.8;
-				animation: pulse 2s ease-in-out infinite;
-			}
 
 			@keyframes spin {
 				0% {
@@ -71,14 +63,6 @@
 				}
 			}
 
-			@keyframes pulse {
-				0%, 100% {
-					opacity: 0.8;
-				}
-				50% {
-					opacity: 0.4;
-				}
-			}
 
 			/* Hide main content initially */
 			body.loading .main-content {
@@ -658,7 +642,6 @@
 		<!-- Enhanced Loading Screen -->
 		<div class="loading-screen" id="loadingScreen">
 			<div class="loading-spinner"></div>
-			<div class="loading-text">Loading video...</div>
 		</div>
 
 		<!-- Main Content -->
@@ -1088,11 +1071,6 @@
 				video.preload = 'auto';
 				video.load();
 
-				// Update loading text based on progress
-				const loadingText = document.querySelector('.loading-text');
-				if (loadingText) {
-					loadingText.textContent = 'Preparing video...';
-				}
 
 				// Multiple event listeners for comprehensive loading detection
 				const loadingEvents = [
@@ -1108,24 +1086,6 @@
 				loadingEvents.forEach(eventType => {
 					video.addEventListener(eventType, function() {
 						console.log(`Video event: ${eventType}, readyState: ${video.readyState}`);
-						
-						// Update loading text based on event
-						if (loadingText) {
-							switch(eventType) {
-								case 'loadedmetadata':
-									loadingText.textContent = 'Loading video metadata...';
-									break;
-								case 'loadeddata':
-									loadingText.textContent = 'Buffering video...';
-									break;
-								case 'canplaythrough':
-									loadingText.textContent = 'Video ready!';
-									break;
-								case 'progress':
-									loadingText.textContent = 'Downloading video...';
-									break;
-							}
-						}
 						
 						// Check if video is ready after each event
 						if (checkVideoCompletelyLoaded()) {
