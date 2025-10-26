@@ -175,61 +175,11 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
   }
 }
 
-// Promo video modal logic
-const promoCta = document.querySelector('.promo-cta');
-const promoModal = document.getElementById('promoModal');
-const promoVideo = document.getElementById('promoVideo');
-const promoCloseBtn = document.querySelector('.promo-modal__close');
-
 // Main video modal logic
 const mainVideo = document.querySelector('.hero-main-image');
 const videoModal = document.getElementById('videoModal');
 const mainVideoModal = document.getElementById('mainVideoModal');
 const videoCloseBtn = document.querySelector('.video-modal__close');
-
-function openPromoModal() {
-  if (!promoModal) return;
-  promoModal.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-  if (promoVideo) {
-    promoVideo.currentTime = 0;
-    promoVideo.play().catch(() => {});
-  }
-}
-
-function closePromoModal() {
-  if (!promoModal) return;
-  promoModal.classList.remove('is-open');
-  document.body.style.overflow = 'visible';
-  if (promoVideo) {
-    promoVideo.pause();
-  }
-}
-
-if (promoCta) {
-  promoCta.addEventListener('click', openPromoModal);
-}
-
-if (promoModal) {
-  promoModal.addEventListener('click', (e) => {
-    const target = e.target;
-    if (!(target instanceof Element)) return;
-    // Close when clicking on elements marked with data-close (including their children)
-    if (target.closest('[data-close]')) {
-      closePromoModal();
-      return;
-    }
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && promoModal.classList.contains('is-open')) {
-      closePromoModal();
-    }
-  });
-}
-
-if (promoCloseBtn) {
-  promoCloseBtn.addEventListener('click', closePromoModal);
-}
 
 // Store original scroll position for mobile
 let originalScrollPosition = 0;
