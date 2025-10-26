@@ -728,6 +728,15 @@
 									</svg>
 								</a>
 							</div>
+
+							<!-- Magnovite Logo on Right -->
+							<a href="index.html" class="nav-right-logo">
+								<img
+									src="./public/magnovite.png"
+									alt="Magnovite"
+									class="nav-right-logo-img"
+								/>
+							</a>
 						</div>
 					</div>
 				</nav>
@@ -989,7 +998,7 @@
 			// Function to initialize scroll controls for each marquee row
 			function initializeScrollControls() {
 				const marqueeRows = document.querySelectorAll('.marquee-row');
-				
+
 				marqueeRows.forEach((row, index) => {
 					let isUserScrolling = false;
 					let scrollTimeout;

@@ -114,7 +114,7 @@
 					overflow: hidden !important;
 					clip: rect(0, 0, 0, 0) !important;
 				}
-				
+
 				.toggle-line {
 					display: none !important;
 					visibility: hidden !important;
@@ -129,7 +129,7 @@
 				.simple-mobile-toggle {
 					display: flex;
 				}
-				
+
 				.toggle-line {
 					display: block;
 				}
@@ -196,33 +196,33 @@
 					z-index: 1001;
 				}
 
-			.nav-menu__links .nav-link {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 16px 24px;
-				margin: 4px 16px;
-				border-radius: 12px;
-				background: rgba(255, 255, 255, 0.05);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				transition: all 0.3s ease;
-				text-decoration: none;
-				color: #fff;
-				font-weight: 600;
-				min-height: 56px;
-				width: calc(100% - 32px);
-				box-sizing: border-box;
-			}
+				.nav-menu__links .nav-link {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 16px 24px;
+					margin: 4px 16px;
+					border-radius: 12px;
+					background: rgba(255, 255, 255, 0.05);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					transition: all 0.3s ease;
+					text-decoration: none;
+					color: #fff;
+					font-weight: 600;
+					min-height: 56px;
+					width: calc(100% - 32px);
+					box-sizing: border-box;
+				}
 
-			.nav-menu__links .nav-link-text {
-				flex: 1;
-				text-align: left;
-				font-size: 16px;
-				line-height: 1.2;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-			}
+				.nav-menu__links .nav-link-text {
+					flex: 1;
+					text-align: left;
+					font-size: 16px;
+					line-height: 1.2;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 
 				.nav-menu__links .nav-link:hover {
 					background: rgba(255, 0, 255, 0.1);
@@ -258,8 +258,8 @@
 				}
 
 				/* Hide lines on desktop to avoid stray dots */
-				.hamburger-line { 
-					display: none; 
+				.hamburger-line {
+					display: none;
 				}
 
 				/* Ensure button is completely hidden on desktop */
@@ -281,7 +281,7 @@
 						overflow: hidden !important;
 						clip: rect(0, 0, 0, 0) !important;
 					}
-					
+
 					.hamburger-line {
 						display: none !important;
 						visibility: hidden !important;
@@ -332,8 +332,10 @@
 						display: flex;
 					}
 					/* Show lines on mobile */
-					.hamburger-line { display: block; }
-					
+					.hamburger-line {
+						display: block;
+					}
+
 					.nav-menu__links {
 						display: flex;
 					}
@@ -1852,15 +1854,19 @@
 						</a>
 						<div class="nav-menu">
 							<!-- New Simple Mobile Menu Toggle Button -->
-							<button class="simple-mobile-toggle" id="simpleMobileToggle" aria-label="Toggle mobile menu">
+							<button
+								class="simple-mobile-toggle"
+								id="simpleMobileToggle"
+								aria-label="Toggle mobile menu"
+							>
 								<span class="toggle-line"></span>
 								<span class="toggle-line"></span>
 								<span class="toggle-line"></span>
 							</button>
-							
+
 							<!-- Mobile Navigation Backdrop -->
 							<div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
-							
+
 							<div class="nav-menu__links" id="navMenuLinks">
 								<a href="index.html" class="link nav-link">
 									<span class="nav-link-text">Home</span>
@@ -1892,7 +1898,11 @@
 										></path>
 									</svg>
 								</a>
-								<a href="https://drive.google.com/drive/folders/1TNWVrJHn9yUxaFPlXjRroZUuLViHofQZ?usp=sharing" target="_blank" class="link nav-link">
+								<a
+									href="https://drive.google.com/drive/folders/1TNWVrJHn9yUxaFPlXjRroZUuLViHofQZ?usp=sharing"
+									target="_blank"
+									class="link nav-link"
+								>
 									<span class="nav-link-text">Brochure</span>
 									<svg
 										class="nav-link-arrow"
@@ -1938,13 +1948,22 @@
 									</svg>
 								</a>
 							</div>
+
+							<!-- Magnovite Logo on Right -->
+							<a href="index.html" class="nav-right-logo">
+								<img
+									src="./public/magnovite.png"
+									alt="Magnovite"
+									class="nav-right-logo-img"
+								/>
+							</a>
 						</div>
 					</div>
 				</nav>
 			</div>
 		</header>
 
-        <div class="about-container">
+		<div class="about-container">
 			<!-- Hero Section -->
 			<section class="about-hero">
 				<div class="about-hero-content">
@@ -2048,14 +2067,23 @@
 							>
 							</iframe>
 							<div class="map-actions">
-								<a 
-									href="https://www.google.com/maps?q=12.8630352,77.4379779" 
-									target="_blank" 
+								<a
+									href="https://www.google.com/maps?q=12.8630352,77.4379779"
+									target="_blank"
 									class="open-maps-btn"
 									aria-label="Open location in Google Maps"
 								>
-									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-right: 8px;">
-										<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										style="margin-right: 8px"
+									>
+										<path
+											d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+											fill="currentColor"
+										/>
 									</svg>
 									Open in Google Maps
 								</a>
@@ -2637,16 +2665,18 @@
 		</script>
 		<script>
 			// Mobile Navigation JavaScript
-			document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('DOMContentLoaded', function () {
 				const mobileMenuToggle = document.getElementById('simpleMobileToggle');
 				const navMenuLinks = document.getElementById('navMenuLinks');
 				const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-				const navLinks = document.querySelectorAll('.nav-menu__links .nav-link');
+				const navLinks = document.querySelectorAll(
+					'.nav-menu__links .nav-link'
+				);
 
 				// Toggle mobile menu
 				function toggleMobileMenu() {
 					const isOpen = navMenuLinks.classList.contains('is-open');
-					
+
 					if (isOpen) {
 						closeMobileMenu();
 					} else {
@@ -2671,7 +2701,7 @@
 					document.body.classList.remove('mobile-menu-open');
 					document.body.style.overflow = 'visible';
 					document.body.style.overflowX = 'hidden';
-					
+
 					// Refresh ScrollTrigger to ensure proper scroll behavior
 					if (typeof window !== 'undefined' && window.ScrollTrigger) {
 						window.ScrollTrigger.refresh();
@@ -2680,7 +2710,7 @@
 
 				// Event listeners
 				if (mobileMenuToggle) {
-					mobileMenuToggle.addEventListener('click', function(e) {
+					mobileMenuToggle.addEventListener('click', function (e) {
 						e.stopPropagation();
 						toggleMobileMenu();
 					});
@@ -2692,37 +2722,42 @@
 
 				// Prevent menu from closing when clicking on the menu itself
 				if (navMenuLinks) {
-					navMenuLinks.addEventListener('click', function(e) {
+					navMenuLinks.addEventListener('click', function (e) {
 						e.stopPropagation();
 					});
 				}
 
 				// Close menu when clicking on nav links
-				navLinks.forEach(link => {
+				navLinks.forEach((link) => {
 					link.addEventListener('click', closeMobileMenu);
 				});
 
 				// Close menu on escape key
-				document.addEventListener('keydown', function(e) {
-					if (e.key === 'Escape' && navMenuLinks.classList.contains('is-open')) {
+				document.addEventListener('keydown', function (e) {
+					if (
+						e.key === 'Escape' &&
+						navMenuLinks.classList.contains('is-open')
+					) {
 						closeMobileMenu();
 					}
 				});
 
 				// Close menu when clicking anywhere else on the screen
-				document.addEventListener('click', function(e) {
+				document.addEventListener('click', function (e) {
 					if (navMenuLinks.classList.contains('is-open')) {
 						// Check if click is outside the menu and hamburger button
-						if (!navMenuLinks.contains(e.target) && 
-							!mobileMenuToggle.contains(e.target) && 
-							!mobileNavBackdrop.contains(e.target)) {
+						if (
+							!navMenuLinks.contains(e.target) &&
+							!mobileMenuToggle.contains(e.target) &&
+							!mobileNavBackdrop.contains(e.target)
+						) {
 							closeMobileMenu();
 						}
 					}
 				});
 
 				// Close menu on window resize (if screen becomes larger)
-				window.addEventListener('resize', function() {
+				window.addEventListener('resize', function () {
 					if (window.innerWidth > 768) {
 						closeMobileMenu();
 					}
