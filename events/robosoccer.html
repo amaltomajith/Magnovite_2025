@@ -109,6 +109,11 @@
             font-size: 14px; 
             font-weight: 600;
         }
+        /* Prize cards (match other events) */
+        .prize-grid { display:grid; gap:12px; grid-template-columns: repeat(3, 1fr); margin:16px 0; }
+        .prize-card { background:#000; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:16px; text-align:center; }
+        .prize-card .amount { font-size:24px; font-weight:800; color:#ffb0c4; margin:8px 0; }
+        .prize-card .position { font-size:14px; color:#cfcfcf; }
     </style>
 </head>
 <body>
@@ -176,6 +181,24 @@
                     <p class="title">Soccer Matches</p>
                     <p class="meta">Competition</p>
                     <p style="margin:6px 0 0; font-size:13px; color:#cfcfcf;">Teams compete in soccer matches with robots playing against each other to score goals within set time limits.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Prize Money</h2>
+            <div class="prize-grid">
+                <div class="prize-card">
+                    <div class="position">1st Prize</div>
+                    <div class="amount">₹10,000</div>
+                </div>
+                <div class="prize-card">
+                    <div class="position">2nd Prize</div>
+                    <div class="amount">₹7,000</div>
+                </div>
+                <div class="prize-card">
+                    <div class="position">3rd Prize</div>
+                    <div class="amount">₹5,000</div>
                 </div>
             </div>
         </div>
