@@ -89,6 +89,16 @@
 				will-change: transform, opacity;
 			}
 
+			/* Stabilize hero container and logo to prevent wobble */
+			.hero-main-container,
+			.hero-main-logo,
+			.hero-1-container {
+				backface-visibility: hidden;
+				transform: translateZ(0);
+				will-change: transform, opacity;
+				transform-origin: 50% 50% 0;
+			}
+
 			/* Always hide native video controls (playbar) */
 			video.hero-main-image::-webkit-media-controls-enclosure,
 			video.hero-main-image::-webkit-media-controls,

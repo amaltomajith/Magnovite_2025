@@ -4,6 +4,11 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
       window.gsap.registerPlugin(window.ScrollTrigger);
     }
 
+    // Hint GSAP to use GPU where possible to avoid wobble
+    if (window.gsap && typeof window.gsap.defaults === 'function') {
+      window.gsap.defaults({ force3D: true });
+    }
+
     // Wait for video to be ready before starting animations
     function waitForVideoAndStartAnimations() {
       const video = document.querySelector('.hero-main-image');
@@ -105,11 +110,11 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
     });
 
     // Need to ensure that the scale is like this otherwise some flicks happens
-    tl.set(".hero-main-container", { scale: 1.25 });
-    tl.to(".hero-main-container", { scale: 1, duration: 1 });
+    tl.set(".hero-main-container", { scale: 1.25, transformOrigin: "50% 50% 0" });
+    tl.to(".hero-main-container", { scale: 1, duration: 1, transformOrigin: "50% 50% 0" });
     tl.to(
       ".hero-main-logo",
-      { opacity: 0, duration: 0.5 },
+      { opacity: 0, duration: 0.5, transformOrigin: "50% 50% 0" },
       "<"
     );
     tl.to(
