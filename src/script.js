@@ -373,10 +373,10 @@ if (mainVideoModal) {
   mainVideoModal.addEventListener('loadedmetadata', updateProgress);
 }
 
-// Add click handler to main video
+// Disable opening modal from the hero background video to avoid showing playback/pause UI
+// Intentionally do not attach any click handler on the hero video
 if (mainVideo) {
-  mainVideo.addEventListener('click', openVideoModal);
-  mainVideo.style.cursor = 'pointer';
+  mainVideo.style.cursor = 'default';
 }
 
 // Add modal event handlers
