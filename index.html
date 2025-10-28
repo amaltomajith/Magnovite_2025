@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home - Magnovite'25</title>
+		<link rel="preload" as="video" href="./public/initialbg.mp4" type="video/mp4" />
 		<link
 			rel="icon"
 			type="image/png"
@@ -82,6 +83,20 @@
 				object-fit: cover;
 				width: 100%;
 				height: 100%;
+				backface-visibility: hidden;
+				transform: translateZ(0);
+				contain: paint;
+			}
+
+			/* Always hide native video controls (playbar) */
+			video.hero-main-image::-webkit-media-controls-enclosure,
+			video.hero-main-image::-webkit-media-controls,
+			video.hero-main-image::-webkit-media-controls-panel,
+			video.hero-main-image::-moz-media-controls,
+			video.hero-main-image::-ms-media-controls {
+				display: none !important;
+				opacity: 0 !important;
+				visibility: hidden !important;
 			}
 
 			/* Video poster fallback */
@@ -780,7 +795,7 @@
 						<h1 class="hero-main-logo" aria-label="Are you excited?">
 							<img src="./public/excited.png" alt="Are you excited?" />
 						</h1>
-						<video class="hero-main-image" autoplay muted loop playsinline preload="auto">
+						<video class="hero-main-image" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload noplaybackrate nofullscreen noremoteplayback">
 							<source src="./public/initialbg.mp4" type="video/mp4" />
 							Your browser does not support the video tag.
 						</video>
@@ -1020,6 +1035,14 @@
 			let videoLoadTimeout;
 			let loadingScreenHidden = false;
 
+			// Force remove any native controls/playbar just in case
+			if (video) {
+				video.removeAttribute('controls');
+				video.setAttribute('controlslist', 'nodownload noplaybackrate nofullscreen noremoteplayback');
+				video.setAttribute('disablepictureinpicture', '');
+				video.setAttribute('disableremoteplayback', '');
+			}
+
 			// Enhanced function to hide loading screen
 			function hideLoadingScreen() {
 				if (loadingScreenHidden) return;
@@ -1067,8 +1090,10 @@
 					return;
 				}
 
-				// Set video attributes for better loading
+				// Set video attributes for better loading and smooth playback
 				video.preload = 'auto';
+				video.muted = true; // ensure autoplay
+				video.playsInline = true;
 				video.load();
 
 
@@ -1131,6 +1156,19 @@
 					// Even if autoplay fails, check if video is loaded
 					setTimeout(checkVideoCompletelyLoaded, 1000);
 				});
+
+				// Nudge decoder to keep pipeline primed (helps avoid stutter)
+				let lastTime = 0;
+				const keepAlive = () => {
+					if (!video) return;
+					const t = video.currentTime;
+					if (video.readyState < 4 && !video.paused) {
+						video.currentTime = Math.max(0, t - 0.000001);
+					}
+					lastTime = t;
+					requestAnimationFrame(keepAlive);
+				};
+				requestAnimationFrame(keepAlive);
 			}
 
 			// Start the video loading process
