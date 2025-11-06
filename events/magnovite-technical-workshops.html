@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magnovite Technical Workshops – Magnovite 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+        .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
+        .title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
+        .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
+        .hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
+        .hero img { width:100%; height:100%; display:block; object-fit:cover; }
+        .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
+        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+        .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
+        @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
+        .rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
+        .dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
+        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; border:none; cursor:pointer; }
+        .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
+        .info-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin: 20px 0; }
+        .info-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,176,196,0.2); border-radius: 12px; padding: 16px; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 120px; }
+        .info-card:hover { transform: translateY(-4px); border-color: rgba(255,176,196,0.4); box-shadow: 0 8px 25px rgba(158,63,255,0.2); }
+        .info-card-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+        .info-card-title { font-weight: 700; color: #fff; margin-bottom: 4px; font-size: 16px; }
+        .info-card-value { color: #ffb0c4; font-size: 14px; font-weight: 600; }
+        footer { margin-top:40px; padding:24px 0; }
+        .contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
+        @media (min-width:720px){ .contacts{ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } }
+        .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
+        .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        /* Session cards */
+        .session-grid { display:grid; gap:18px; grid-template-columns: 1fr; margin-top: 12px; }
+        @media (min-width: 860px){ .session-grid{ grid-template-columns: 1fr 1fr; } }
+        .session-card { position:relative; background:#0b0b0b; border:1px solid rgba(255,176,196,.28); border-radius:16px; overflow:hidden; box-shadow: 0 18px 48px rgba(158,63,255,.18); }
+        .session-head { padding:16px 18px; border-bottom:1px solid rgba(255,176,196,.18); display:flex; align-items:center; gap:12px; }
+        .session-badge { font-weight:800; color:#fff; padding:8px 12px; border-radius:999px; font-size:12px; border:1px solid rgba(255,176,196,.35); background: linear-gradient(135deg, rgba(158,63,255,.25) 0%, rgba(255,0,255,.18) 100%); }
+        .session-title { margin:0; color:#fff; font-size:18px; font-weight:800; }
+        .session-body { padding:16px 18px; }
+        .session-meta { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px; }
+        .session-meta .chip { border-color: rgba(255,176,196,.28); }
+        .session-list { display:grid; gap:10px; grid-template-columns: 1fr; }
+        .session-list .rule { background:#000; border-color: rgba(255,176,196,.22); }
+        .session-footer { padding:12px 18px 16px; border-top:1px solid rgba(255,176,196,.12); color:#cfcfcf; font-size:13px; }
+        /* Subtle theme accents */
+        .theme-1 .session-badge{ background:linear-gradient(135deg, rgba(0,153,255,.25), rgba(158,63,255,.25)); }
+        .theme-2 .session-badge{ background:linear-gradient(135deg, rgba(0,230,118,.25), rgba(158,63,255,.25)); }
+        .theme-3 .session-badge{ background:linear-gradient(135deg, rgba(255,193,7,.25), rgba(158,63,255,.25)); }
+        .theme-4 .session-badge{ background:linear-gradient(135deg, rgba(255,64,129,.25), rgba(158,63,255,.25)); }
+        .theme-5 .session-badge{ background:linear-gradient(135deg, rgba(100,181,246,.25), rgba(158,63,255,.25)); }
+        .theme-6 .session-badge{ background:linear-gradient(135deg, rgba(255,138,101,.25), rgba(158,63,255,.25)); }
+        .theme-7 .session-badge{ background:linear-gradient(135deg, rgba(149,117,205,.25), rgba(158,63,255,.25)); }
+    </style>
+    
+</head>
+<body>
+    <div class="wrap">
+        <div class="subchips">
+            <span class="chip">Engineering</span>
+            <span class="chip">Hands-on Workshops</span>
+            <a class="btn" href="../events.html">← Back to Events</a>
+        </div>
+
+        <h1 class="title">Magnovite Technical Workshops</h1>
+        <p class="tagline">Intensive, hands-on training across tech and engineering</p>
+
+        <div style="margin-top:16px;">
+            <div class="hero">
+                <img src="../public/events/technicalworkshop.jpg" alt="Magnovite Technical Workshops" />
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Registration</h2>
+            <p>Register here for Magnovite Technical Workshops. These hands-on sessions are open to external students from schools and colleges. Submit one form per participant and choose one workshop per time slot. Enter your full name as on your ID and use an active email and phone number. Seats are limited, first come first served, and your seat is confirmed after fee payment. You will receive a confirmation email after verification. Bring your laptop, charger, and ID to the venue. Attend the full session to receive your certificate. By submitting this form, you agree to the event rules and code of conduct. Your data is used only for event coordination.</p>
+            <div style="display:flex; gap:12px; margin-top:12px;">
+                <button class="btn" type="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfRn8j1mQ-yHIT2LWgRz_MZa0uTI7Rdu4ij1kyavDgT6JNA-Q/viewform?usp=header', '_blank')">Register Now</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Key Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">📅</span>
+                    <div class="info-card-title">Date</div>
+                    <div class="info-card-value">28-11-2025</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">📍</span>
+                    <div class="info-card-title">Venue</div>
+                    <div class="info-card-value">CHRIST (Deemed to be University), Bangalore Kengeri Campus</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">💳</span>
+                    <div class="info-card-title">Registration Fee</div>
+                    <div class="info-card-value">₹500</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🎓</span>
+                    <div class="info-card-title">Eligibility</div>
+                    <div class="info-card-value">Open to external school & college students</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>About the Workshops</h2>
+            <p>The Magnovite Tech Workshops are a series of intensive training sessions covering cutting-edge topics in technology and engineering, designed to equip participants with specialized, practical knowledge across various domains.</p>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Workshop Offerings</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div>Smart Construction: Modern Materials, Seismic-Resilient Techniques, and 3D Printing Innovations (Civil Engineering/Architecture)</div></div>
+                <div class="rule"><span class="dot"></span><div>Intelligent Industrial Systems: IIoT (Industrial Internet of Things) and Automation (EEE/AIML)</div></div>
+                <div class="rule"><span class="dot"></span><div>Mastering Modern AI from Prompting to Autonomous Systems: Building the Next Wave of AI Innovation (AIML/CSE)</div></div>
+                <div class="rule"><span class="dot"></span><div>Inside the Engine: Understanding How Cars Work (Automobile/Mechanical Engineering)</div></div>
+                <div class="rule"><span class="dot"></span><div>Coin Cell Fabrication and Testing (Electronics/Materials Science)</div></div>
+                <div class="rule"><span class="dot"></span><div>Future Mobility: C.A.S.E (Connected, Autonomous, Shared, Electric) (Automobile/EEE)</div></div>
+                <div class="rule"><span class="dot"></span><div>RED Teaming</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Magnovite Tech Workshops: Highlights and Details</h2>
+            <div class="session-grid">
+                <div class="session-card theme-1">
+                    <div class="session-head">
+                        <span class="session-badge">1</span>
+                        <h3 class="session-title">Intelligent Industrial Systems: IoT, IIoT and Automation</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: Electronics & Communication Engineering</span>
+                            <span class="chip">POC: Dr. Praghash K</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Real-time data acquisition in intelligent systems</div></div>
+                            <div class="rule"><span class="dot"></span><div>Human-centered automation and data logging for industrial safety</div></div>
+                            <div class="rule"><span class="dot"></span><div>Intelligent communication across IIoT networks</div></div>
+                            <div class="rule"><span class="dot"></span><div>Cloud integration and remote decision-making in automation systems</div></div>
+                            <div class="rule"><span class="dot"></span><div>Real-time control and remote operation in modern industries</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card theme-2">
+                    <div class="session-head">
+                        <span class="session-badge">2</span>
+                        <h3 class="session-title">Smart Construction: Materials, Seismic Techniques & 3D Printing</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: Civil Engineering / School of Architecture (SoA)</span>
+                            <span class="chip">POC: Dr. Beulah M & Anay A</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Introduction to Smart Construction Concepts</div></div>
+                            <div class="rule"><span class="dot"></span><div>Modern Construction Materials</div></div>
+                            <div class="rule"><span class="dot"></span><div>Seismic-Resilient Design and Techniques</div></div>
+                            <div class="rule"><span class="dot"></span><div>3D Printing for smart and modular construction — Hands on</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card theme-3">
+                    <div class="session-head">
+                        <span class="session-badge">3</span>
+                        <h3 class="session-title">Mastering Modern AI: Prompting → Autonomous Systems</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: AI, ML and Data Science</span>
+                            <span class="chip">POC: Dr. Rekha V, Dr Shiju George</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Advanced Prompting & RAG with Gemini Gems</div></div>
+                            <div class="rule"><span class="dot"></span><div>Multi-Model exploration; track with Comet; run LLMs locally</div></div>
+                            <div class="rule"><span class="dot"></span><div>No-Code AI MVP with Vibe Code</div></div>
+                            <div class="rule"><span class="dot"></span><div>Agentic AI automations for real-world impact</div></div>
+                            <div class="rule"><span class="dot"></span><div>Build voice agents with MCP & system prompts</div></div>
+                        </div>
+                    </div>
+                    <div class="session-footer">Detailed: RAG with Gemini Gems; multi-model tracking with Comet; local OSS LLMs; no-code MVP; agent workflows; MCP-based voice agents.</div>
+                </div>
+
+                <div class="session-card theme-4">
+                    <div class="session-head">
+                        <span class="session-badge">4</span>
+                        <h3 class="session-title">Future Mobility – C.A.S.E</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: Electrical & Electronics Engineering</span>
+                            <span class="chip">POC: Dr. Parag Jose C</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Connected, Autonomous, Shared, and Electric mobility</div></div>
+                            <div class="rule"><span class="dot"></span><div>Hands-on demos and smart vehicle case studies</div></div>
+                            <div class="rule"><span class="dot"></span><div>AI-driven mobility, EV powertrains, connectivity</div></div>
+                            <div class="rule"><span class="dot"></span><div>Industry perspectives on sustainable transport</div></div>
+                            <div class="rule"><span class="dot"></span><div>Interactive sessions with experts</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card theme-5">
+                    <div class="session-head">
+                        <span class="session-badge">5</span>
+                        <h3 class="session-title">Workshop in RED Teaming</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: Computer Science & Engineering</span>
+                            <span class="chip">POC: Dr. Daniel D</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Red Team objectives, scope, and ROE</div></div>
+                            <div class="rule"><span class="dot"></span><div>Red-Blue collaboration & Purple Teaming</div></div>
+                            <div class="rule"><span class="dot"></span><div>Kill Chain: Recon → Exploit → Escalate → Persist → Exfiltrate</div></div>
+                            <div class="rule"><span class="dot"></span><div>Intro to SIEM, EDR, and behavior analytics</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card theme-6">
+                    <div class="session-head">
+                        <span class="session-badge">6</span>
+                        <h3 class="session-title">Inside the Engine: Understanding How Cars Work</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: Mechanical & Automobile Engineering</span>
+                            <span class="chip">POC: Dr. Shivakumar S, Dr. Pradeep Kumar G S</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Hands-on learning experience</div></div>
+                            <div class="rule"><span class="dot"></span><div>Fundamentals of vehicle mechanics</div></div>
+                            <div class="rule"><span class="dot"></span><div>Engine operation & efficiency</div></div>
+                            <div class="rule"><span class="dot"></span><div>Career insight into automobile engineering</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card theme-7">
+                    <div class="session-head">
+                        <span class="session-badge">7</span>
+                        <h3 class="session-title">Coin Cell Fabrication and Testing</h3>
+                    </div>
+                    <div class="session-body">
+                        <div class="session-meta">
+                            <span class="chip">Dept: CoE in Frontier Material Research</span>
+                            <span class="chip">POC: Dr. Benson K Money, Dr Sunitha VR</span>
+                        </div>
+                        <div class="session-list">
+                            <div class="rule"><span class="dot"></span><div>Basics of Solid State Ionics</div></div>
+                            <div class="rule"><span class="dot"></span><div>Hands-on coin cell fabrication and assembly</div></div>
+                            <div class="rule"><span class="dot"></span><div>Battery material prep and electrode coating</div></div>
+                            <div class="rule"><span class="dot"></span><div>Cell crimping, sealing, and testing procedures</div></div>
+                            <div class="rule"><span class="dot"></span><div>Electrochemical performance evaluation</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="wrap" style="padding-left:0;padding-right:0;">
+            <h2 class="title" style="font-size:28px; margin:24px 0 12px;">Contact Information</h2>
+            <div class="contacts">
+                <div class="contact-card">
+                    <strong>Coordinator 1: Linu Lonappan</strong><br />
+                    <a href="tel:+919778503235">9778503235</a>
+                </div>
+                <div class="contact-card">
+                    <strong>Coordinator 2: Jerin Geo Jacob</strong><br />
+                    <a href="tel:+919447797379">9447797379</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
+
