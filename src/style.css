@@ -328,14 +328,14 @@ body.page-gallery {
 }
 
 .nav-link:hover {
-	color: #ff00ff;
-	text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+	color: #ffffff;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .nav-link:focus {
 	outline: none;
-	color: #ff00ff;
-	text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+	color: #ffffff;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* Nav dividers */

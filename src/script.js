@@ -104,7 +104,7 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
         scrub: 2.2, // slightly slower scrub for longer presence
         pin: true,
         start: "top top",
-        end: "+=2300", // extend distance so hero stays a bit longer
+        end: "+=2300", // revert to original distance; content after pin flows normally
         ease: "none",
       },
     });
@@ -216,6 +216,15 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
           rgba(32, 31, 66, 0) 140.599vh)`, duration: 3 },
       "<1.2"
     );
+    // Animate YouTube play button to appear smoothly with the description
+    tl.set(".youtube-play-button", { opacity: 0, y: 20 });
+    tl.to(".youtube-play-button", { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1.5, 
+      ease: "power2.out" 
+    }, "<+=0.3");
+    // Content after the pinned scroll (e.g., Masala Coffee section, promo video) flows normally
   } catch (err) {
     // no-op on pages without GSAP/ScrollTrigger
   }
