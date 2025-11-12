@@ -217,14 +217,60 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
       "<1.2"
     );
     // Animate YouTube play button to appear smoothly with the description
-    tl.set(".youtube-play-button", { opacity: 0, y: 20 });
-    tl.to(".youtube-play-button", { 
-      opacity: 1, 
-      y: 0, 
-      duration: 1.5, 
-      ease: "power2.out" 
-    }, "<+=0.3");
+    // On desktop, use the timeline animation with opacity fade (no translateY for static reveal)
+    if (window.innerWidth > 768) {
+      tl.set(".youtube-play-button", { opacity: 0 });
+      tl.to(".youtube-play-button", { 
+        opacity: 1, 
+        duration: 1.5, 
+        ease: "power2.out" 
+      }, "<+=0.2"); // Appear earlier - using opacity fade only for static reveal
+    } else {
+      // On mobile, set initial state but don't animate in timeline
+      // Mobile animation will be handled by scroll event listener
+      tl.set(".youtube-play-button", { opacity: 0 });
+    }
     // Content after the pinned scroll (e.g., Masala Coffee section, promo video) flows normally
+    
+    // Mobile-specific scroll reveal for YouTube button (opacity fade only, no translate)
+    if (window.innerWidth <= 768) {
+      const youtubeButton = document.querySelector('.youtube-play-button');
+      const hero2Container = document.querySelector('.hero-2-container');
+      
+      if (youtubeButton && hero2Container) {
+        let buttonRevealed = false;
+        
+        const revealButtonOnScroll = () => {
+          if (buttonRevealed) return;
+          
+          const hero2Rect = hero2Container.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          
+          // Reveal button when hero-2-container is slightly before its normal reveal point
+          // Using a threshold that's earlier than the normal scroll position
+          const revealThreshold = viewportHeight * 0.5; // Reveal when container is 50% from top (earlier)
+          
+          if (hero2Rect.top <= revealThreshold && hero2Rect.bottom > 0) {
+            buttonRevealed = true;
+            window.gsap.to(youtubeButton, {
+              opacity: 1,
+              duration: 1.2,
+              ease: "power2.out"
+            });
+            // Remove scroll listener after revealing to avoid conflicts
+            window.removeEventListener('scroll', revealButtonOnScroll);
+          }
+        };
+        
+        // Use scroll event instead of ScrollTrigger to avoid conflicts
+        window.addEventListener('scroll', revealButtonOnScroll, { passive: true });
+        
+        // Also check on initial load in case we're already past the threshold
+        setTimeout(() => {
+          revealButtonOnScroll();
+        }, 100);
+      }
+    }
   } catch (err) {
     // no-op on pages without GSAP/ScrollTrigger
   }

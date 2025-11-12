@@ -935,10 +935,17 @@
 				cursor: pointer;
 				margin-top: 2rem;
 				opacity: 0;
-				transform: translateY(20px);
+				transform: none; /* No translateY - will use opacity fade only */
 				transition: all 0.3s ease;
 				color: #ffffff;
 				gap: 0.6rem;
+			}
+			
+			/* Desktop: button starts with no transform, GSAP will handle opacity fade */
+			@media (min-width: 769px) {
+				.youtube-play-button {
+					transform: none; /* Static reveal - no translateY */
+				}
 			}
 
 			.play-button-icon {
@@ -1020,12 +1027,14 @@
 				width: 100%;
 				opacity: 0;
 				transform: translateY(20px) scale(0.95);
+				transform-origin: center center;
 				transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
 			}
 
 			.youtube-modal.is-open .youtube-modal__dialog {
 				opacity: 1;
 				transform: translateY(0) scale(1);
+				transform-origin: center center;
 			}
 
 			.youtube-modal__close {
@@ -1058,6 +1067,13 @@
 				border-radius: 0;
 				overflow: hidden;
 			}
+			
+			/* Mobile: Allow full image to be visible */
+			@media (max-width: 768px) {
+				.youtube-modal__video-wrapper {
+					overflow: visible !important;
+				}
+			}
 
 			.youtube-modal__thumbnail {
 				width: 100%;
@@ -1066,6 +1082,17 @@
 				aspect-ratio: 16 / 9;
 				object-fit: cover;
 				background: #000;
+			}
+			
+			/* Mobile: Show full image by default (no crop/zoom) */
+			@media (max-width: 768px) {
+				.youtube-modal__thumbnail {
+					object-fit: contain !important;
+					width: auto;
+					height: auto;
+					max-width: 100%;
+					max-height: 100%;
+				}
 			}
 
 			.youtube-modal__play-overlay {
@@ -1150,18 +1177,62 @@
                     justify-content: center;
                 }
 
-                /* Mobile fix: ensure thumbnail is centered and not edge-zoomed */
+                /* Mobile fix: ensure thumbnail is centered and shows full image (no zoom) */
                 .youtube-modal__video-wrapper {
                     aspect-ratio: 16 / 9; /* maintain consistent video frame ratio */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    overflow: visible; /* Allow full image to be visible */
                 }
 
                 .youtube-modal__thumbnail {
-                    position: absolute; /* fill the wrapper */
-                    inset: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(1); /* Ensure no initial zoom */
+                    width: auto;
+                    height: auto;
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain !important;
+                    object-position: center !important;
+                    transform-origin: center center !important;
+                }
+            }
+
+            /* Explicitly target touch devices to ensure contain-fit under devtools mobile emulation */
+            @media (hover: none), (pointer: coarse) {
+                /* Use padding-top ratio for broad mobile compatibility */
+                .youtube-modal__video-wrapper {
+                    position: relative;
                     width: 100%;
-                    height: 100%;
-                    object-fit: contain; /* show the full image without cropping */
-                    object-position: center; /* center the image */
+                    overflow: hidden;
+                    background: #000;
+                    aspect-ratio: auto !important; /* disable aspect-ratio to avoid conflicts */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .youtube-modal__video-wrapper::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    padding-top: 56.25%; /* 16:9 ratio */
+                }
+                .youtube-modal__thumbnail {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(1); /* Ensure no initial zoom */
+                    width: auto;
+                    height: auto;
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain !important;
+                    object-position: center !important;
+                    transform-origin: center center !important;
                 }
             }
 		</style>
@@ -1988,6 +2059,30 @@
 				youtubeModal.classList.add('is-open');
 				document.body.classList.add('youtube-modal-open');
 				document.body.style.overflow = 'hidden';
+				
+				// Mobile fix: Ensure thumbnail is centered and shows full image (no zoom)
+				const isMobile = window.innerWidth <= 768;
+				if (isMobile) {
+					const thumbnail = document.getElementById('youtubeThumbnail');
+					const wrapper = document.getElementById('youtubeThumbnailWrapper');
+					if (thumbnail && wrapper) {
+						// Force center positioning and full image display on mobile
+						thumbnail.style.position = 'absolute';
+						thumbnail.style.top = '50%';
+						thumbnail.style.left = '50%';
+						thumbnail.style.transform = 'translate(-50%, -50%) scale(1)'; // No zoom
+						thumbnail.style.transformOrigin = 'center center';
+						thumbnail.style.objectFit = 'contain';
+						thumbnail.style.objectPosition = 'center';
+						thumbnail.style.width = 'auto';
+						thumbnail.style.height = 'auto';
+						thumbnail.style.maxWidth = '100%';
+						thumbnail.style.maxHeight = '100%';
+						
+						// Ensure wrapper allows full image to be visible
+						wrapper.style.overflow = 'visible';
+					}
+				}
 				
 				// Set aria attributes
 				youtubeModal.setAttribute('aria-hidden', 'false');

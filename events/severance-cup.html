@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Severance Cup – Magnovite 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Poppins', Arial, Helvetica, sans-serif; background:#000; color:#e5e5e5; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+        .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,176,196,.45); background:rgba(0,0,0,.5); color:#fff; font-weight:600; font-size:14px; }
+        .title { font-size: clamp(28px, 4vw, 48px); font-weight:800; color:#fff; margin: 10px 0 6px; }
+        .tagline { color:#ffb0c4; font-weight:700; margin: 0 0 12px; }
+        .hero { border-radius:16px; overflow:hidden; border:1px solid rgba(255,176,196,.45); box-shadow: 0 18px 48px rgba(158,63,255,.28); }
+        .hero img { width:100%; height:100%; display:block; object-fit:cover; }
+        .grid { display:grid; gap:24px; grid-template-columns: 1fr; }
+        @media (min-width: 960px){ .grid{ grid-template-columns: 1.3fr 1fr; } }
+        .card { padding:18px; border-radius:14px; background:#0b0b0b; border:1px solid rgba(255,176,196,.35); }
+        .card h2 { margin: 0 0 10px; color:#fff; font-size:22px; }
+        .rules { display:grid; gap:10px; grid-template-columns: 1fr; }
+        @media (min-width: 720px){ .rules{ grid-template-columns: 1fr 1fr; } }
+        .rule { display:flex; gap:10px; padding:10px; border-radius:10px; background:#000; border:1px solid rgba(255,176,196,.28); }
+        .dot{ width:10px; height:10px; border-radius:50%; background:#ff00ff; margin-top:6px; flex: 0 0 auto; }
+        .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); transition:.2s ease; border: none; cursor: pointer; }
+        .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 36px rgba(158,63,255,.42); }
+        .subchips{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+        footer { margin-top:40px; padding:24px 0; }
+        .contacts { display:grid; gap:12px; grid-template-columns: 1fr; }
+        @media (min-width:720px){ .contacts{ grid-template-columns: 1fr 1fr 1fr; } }
+        .contact-card{ background:#0b0b0b; border:1px solid rgba(255,176,196,.35); border-radius:12px; padding:12px; }
+        .contact-card a{ color:#ffb0c4; text-decoration:none; }
+        
+        /* Visual Enhancement Styles */
+        .price-card { 
+            background: linear-gradient(135deg, rgba(158,63,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
+            border: 1px solid rgba(255,176,196,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9e3fff 0%, #ff00ff 100%);
+        }
+        .price-amount { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #ffb0c4; 
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(255,176,196,0.3);
+        }
+        .price-label { 
+            color: #cfcfcf; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-grid { 
+            display: grid; 
+            gap: 16px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            margin: 20px 0; 
+        }
+        .info-card { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.2); 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(255,176,196,0.4);
+            box-shadow: 0 8px 25px rgba(158,63,255,0.2);
+        }
+        .info-card-icon { 
+            font-size: 24px; 
+            margin-bottom: 8px; 
+            display: block;
+        }
+        .info-card-title { 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 4px; 
+            font-size: 16px;
+        }
+        .info-card-value { 
+            color: #ffb0c4; 
+            font-size: 14px; 
+            font-weight: 600;
+        }
+        .game-section { 
+            margin-top: 20px; 
+            padding: 16px; 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,176,196,0.25); 
+            border-radius: 12px; 
+        }
+        .game-section h3 { 
+            color: #ffb0c4; 
+            font-size: 20px; 
+            margin: 0 0 12px; 
+            font-weight: 700; 
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="subchips">
+            <span class="chip">Science and Humanities</span>
+            <span class="chip">Esports</span>
+            <span class="chip">Inter-Collegiate</span>
+        </div>
+        <h1 class="title">SEVERANCE CUP 🎮🏆</h1>
+        <p class="tagline">"Where champions are forged in digital arenas"</p>
+        <p>The Severance Cup is an inter-collegiate esports tournament featuring two titles — Rocket League and EA FC (E-Football). Each participating college must field players in both games to qualify for the overall championship. Points are awarded based on placements in each event, and the college with the highest cumulative score is declared the Severance Cup Champion.</p>
+
+        <div class="subchips">
+            <span class="chip">Team Event</span>
+            <span class="chip">8 Students per College</span>
+            <span class="chip">₹500 Registration</span>
+            <a class="btn" href="../events.html">← Back to Events</a>
+        </div>
+
+        <div style="margin-top:16px;">
+            <div class="hero">
+                <img src="../public/events/SEVERANCE CUP.jpg" alt="Severance Cup" />
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Event Details</h2>
+            <div style="margin-bottom: 20px;">
+                <p><strong>Description:</strong> The Severance Cup is an inter-collegiate esports tournament featuring two titles — Rocket League and EA FC (E-Football). Each participating college must field players in both games to qualify for the overall championship. Points are awarded based on placements in each event, and the college with the highest cumulative score is declared the Severance Cup Champion.</p>
+            </div>
+            
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">💰</span>
+                    <div class="info-card-title">Registration Fee</div>
+                    <div class="info-card-value">₹500 per team</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">👥</span>
+                    <div class="info-card-title">Team Size</div>
+                    <div class="info-card-value">8 students per college</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🎮</span>
+                    <div class="info-card-title">Games</div>
+                    <div class="info-card-value">Rocket League & EA FC</div>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-icon">🏆</span>
+                    <div class="info-card-title">Format</div>
+                    <div class="info-card-value">Single-elimination</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Event Structure</h2>
+            <div class="rules">
+                <div class="rule"><span class="dot"></span><div><strong>Format:</strong> Single-elimination knockout for both Rocket League and EA FC.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Gameplay:</strong> Both tournaments will run simultaneously.</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>Schedule:</strong> Final brackets and timings will be released 3 days before the event. Finals may be played the following day depending upon the number of teams.</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Team Composition</h2>
+            <p>8 students per college team.</p>
+            <div class="rules" style="margin-top:12px;">
+                <div class="rule"><span class="dot"></span><div><strong>Rocket League:</strong> 3+1 players (3 main + 1 substitute)</div></div>
+                <div class="rule"><span class="dot"></span><div><strong>E-Football:</strong> 2 individual players</div></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2>Rules & Regulations</h2>
+            
+            <div class="game-section">
+                <h3>Rocket League</h3>
+                <div class="rules">
+                    <div class="rule"><span class="dot"></span><div>Open to full-time students with valid college ID.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Each team must have 3 players + 1 substitute.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Cross-platform play not allowed (only PCs).</div></div>
+                    <div class="rule"><span class="dot"></span><div>Format: Single-elimination knockout; Best of 3 for early rounds, Best of 5 for semifinals and finals.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Game Mode: 3v3 Soccar on standard arenas (Mumbai/India server).</div></div>
+                    <div class="rule"><span class="dot"></span><div>Match Duration: 5 minutes per game; unlimited overtime (sudden death).</div></div>
+                    <div class="rule"><span class="dot"></span><div>Players must join their private lobby 10 minutes before the scheduled match.</div></div>
+                    <div class="rule"><span class="dot"></span><div>BYOC (Bring Your Own Setup): Players are responsible for their own devices, peripherals, and stable internet.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Players can bring their own controllers if required.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Cheating, toxicity, or unsportsmanlike conduct will result in disqualification.</div></div>
+                    <div class="rule"><span class="dot"></span><div>All admin decisions are final and binding.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Brackets will be released 3 days prior to event date.</div></div>
+                </div>
+            </div>
+
+            <div class="game-section">
+                <h3>E-Football (EA FC)</h3>
+                <div class="rules">
+                    <div class="rule"><span class="dot"></span><div>Individual 1 v 1 knockout format on organizer-provided consoles.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Players may use personal controllers (no modded devices).</div></div>
+                    <div class="rule"><span class="dot"></span><div>Game settings: 6-min halves; Extra Time & Penalties if tied.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Maximum 3 pauses per player (only when the ball is out of play).</div></div>
+                    <div class="rule"><span class="dot"></span><div>Misconduct or Cheating will lead to disqualification.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Tie-breaker: Higher position in the event will decide the winner.</div></div>
+                    <div class="rule"><span class="dot"></span><div>Severe infractions may lead to team or contingent disqualification.</div></div>
+                    <div class="rule"><span class="dot"></span><div>For E-Football, only the highest-ranking player's score from each college will be considered.</div></div>
+                </div>
+            </div>
+
+            <div style="margin-top:16px; padding:12px 14px; border-radius:10px; background: rgba(0,0,0,0.4); border:1px solid rgba(255,176,196,0.35); color:#ffb0c4; font-weight:700;">
+                Each institution can have a maximum of two registrations as contingents for every event
+            </div>
+
+            <div style="display:flex; justify-content:flex-start; margin-top:16px;">
+                <button class="btn" type="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeXKK6mn5i_HRrvvw3wTEan-fBo9x1cbk9t5naj-Lx9lo1CHg/viewform?usp=header', '_blank')">Register Now</button>
+            </div>
+        </div>
+
+<div style="margin-top:24px; position: relative; background: linear-gradient(180deg, rgba(158,63,255,0.10), rgba(255,0,255,0.08)); border: 1px solid rgba(255,176,196,0.35); border-radius: 16px; padding: 20px; box-shadow: 0 20px 60px rgba(158,63,255,0.18); overflow: hidden;">
+  <div style="content: ''; position: absolute; inset: -2px; border-radius: 18px; background: radial-gradient(800px 200px at top left, rgba(255,0,255,0.15), transparent 40%), radial-gradient(600px 160px at bottom right, rgba(158,63,255,0.12), transparent 40%); pointer-events: none; z-index: 0;"></div>
+  <div style="position: relative; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; z-index: 1;">
+    <div style="width:36px; height:36px; display:grid; place-items:center; border-radius:10px; color:#fff; background: linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow: 0 10px 28px rgba(158,63,255,0.35); font-size:18px;">🏆</div>
+    <span style="font-weight:800; font-size:12px; color:#fff; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,176,196,0.35); background: rgba(0,0,0,0.35);">Complimentary Access</span>
+    <h3 style="margin:0; color:#fff; font-size:18px; font-weight:800;">Magnovite Special Workshops – Nov 28, 2025</h3>
+  </div>
+  <div style="position: relative; z-index:1; color:#cfcfcf;">
+    <p style="margin:0;">
+      ELEVATE YOUR VICTORY: Claiming the first and second positions in any Magnovite Departmental Event secures your complimentary access to the highly anticipated Magnovite Special Workshops on November 28, 2025. This achievement grants you a full-value registration waiver, providing admission to these premier technical sessions—an opportunity valued at ₹500 per participant—as recognition of your competitive excellence.
+    </p>
+    <div style="margin-top:14px; display:flex; gap:10px;">
+      <button type="button" onclick="window.location.href='magnovite-technical-workshops.html'" style="display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:800; color:#fff; background:linear-gradient(135deg,#9e3fff 0%, #ff00ff 100%); box-shadow:0 8px 22px rgba(158,63,255,.28); border:none; cursor:pointer;">View Workshops</button>
+    </div>
+  </div>
+</div>
+
+        <footer class="wrap" style="padding-left:0;padding-right:0;">
+            <h2 class="title" style="font-size:28px; margin:0 0 12px;">Contact Us</h2>
+            <div class="contacts">
+                <div class="contact-card">
+                    <strong>Event Student Coordinator 1</strong><br />
+                    <strong>Shriya Sarah Goka</strong><br />
+                    <a href="tel:+919686855303">9686855303</a><br />
+                    <a href="mailto:shriya.sarah@btech.christuniversity.in">shriya.sarah@btech.christuniversity.in</a>
+                </div>
+                <div class="contact-card">
+                    <strong>Event Student Coordinator 2</strong><br />
+                    <strong>Shashwat Buragohain</strong><br />
+                    <a href="tel:+917099062182">7099062182</a><br />
+                    <a href="mailto:shashwat.burgohain@btech.christuniversity.in">shashwat.burgohain@btech.christuniversity.in</a>
+                </div>
+                <div class="contact-card">
+                    <strong>Event Faculty Coordinator</strong><br />
+                    <strong>Dr. Shwetha R</strong><br />
+                    <a href="tel:+919986217753">9986217753</a><br />
+                    <a href="mailto:shwetha.r@christuniversity.in">shwetha.r@christuniversity.in</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
