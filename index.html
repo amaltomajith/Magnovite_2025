@@ -273,17 +273,20 @@
 				}
 
 				/* Page blur when menu is open - only blur specific content sections */
-				body.mobile-menu-open .hero-1-container,
-				body.mobile-menu-open .hero-2-container,
-				body.mobile-menu-open .hero-main-container,
-				body.mobile-menu-open .hero-main-image,
-				body.mobile-menu-open .hero-main-logo,
-				body.mobile-menu-open .hero-text-logo-container,
-				body.mobile-menu-open .cta-section,
-				body.mobile-menu-open .site-footer {
-					filter: blur(8px);
-					transition: filter 0.3s ease;
-				}
+                body.mobile-menu-open .hero-1-container,
+                body.mobile-menu-open .hero-2-container,
+                body.mobile-menu-open .hero-main-container,
+                body.mobile-menu-open .hero-main-image,
+                body.mobile-menu-open .hero-main-logo,
+                body.mobile-menu-open .hero-text-logo-container,
+                body.mobile-menu-open .masala-section,
+                body.mobile-menu-open .masala-card,
+                body.mobile-menu-open .masala-content,
+                body.mobile-menu-open .cta-section,
+                body.mobile-menu-open .site-footer {
+                    filter: blur(8px);
+                    transition: filter 0.3s ease;
+                }
 
 				/* Keep navigation and header completely sharp */
 				body.mobile-menu-open .header,
@@ -1120,15 +1123,15 @@
 				transition: filter 0.3s ease;
 			}
 
-			@media (max-width: 768px) {
-				.youtube-modal {
-					padding: 1rem;
-				}
+            @media (max-width: 768px) {
+                .youtube-modal {
+                    padding: 1rem;
+                }
 
-				.youtube-modal__dialog {
-					max-width: 100%;
-					border-radius: 16px;
-				}
+                .youtube-modal__dialog {
+                    max-width: 100%;
+                    border-radius: 16px;
+                }
 
 				.youtube-modal__close {
 					top: 12px;
@@ -1142,11 +1145,25 @@
 					flex-direction: column;
 				}
 
-				.youtube-modal__open-link {
-					width: 100%;
-					justify-content: center;
-				}
-			}
+                .youtube-modal__open-link {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                /* Mobile fix: ensure thumbnail is centered and not edge-zoomed */
+                .youtube-modal__video-wrapper {
+                    aspect-ratio: 16 / 9; /* maintain consistent video frame ratio */
+                }
+
+                .youtube-modal__thumbnail {
+                    position: absolute; /* fill the wrapper */
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain; /* show the full image without cropping */
+                    object-position: center; /* center the image */
+                }
+            }
 		</style>
 	</head>
 	<body id="home" class="loading">
