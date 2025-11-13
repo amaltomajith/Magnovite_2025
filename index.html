@@ -2101,7 +2101,10 @@
 				// Close modal
 				youtubeModal.classList.remove('is-open');
 				document.body.classList.remove('youtube-modal-open');
-				document.body.style.overflow = '';
+				
+				// Restore scrolling - explicitly set to allow scrolling
+				document.body.style.overflow = 'auto';
+				document.body.style.overflowX = 'hidden';
 				
 				// Reset inline styles after transition completes
 				setTimeout(() => {
