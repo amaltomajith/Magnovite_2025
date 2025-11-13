@@ -994,7 +994,7 @@
 				justify-content: center;
 				z-index: 2000;
 				padding: 2rem;
-				transition: opacity 0.3s ease, visibility 0.3s ease;
+				transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 			}
 
 			.youtube-modal::before {
@@ -1008,6 +1008,7 @@
 			.youtube-modal.is-open {
 				opacity: 1;
 				visibility: visible;
+				transition: opacity 0.3s ease, visibility 0s linear 0s;
 			}
 
 			.youtube-modal__backdrop {
@@ -1308,8 +1309,7 @@
 										</svg>
 									</a>
 									<a
-										href="public/MAGNOVITE BROCHURE.pdf"
-										target="_blank"
+										href="brochure.html"
 										class="link nav-link"
 									>
 										<span class="nav-link-text">Brochure</span>
@@ -2052,13 +2052,20 @@
 			function openYouTubeModal() {
 				if (!youtubeModal) return;
 				
-				// Set background immediately to prevent white flash
+				// Prevent body scroll immediately to avoid flash
+				document.body.style.overflow = 'hidden';
+				
+				// Set modal to be visible immediately (no transition delay for visibility)
+				// This prevents the flash of content behind the modal
+				youtubeModal.style.visibility = 'visible';
 				youtubeModal.style.background = 'rgba(0, 0, 0, 0.9)';
 				
-				// Open modal
-				youtubeModal.classList.add('is-open');
-				document.body.classList.add('youtube-modal-open');
-				document.body.style.overflow = 'hidden';
+				// Use requestAnimationFrame to ensure backdrop is rendered before opacity transition
+				requestAnimationFrame(() => {
+					// Now add class to trigger opacity transition
+					youtubeModal.classList.add('is-open');
+					document.body.classList.add('youtube-modal-open');
+				});
 				
 				// Mobile fix: Ensure thumbnail is centered and shows full image (no zoom)
 				const isMobile = window.innerWidth <= 768;
@@ -2094,7 +2101,15 @@
 				// Close modal
 				youtubeModal.classList.remove('is-open');
 				document.body.classList.remove('youtube-modal-open');
-				document.body.style.overflow = 'visible';
+				document.body.style.overflow = '';
+				
+				// Reset inline styles after transition completes
+				setTimeout(() => {
+					if (!youtubeModal.classList.contains('is-open')) {
+						youtubeModal.style.visibility = '';
+						youtubeModal.style.background = '';
+					}
+				}, 300); // Match transition duration
 				
 				// Set aria attributes
 				youtubeModal.setAttribute('aria-hidden', 'true');

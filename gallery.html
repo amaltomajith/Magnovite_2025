@@ -133,8 +133,10 @@
 				.toggle-line {
 					display: block;
 				}
+			}
 
-				/* Mobile Navigation Styles */
+			/* Mobile Navigation Styles */
+			@media (max-width: 768px) {
 				.nav-menu__links {
 					position: fixed;
 					top: 0;
@@ -157,13 +159,23 @@
 				}
 
 				/* Page blur when menu is open - only blur specific content sections */
+                body.mobile-menu-open .hero-1-container,
+                body.mobile-menu-open .hero-2-container,
+                body.mobile-menu-open .hero-main-container,
+                body.mobile-menu-open .hero-main-image,
+                body.mobile-menu-open .hero-main-logo,
+                body.mobile-menu-open .hero-text-logo-container,
+                body.mobile-menu-open .masala-section,
+                body.mobile-menu-open .masala-card,
+                body.mobile-menu-open .masala-content,
+                body.mobile-menu-open .cta-section,
+                body.mobile-menu-open .site-footer,
 				body.mobile-menu-open #professional-header,
 				body.mobile-menu-open .gallery-container,
-				body.mobile-menu-open .gallery-grid,
-				body.mobile-menu-open .site-footer {
-					filter: blur(8px);
-					transition: filter 0.3s ease;
-				}
+				body.mobile-menu-open .gallery-grid {
+                    filter: blur(8px);
+                    transition: filter 0.3s ease;
+                }
 
 				/* Keep navigation and header completely sharp */
 				body.mobile-menu-open .header,
@@ -203,6 +215,19 @@
 					text-decoration: none;
 					color: #fff;
 					font-weight: 600;
+					min-height: 56px;
+					width: calc(100% - 32px);
+					box-sizing: border-box;
+				}
+
+				.nav-menu__links .nav-link-text {
+					flex: 1;
+					text-align: left;
+					font-size: 16px;
+					line-height: 1.2;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
 
 				.nav-menu__links .nav-link:hover {
@@ -221,7 +246,7 @@
 					display: none;
 				}
 
-				/* Mobile Navigation Backdrop */
+				/* Mobile backdrop */
 				.mobile-nav-backdrop {
 					position: fixed;
 					top: 0;
@@ -230,10 +255,10 @@
 					height: 100%;
 					background: rgba(0, 0, 0, 0.5);
 					backdrop-filter: blur(4px);
-					z-index: 999;
 					opacity: 0;
 					visibility: hidden;
 					transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+					z-index: 999;
 				}
 
 				.mobile-nav-backdrop.is-open {
@@ -247,8 +272,8 @@
 					top: 50vh;
 					left: 25%;
 					transform: translate(-50%, -50%) scale(0.8);
-					width: 100px;
-					height: 100px;
+					width: 120px;
+					height: 120px;
 					background-image: url('./public/MAGNOVITEBW.png');
 					background-size: contain;
 					background-repeat: no-repeat;
@@ -268,10 +293,8 @@
 				/* Gallery responsive styles */
 				#professional-header {
 					margin-top: 80px;
-				}
-
-				#professional-header h1 {
-					font-size: 2.5rem;
+					min-height: 40vh;
+					padding: 3rem 1.5rem 1rem;
 				}
 
 				.marquee-row {
@@ -311,28 +334,99 @@
 				min-height: 100vh;
 			}
 
-			/* Professional Header */
+			/* Professional Header - Glowing Hero Section */
 			#professional-header {
-				background: var(--bg-dark);
-				padding: 30px 32px;
+				min-height: 46vh;
+				display: grid;
+				place-items: center;
 				text-align: center;
-				border-bottom: 2px solid white;
-				margin-top: 100px;
+				padding: 4rem 1.5rem 1.25rem;
+				position: relative;
+				overflow: hidden;
+				margin-top: 80px;
+				background:
+					radial-gradient(circle at 50% 30%, rgba(255,0,255,.12), transparent 45%),
+					radial-gradient(circle at 20% 0%, rgba(158,63,255,.12), transparent 40%),
+					linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+			}
+
+			#professional-header::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: radial-gradient(
+					circle,
+					rgba(255, 0, 255, 0.08) 0%,
+					transparent 70%
+				);
+				animation: rotate 20s linear infinite;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			#professional-header::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(
+					circle at 50% 50%,
+					rgba(158, 63, 255, 0.1) 0%,
+					transparent 50%
+				);
+				pointer-events: none;
+				z-index: 1;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes gradient-shift {
+				0%,
+				100% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
 			}
 
 			#professional-header h1 {
-				font-size: 3.5rem;
-				font-weight: 700;
-				letter-spacing: 0.3em;
+				font-size: clamp(2.25rem, 6vw, 4.5rem);
+				font-weight: 800;
+				letter-spacing: .08em;
 				text-transform: uppercase;
-				color: white;
-				margin: 0;
+				line-height: .9;
+				margin: 0 0 .75rem;
+				position: relative;
+				z-index: 2;
+				/* Animated gradient text */
+				background: linear-gradient(45deg, #ffffff, #ff00ff, #9e3fff, #ffb0c4);
+				background-size: 200% 200%;
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				animation: gradient-shift 3s ease infinite;
+				/* Text shadow for depth */
+				filter: drop-shadow(0 0 20px rgba(158, 63, 255, 0.3));
+				/* Subtle glow effect */
+				text-shadow: 0 0 30px rgba(158, 63, 255, 0.2);
 			}
 
 			#professional-header p {
-				font-size: 1.1rem;
-				color: var(--accent-light);
+				font-size: clamp(1rem, 2.6vw, 1.35rem);
+				color: rgba(255,255,255,.8);
 				margin-top: 10px;
+				position: relative;
+				z-index: 2;
 			}
 
 			/* Gallery Container */
@@ -679,8 +773,7 @@
 									</svg>
 								</a>
 								<a
-									href="public/MAGNOVITE BROCHURE.pdf"
-									target="_blank"
+									href="brochure.html"
 									class="link nav-link"
 								>
 									<span class="nav-link-text">Brochure</span>
@@ -1115,7 +1208,13 @@
 					mobileNavBackdrop.classList.remove('is-open');
 					mobileMenuToggle.classList.remove('is-active');
 					document.body.classList.remove('mobile-menu-open');
-					document.body.style.overflow = '';
+					document.body.style.overflow = 'visible';
+					document.body.style.overflowX = 'hidden';
+
+					// Refresh ScrollTrigger to ensure proper scroll behavior
+					if (typeof window !== 'undefined' && window.ScrollTrigger) {
+						window.ScrollTrigger.refresh();
+					}
 				}
 
 				// Event listeners

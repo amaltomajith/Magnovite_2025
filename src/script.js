@@ -220,10 +220,10 @@ if (typeof window !== 'undefined' && typeof window.gsap !== 'undefined') {
     // On desktop, use the timeline animation with opacity fade (no translateY for static reveal)
     if (window.innerWidth > 768) {
       tl.set(".youtube-play-button", { opacity: 0 });
-      tl.to(".youtube-play-button", { 
-        opacity: 1, 
-        duration: 1.5, 
-        ease: "power2.out" 
+    tl.to(".youtube-play-button", { 
+      opacity: 1, 
+      duration: 1.5, 
+      ease: "power2.out" 
       }, "<+=0.2"); // Appear earlier - using opacity fade only for static reveal
     } else {
       // On mobile, set initial state but don't animate in timeline
