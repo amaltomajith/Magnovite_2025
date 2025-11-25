@@ -262,8 +262,15 @@
                 Each institution can have a maximum of two registrations as contingents for every event
             </div>
 
-            <div style="display:flex; justify-content:flex-start; margin-top:16px;">
-                <button class="btn" type="button" onclick="window.open('https://forms.gle/EQykyGhTia8Dc3Qe9', '_blank')">Register Now</button>
+            <div style="margin-top:24px; padding:28px; border-radius:16px; background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(0,0,0,0.98) 100%); border: 2px solid rgba(60,60,60,0.5); box-shadow: 0 12px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none;"></div>
+                <div style="position: relative; z-index: 1; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 12px; filter: drop-shadow(0 4px 12px rgba(200,50,50,0.5));">❌</div>
+                    <p style="margin:0 0 12px; color:#e0e0e0; font-weight:800; font-size:20px; text-shadow: 0 2px 12px rgba(0,0,0,0.8);">Event Cancelled</p>
+                    <p style="margin:0 0 20px; color:#b0b0b0; font-size:15px; line-height:1.7; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Smart City Energy Command has been cancelled for Magnovite 2025. If you have already registered, don't worry - your registration will be reallocated to another event and we will contact you shortly with the next steps. We sincerely apologize for the inconvenience.
+                    </p>
+                </div>
             </div>
 <div style="margin-top:24px; position: relative; background: linear-gradient(180deg, rgba(158,63,255,0.10), rgba(255,0,255,0.08)); border: 1px solid rgba(255,176,196,0.35); border-radius: 16px; padding: 20px; box-shadow: 0 20px 60px rgba(158,63,255,0.18); overflow: hidden;">
   <div style="content: ''; position: absolute; inset: -2px; border-radius: 18px; background: radial-gradient(800px 200px at top left, rgba(255,0,255,0.15), transparent 40%), radial-gradient(600px 160px at bottom right, rgba(158,63,255,0.12), transparent 40%); pointer-events: none; z-index: 0;"></div>
@@ -295,130 +302,5 @@ ELEVATE YOUR VICTORY: Winners of this Magnovite Departmental Event secure their 
         </footer>
     </div>
 
-    <!-- Registration Modal (Electrical & Electronics Department) -->
-    <div class="modal" id="registerModal" aria-hidden="true">
-        <div class="modal-backdrop" id="closeBackdrop"></div>
-        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h3 id="modalTitle" style="margin:0; color:#fff;">Electrical & Electronics Registration</h3>
-                <button class="close-btn" id="closeModal">Close</button>
-            </div>
-            <form id="deptForm" class="modal-body">
-                <div class="form-grid">
-                    <div class="full">
-                        <label>Department</label>
-                        <input type="text" name="department" value="Electrical & Electronics" readonly />
-                    </div>
-                    <div class="full">
-                        <label>Select Event *</label>
-                        <select name="event" class="no-arrow" required>
-                            <option value="">Choose...</option>
-                            <option value="Smart City Energy Command">Smart City Energy Command</option>
-                            <option value="Grid Restoration Challenge">Grid Restoration Challenge</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Name of Team *</label>
-                        <input name="teamName" required />
-                    </div>
-                    <div>
-                        <label>Full Name of Participant/ POC *</label>
-                        <input name="pocName" required />
-                    </div>
-                    <div>
-                        <label>Contact Number (WhatsApp enabled) *</label>
-                        <input name="phone" type="tel" pattern="[0-9\s+()-]{8,15}" required />
-                    </div>
-                    <div>
-                        <label>No. of Team Members * (4 for Smart City Energy Command)</label>
-                        <input name="teamSize" type="number" min="4" max="4" value="4" required />
-                    </div>
-                    <div class="full">
-                        <label>Name of College/University *</label>
-                        <input name="college" required />
-                    </div>
-                    <div class="full">
-                        <label>Contingent / Non-contingent *</label>
-                        <select name="contingent" required>
-                            <option value="">Choose...</option>
-                            <option>Contingent</option>
-                            <option>Non-contingent</option>
-                        </select>
-                        <div class="help">One shared form per department (Electrical & Electronics) covering all events.</div>
-                    </div>
-                </div>
-                <div class="actions">
-                    <button type="button" class="close-btn" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        (function(){
-            const openBtn = document.getElementById('openRegister');
-            const modal = document.getElementById('registerModal');
-            const closeBtn = document.getElementById('closeModal');
-            const closeBackdrop = document.getElementById('closeBackdrop');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const form = document.getElementById('deptForm');
-
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQipsJ2kFu93nFHUIugL61GJrSpaLLbZHmhKesRPJ13yP7pCKom-JcOzYpgd2tMFZLnw/exec';
-
-            function open(){ modal.classList.add('is-open'); }
-            function close(){ modal.classList.remove('is-open'); }
-
-            openBtn.addEventListener('click', open);
-            closeBtn.addEventListener('click', close);
-            closeBackdrop.addEventListener('click', close);
-            cancelBtn.addEventListener('click', close);
-
-            // Fix event to current page (still submitted to same sheet)
-            const eventSelect = form.elements['event'];
-            const fixedEventName = 'Smart City Energy Command';
-            if (eventSelect) {
-                eventSelect.value = fixedEventName;
-                eventSelect.disabled = true;
-                // Disabled fields are not submitted, add hidden mirror
-                const hiddenEvent = document.createElement('input');
-                hiddenEvent.type = 'hidden';
-                hiddenEvent.name = 'event';
-                hiddenEvent.value = fixedEventName;
-                form.appendChild(hiddenEvent);
-            }
-
-            // Enforce team size 4
-            const teamSizeInput = form.elements['teamSize'];
-            if (teamSizeInput) {
-                teamSizeInput.addEventListener('input', () => {
-                    teamSizeInput.value = '4';
-                });
-            }
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const data = new FormData(form);
-                const val = parseInt((data.get('teamSize')||'4'), 10);
-                if (val !== 4) {
-                    alert('For Smart City Energy Command, team size must be exactly 4 members.');
-                    return;
-                }
-                data.append('sourcePage', 'smart-city-energy-command');
-                // Fire-and-forget request; always show success to the user
-                if (SCRIPT_URL) {
-                    fetch(SCRIPT_URL, { method: 'POST', body: data })
-                        .then(async (res) => {
-                            const text = await res.text().catch(() => '');
-                            console.debug('[smart-city-energy-command] submit response:', res.status, text);
-                        })
-                        .catch((err) => console.error('[smart-city-energy-command] submit error:', err));
-                }
-                alert('Application submitted successfully. We will reach out on WhatsApp.');
-                form.reset();
-                close();
-            });
-        })();
-    </script>
 </body>
 </html>

@@ -371,51 +371,6 @@
             font-weight: 600;
         }
 
-        .view-brochure-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            color: #fff;
-            background: linear-gradient(135deg, #9e3fff 0%, #ff00ff 100%);
-            box-shadow: 0 8px 22px rgba(158,63,255,.28);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            position: relative;
-            z-index: 2;
-            font-size: 1.1rem;
-        }
-
-        .view-brochure-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.4);
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-            margin-top: 0.5rem;
-        }
-
-        .view-brochure-btn.is-outline {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 22px rgba(158, 63, 255, 0.18);
-        }
-
-        .view-brochure-btn.is-outline:hover {
-            background: linear-gradient(135deg, rgba(158,63,255,0.2) 0%, rgba(255,0,255,0.2) 100%);
-            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.35);
-        }
-
         .brochure-subtext {
             font-size: clamp(1rem, 2.5vw, 1.3rem);
             color: rgba(255,255,255,0.85);
@@ -825,24 +780,6 @@
             <p class="brochure-subtext">
                 The Blueprint to the Extravaganza—navigate the excitement with ease. Whether you are looking to plan your day minute-by-minute or dive deep into the rules of engagement, this is your command center.
             </p>
-            <div class="hero-cta">
-                <a href="./public/SCHEDULE.pdf" target="_blank" class="view-brochure-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                        <polyline points="10 17 15 12 10 7"></polyline>
-                        <line x1="15" y1="12" x2="3" y2="12"></line>
-                    </svg>
-                    View Schedule
-                </a>
-                <a href="./public/MAGNOVITE BROCHURE.pdf" target="_blank" class="view-brochure-btn is-outline">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                        <polyline points="10 17 15 12 10 7"></polyline>
-                        <line x1="15" y1="12" x2="3" y2="12"></line>
-                    </svg>
-                    View Brochure
-                </a>
-            </div>
         </div>
 
         <div class="content-section">
@@ -871,7 +808,7 @@
                                 <line x1="15" y1="12" x2="3" y2="12"></line>
                             </svg>
                         </a>
-                        <div class="guide-note">Opens the official timetable PDF hosted in the public folder.</div>
+                        
                     </div>
 
                     <div class="guide-card">
@@ -890,7 +827,7 @@
                                 <line x1="15" y1="12" x2="3" y2="12"></line>
                             </svg>
                         </a>
-                        <div class="guide-note">Download or view the definitive handbook any time you need it.</div>
+                        
                     </div>
                 </div>
 
